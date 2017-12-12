@@ -50,5 +50,6 @@ public class PullOfferV1 {
 		}
 		logger.info("update offer into tem  end.....");
 		BlockListService block = new BlockListService();
+		System.out.println("测试");
 	}
 }
