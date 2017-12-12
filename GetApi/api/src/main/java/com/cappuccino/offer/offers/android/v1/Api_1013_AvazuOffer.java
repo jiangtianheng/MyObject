@@ -44,7 +44,8 @@ public class Api_1013_AvazuOffer extends BaseAndroidOffer {
 		JSONObject json1;
 		JSONArray array = null;
 		List<AdTem> adsList = new ArrayList<AdTem>();
-		CacheProviderDAO providerDao = SpringHelper.getBean("providerDAO", CacheProviderDAO.class);
+		CacheProviderDAO providerDao = SpringHelper.getBean("providerDAO",
+				CacheProviderDAO.class);
 		int status = providerDao.findStatusById(GlobalConst.Api_1035_Codrim);
 		if (status != 0)
 			return adsList;
@@ -73,7 +74,8 @@ public class Api_1013_AvazuOffer extends BaseAndroidOffer {
 						String pkg = ad.getString("pkgname");
 						// dv1={aff_sub}&sub_pub={channel}
 						String trackinglink = ad.getString("trackinglink");
-						trackinglink = trackinglink + "&dv1={aff_sub}&sub_pub={channel}";
+						trackinglink = trackinglink
+								+ "&dv1={aff_sub}&sub_pub={channel}";
 						Double payout = ad.getDouble("payout");
 						String description = item.getString("description");
 						String os = item.getString("os");
@@ -95,7 +97,7 @@ public class Api_1013_AvazuOffer extends BaseAndroidOffer {
 						aditem.setOfferid(offerid);
 						aditem.setPayout(payout);
 						aditem.setCountry(countrys);
-					//	aditem.setCap(CapService.work(payout));
+						// aditem.setCap(CapService.work(payout));
 						aditem.setPreviewlink(previewlink);
 						aditem.setTracklink(trackinglink);
 						aditem.setPkg(pkg);
@@ -148,7 +150,8 @@ public class Api_1013_AvazuOffer extends BaseAndroidOffer {
 						String pkg = ad.getString("pkgname");
 						// dv1={aff_sub}&sub_pub={channel}
 						String trackinglink = ad.getString("trackinglink");
-						trackinglink = trackinglink + "&dv1={aff_sub}&sub_pub={channel}";
+						trackinglink = trackinglink
+								+ "&dv1={aff_sub}&sub_pub={channel}";
 						Double payout = ad.getDouble("payout");
 						String description = item.getString("description");
 						String os = item.getString("os");
