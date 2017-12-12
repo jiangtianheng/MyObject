@@ -1,0 +1,133 @@
+2015-11-23 18:07:11,133 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@7aa93a16: startup date [Mon Nov 23 18:07:11 CST 2015]; root of context hierarchy
+ 2015-11-23 18:07:11,193 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from file [E:\workspace\oversea\pull-offer\conf\applicationContext.xml]
+ 2015-11-23 18:07:11,692 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:E:/workspace/oversea/pull-offer/conf/log4j.properties]
+ 2015-11-23 18:07:11,693 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:E:/workspace/oversea/pull-offer/conf/mysql.properties]
+ 2015-11-23 18:07:11,693 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:E:/workspace/oversea/pull-offer/conf/memcache.properties]
+ 2015-11-23 18:07:11,694 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:E:/workspace/oversea/pull-offer/conf/redis.properties]
+ 2015-11-23 18:07:11,729 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@185d3a64: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,offerBlackListDAO,providerDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,pullOfferJob,updateOffers,updatePostCallBack,pullOffer,updateClick,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2015-11-23 18:07:12,055 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2015-11-23 18:07:12,146 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2015-11-23 18:07:12,190 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2015-11-23 18:07:12,315 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 46.51.216.238:11211
+ 2015-11-23 18:07:12,555 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2015-11-23 18:07:12,580 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2015-11-23 18:07:12,582 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2015-11-23 18:07:12,584 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2015-11-23 18:07:12,585 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2015-11-23 18:07:12,588 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2015-11-23 18:07:12,588 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2015-11-23 18:07:12,591 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@39cc0239
+ 2015-11-23 18:07:12,599 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2015-11-23 18:07:12,599 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2015-11-23 18:07:12,599 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2015-11-23 18:07:12,604 - [main][INFO] [PullOfferJob.java:31] - update offer start.....
+ 2015-11-23 18:07:12,612 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:67] - get artclick offer start
+ 2015-11-23 18:07:12,614 - [JobExecutorService-2][INFO] [MobisummerOffer.java:68] - get mobisummer offer start
+ 2015-11-23 18:07:17,133 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:69] - the url is:http://api.artofclick.com/web/Api/v1.4/offer.json?api_key=0f97d296f55ccda348da529252be38d308f9c5953d2688ad8c3977dae1c62cfc
+ 2015-11-23 18:07:17,267 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:78] - artclick offer size:170
+ 2015-11-23 18:07:20,355 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,356 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,356 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,357 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,357 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,358 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,359 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,359 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,360 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,361 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,361 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,362 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,363 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,365 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,366 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,367 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,368 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,369 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,369 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,370 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,370 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,371 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,371 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,372 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,373 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,373 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,374 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,375 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,376 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,377 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,378 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,378 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,379 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,380 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,381 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,381 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,382 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,382 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,383 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,383 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,384 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,384 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,385 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,385 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,385 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,385 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,386 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,387 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,387 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,387 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,387 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,388 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,388 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,388 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,388 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,388 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,389 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,389 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,389 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,389 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,390 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,390 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,390 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,390 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,390 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,391 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,391 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,391 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,391 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,391 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,391 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,392 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,392 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,392 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,392 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,392 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,393 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,393 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,393 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,393 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,393 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,394 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,394 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,394 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,394 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,394 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,395 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,395 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,395 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,396 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,396 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:121] - the provider set right
+ 2015-11-23 18:07:20,610 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:43] - begin put offer to db size :91
+ 2015-11-23 18:07:23,175 - [JobExecutorService-2][INFO] [MobisummerOffer.java:70] - the url is:https://api.hasoffers.com/Apiv3/json?NetworkId=mobisummer&Target=Affiliate_Offer&Method=findAll&api_key=d42e69d1185ce8e68ffa043e90bd32b0dae8412c98a57589d6666352c08fef90
+ 2015-11-23 18:07:47,575 - [JobExecutorService-2][INFO] [MobisummerOffer.java:204] - https://api.hasoffers.com/Apiv3/json?NetworkId=mobisummer&Target=Affiliate_Offer&Method=getTargetCountries&api_key=d42e69d1185ce8e68ffa043e90bd32b0dae8412c98a57589d6666352c08fef90&ids%5B%5D=689
+ 2015-11-23 18:07:54,088 - [JobExecutorService-2][INFO] [MobisummerOffer.java:140] - the provider set right
+ 2015-11-23 18:08:07,553 - [JobExecutorService-1][INFO] [ArtofclickOffer.java:45] - end put offer to db
+ 2015-11-23 18:08:41,749 - [JobExecutorService-2][INFO] [MobisummerOffer.java:204] - https://api.hasoffers.com/Apiv3/json?NetworkId=mobisummer&Target=Affiliate_Offer&Method=getTargetCountries&api_key=d42e69d1185ce8e68ffa043e90bd32b0dae8412c98a57589d6666352c08fef90&ids%5B%5D=150
+ 2015-11-23 18:08:44,730 - [JobExecutorService-2][INFO] [MobisummerOffer.java:140] - the provider set right
+ 

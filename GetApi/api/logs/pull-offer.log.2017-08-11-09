@@ -1,0 +1,740 @@
+2017-08-11 07:30:54,416 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@3312fc47: startup date [Fri Aug 11 07:30:54 UTC 2017]; root of context hierarchy
+ 2017-08-11 07:30:54,490 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:D:/wp/wp2/offers/pull-sub/conf/applicationContext.xml]
+ 2017-08-11 07:30:55,274 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/log4j.properties]
+ 2017-08-11 07:30:55,275 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/mysql.properties]
+ 2017-08-11 07:30:55,275 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/memcache.properties]
+ 2017-08-11 07:30:55,275 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/redis.properties]
+ 2017-08-11 07:30:55,315 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6ce669f3: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,countryDAO,offerBlackListDAO,OfferDAO,providerDAO,operatorDAO,osDAO,unionAdPriceDAO,unionDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConfig,pullOfferJob,updateOffers,updatePostCallBack,pullOffer,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2017-08-11 07:30:55,553 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2017-08-11 07:30:55,591 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2017-08-11 07:30:55,622 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2017-08-11 07:30:55,712 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 52.221.231.19:11211
+ 2017-08-11 07:30:55,881 - [main][INFO] [DefaultSingletonBeanRegistry.java:444] - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6ce669f3: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,countryDAO,offerBlackListDAO,OfferDAO,providerDAO,operatorDAO,osDAO,unionAdPriceDAO,unionDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConfig,pullOfferJob,updateOffers,updatePostCallBack,pullOffer,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2017-08-11 07:30:56,006 - [main][INFO] [AbstractController.java:478] - Controller has been stopped.
+ 2017-08-11 07:30:56,007 - [Xmemcached-Reactor-2][WARN] [MemcachedConnector.java:365] - Remove a session: 52.221.231.19:11211
+ 2017-08-11 07:30:56,008 - [main][ERROR] [PullOfferLauncher.java:22] - server start failed.
+ org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'updatePostCallBack' defined in URL [file:D:/wp/wp2/offers/pull-sub/conf/applicationContext.xml]: Invocation of init method failed; nested exception is java.lang.NoSuchMethodException: com.pilot.oversea.offer.jobs.PullOfferJob.updatePostCallBack()
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1486)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:524)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:461)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:295)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:223)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:292)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:194)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:608)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:932)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:479)
+	at org.springframework.context.support.FileSystemXmlApplicationContext.<init>(FileSystemXmlApplicationContext.java:140)
+	at org.springframework.context.support.FileSystemXmlApplicationContext.<init>(FileSystemXmlApplicationContext.java:84)
+	at com.pilot.oversea.offer.PullOfferLauncher.setupSpringApplicationContext(PullOfferLauncher.java:36)
+	at com.pilot.oversea.offer.PullOfferLauncher.setup(PullOfferLauncher.java:28)
+	at com.pilot.oversea.offer.PullOfferLauncher.main(PullOfferLauncher.java:19)
+Caused by: java.lang.NoSuchMethodException: com.pilot.oversea.offer.jobs.PullOfferJob.updatePostCallBack()
+	at java.lang.Class.getMethod(Class.java:1670)
+	at org.springframework.util.MethodInvoker.prepare(MethodInvoker.java:178)
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean.afterPropertiesSet(MethodInvokingJobDetailFactoryBean.java:198)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1545)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1483)
+	... 14 more
+2017-08-11 07:31:33,104 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@3fe428ea: startup date [Fri Aug 11 07:31:33 UTC 2017]; root of context hierarchy
+ 2017-08-11 07:31:33,152 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:D:/wp/wp2/offers/pull-sub/conf/applicationContext.xml]
+ 2017-08-11 07:31:33,506 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/log4j.properties]
+ 2017-08-11 07:31:33,507 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/mysql.properties]
+ 2017-08-11 07:31:33,752 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/memcache.properties]
+ 2017-08-11 07:31:33,753 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/redis.properties]
+ 2017-08-11 07:31:33,777 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6ce669f3: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,countryDAO,offerBlackListDAO,OfferDAO,providerDAO,operatorDAO,osDAO,unionAdPriceDAO,unionDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConfig,pullOfferJob,updateOffers,pullOffer,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2017-08-11 07:31:33,966 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2017-08-11 07:31:34,002 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2017-08-11 07:31:34,031 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2017-08-11 07:31:34,122 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 52.221.231.19:11211
+ 2017-08-11 07:31:34,254 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2017-08-11 07:31:34,267 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2017-08-11 07:31:34,268 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2017-08-11 07:31:34,269 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2017-08-11 07:31:34,269 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2017-08-11 07:31:34,271 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2017-08-11 07:31:34,271 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2017-08-11 07:31:34,273 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@531bc06a
+ 2017-08-11 07:31:34,299 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2017-08-11 07:31:34,300 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2017-08-11 07:31:34,300 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2017-08-11 07:31:34,312 - [main][INFO] [PullOfferLauncher.java:20] - server start success.
+ 2017-08-11 07:33:00,020 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:27] - update offer start.....
+ 2017-08-11 07:33:02,737 - [startQuertz_Worker-1][ERROR] [JobRunShell.java:211] - Job DEFAULT.updateOffers threw an unhandled Exception: 
+ org.springframework.scheduling.quartz.JobMethodInvocationFailedException: Invocation of method 'updateOffers' on target class [class com.pilot.oversea.offer.jobs.PullOfferJob] failed; nested exception is java.lang.ExceptionInInitializerError
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:320)
+	at org.springframework.scheduling.quartz.QuartzJobBean.execute(QuartzJobBean.java:113)
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:202)
+	at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573)
+Caused by: java.lang.ExceptionInInitializerError
+	at com.pilot.oversea.offer.cache.redis.RedisFactory.getInstance(RedisFactory.java:45)
+	at com.pilot.oversea.offer.cache.redis.RedisFactory.getAllmap(RedisFactory.java:389)
+	at com.pilot.oversea.offer.cache.redis.RedisDb.updateRedisFromDb(RedisDb.java:60)
+	at com.pilot.oversea.offer.offers.android.v1.PullOfferV1.updateOffers(PullOfferV1.java:69)
+	at com.pilot.oversea.offer.jobs.PullOfferJob.pullAndroidOffers(PullOfferJob.java:67)
+	at com.pilot.oversea.offer.jobs.PullOfferJob.updateOffers(PullOfferJob.java:49)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.springframework.util.MethodInvoker.invoke(MethodInvoker.java:273)
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:311)
+	... 3 more
+Caused by: java.lang.NullPointerException
+	at com.pilot.oversea.offer.cache.redis.RedisFactory$RedisFactoryHolder.<clinit>(RedisFactory.java:57)
+	... 15 more
+2017-08-11 07:33:02,743 - [startQuertz_Worker-1][ERROR] [QuartzScheduler.java:2425] - Job (DEFAULT.updateOffers threw an exception.
+ org.quartz.SchedulerException: Job threw an unhandled exception. [See nested exception: org.springframework.scheduling.quartz.JobMethodInvocationFailedException: Invocation of method 'updateOffers' on target class [class com.pilot.oversea.offer.jobs.PullOfferJob] failed; nested exception is java.lang.ExceptionInInitializerError]
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:213)
+	at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573)
+Caused by: org.springframework.scheduling.quartz.JobMethodInvocationFailedException: Invocation of method 'updateOffers' on target class [class com.pilot.oversea.offer.jobs.PullOfferJob] failed; nested exception is java.lang.ExceptionInInitializerError
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:320)
+	at org.springframework.scheduling.quartz.QuartzJobBean.execute(QuartzJobBean.java:113)
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:202)
+	... 1 more
+Caused by: java.lang.ExceptionInInitializerError
+	at com.pilot.oversea.offer.cache.redis.RedisFactory.getInstance(RedisFactory.java:45)
+	at com.pilot.oversea.offer.cache.redis.RedisFactory.getAllmap(RedisFactory.java:389)
+	at com.pilot.oversea.offer.cache.redis.RedisDb.updateRedisFromDb(RedisDb.java:60)
+	at com.pilot.oversea.offer.offers.android.v1.PullOfferV1.updateOffers(PullOfferV1.java:69)
+	at com.pilot.oversea.offer.jobs.PullOfferJob.pullAndroidOffers(PullOfferJob.java:67)
+	at com.pilot.oversea.offer.jobs.PullOfferJob.updateOffers(PullOfferJob.java:49)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.springframework.util.MethodInvoker.invoke(MethodInvoker.java:273)
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:311)
+	... 3 more
+Caused by: java.lang.NullPointerException
+	at com.pilot.oversea.offer.cache.redis.RedisFactory$RedisFactoryHolder.<clinit>(RedisFactory.java:57)
+	... 15 more
+2017-08-11 07:34:59,662 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@3312fc47: startup date [Fri Aug 11 07:34:59 UTC 2017]; root of context hierarchy
+ 2017-08-11 07:34:59,707 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:D:/wp/wp2/offers/pull-sub/conf/applicationContext.xml]
+ 2017-08-11 07:35:00,020 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/log4j.properties]
+ 2017-08-11 07:35:00,020 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/mysql.properties]
+ 2017-08-11 07:35:00,021 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/memcache.properties]
+ 2017-08-11 07:35:00,021 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/redis.properties]
+ 2017-08-11 07:35:00,042 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@b360860: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,countryDAO,offerBlackListDAO,OfferDAO,providerDAO,operatorDAO,osDAO,unionAdPriceDAO,unionDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConfig,pullOfferJob,updateOffers,pullOffer,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2017-08-11 07:35:00,249 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2017-08-11 07:35:00,283 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2017-08-11 07:35:00,310 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2017-08-11 07:35:00,408 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 52.221.231.19:11211
+ 2017-08-11 07:35:00,504 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2017-08-11 07:35:00,517 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2017-08-11 07:35:00,518 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2017-08-11 07:35:00,519 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2017-08-11 07:35:00,519 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2017-08-11 07:35:00,521 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2017-08-11 07:35:00,521 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2017-08-11 07:35:00,522 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@6f9d96dd
+ 2017-08-11 07:35:00,527 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2017-08-11 07:35:00,528 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2017-08-11 07:35:00,528 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2017-08-11 07:35:00,531 - [main][INFO] [PullOfferLauncher.java:20] - server start success.
+ 2017-08-11 07:35:00,536 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:27] - update offer start.....
+ 2017-08-11 07:35:04,988 - [startQuertz_Worker-1][ERROR] [JobRunShell.java:211] - Job DEFAULT.updateOffers threw an unhandled Exception: 
+ org.springframework.scheduling.quartz.JobMethodInvocationFailedException: Invocation of method 'updateOffers' on target class [class com.pilot.oversea.offer.jobs.PullOfferJob] failed; nested exception is java.lang.ExceptionInInitializerError
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:320)
+	at org.springframework.scheduling.quartz.QuartzJobBean.execute(QuartzJobBean.java:113)
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:202)
+	at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573)
+Caused by: java.lang.ExceptionInInitializerError
+	at com.pilot.oversea.offer.cache.redis.RedisFactory.getInstance(RedisFactory.java:45)
+	at com.pilot.oversea.offer.cache.redis.RedisFactory.getAllmap(RedisFactory.java:389)
+	at com.pilot.oversea.offer.cache.redis.RedisDb.updateRedisFromDb(RedisDb.java:60)
+	at com.pilot.oversea.offer.offers.android.v1.PullOfferV1.updateOffers(PullOfferV1.java:69)
+	at com.pilot.oversea.offer.jobs.PullOfferJob.pullAndroidOffers(PullOfferJob.java:67)
+	at com.pilot.oversea.offer.jobs.PullOfferJob.updateOffers(PullOfferJob.java:49)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.springframework.util.MethodInvoker.invoke(MethodInvoker.java:273)
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:311)
+	... 3 more
+Caused by: java.lang.NullPointerException
+	at com.pilot.oversea.offer.cache.redis.RedisFactory$RedisFactoryHolder.<clinit>(RedisFactory.java:57)
+	... 15 more
+2017-08-11 07:35:04,990 - [startQuertz_Worker-1][ERROR] [QuartzScheduler.java:2425] - Job (DEFAULT.updateOffers threw an exception.
+ org.quartz.SchedulerException: Job threw an unhandled exception. [See nested exception: org.springframework.scheduling.quartz.JobMethodInvocationFailedException: Invocation of method 'updateOffers' on target class [class com.pilot.oversea.offer.jobs.PullOfferJob] failed; nested exception is java.lang.ExceptionInInitializerError]
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:213)
+	at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573)
+Caused by: org.springframework.scheduling.quartz.JobMethodInvocationFailedException: Invocation of method 'updateOffers' on target class [class com.pilot.oversea.offer.jobs.PullOfferJob] failed; nested exception is java.lang.ExceptionInInitializerError
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:320)
+	at org.springframework.scheduling.quartz.QuartzJobBean.execute(QuartzJobBean.java:113)
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:202)
+	... 1 more
+Caused by: java.lang.ExceptionInInitializerError
+	at com.pilot.oversea.offer.cache.redis.RedisFactory.getInstance(RedisFactory.java:45)
+	at com.pilot.oversea.offer.cache.redis.RedisFactory.getAllmap(RedisFactory.java:389)
+	at com.pilot.oversea.offer.cache.redis.RedisDb.updateRedisFromDb(RedisDb.java:60)
+	at com.pilot.oversea.offer.offers.android.v1.PullOfferV1.updateOffers(PullOfferV1.java:69)
+	at com.pilot.oversea.offer.jobs.PullOfferJob.pullAndroidOffers(PullOfferJob.java:67)
+	at com.pilot.oversea.offer.jobs.PullOfferJob.updateOffers(PullOfferJob.java:49)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.springframework.util.MethodInvoker.invoke(MethodInvoker.java:273)
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:311)
+	... 3 more
+Caused by: java.lang.NullPointerException
+	at com.pilot.oversea.offer.cache.redis.RedisFactory$RedisFactoryHolder.<clinit>(RedisFactory.java:57)
+	... 15 more
+2017-08-11 07:36:54,869 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@3312fc47: startup date [Fri Aug 11 07:36:54 UTC 2017]; root of context hierarchy
+ 2017-08-11 07:36:54,913 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:D:/wp/wp2/offers/pull-sub/conf/applicationContext.xml]
+ 2017-08-11 07:36:55,225 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/log4j.properties]
+ 2017-08-11 07:36:55,226 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/mysql.properties]
+ 2017-08-11 07:36:55,226 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/memcache.properties]
+ 2017-08-11 07:36:55,227 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/redis.properties]
+ 2017-08-11 07:36:55,248 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6ce669f3: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,countryDAO,offerBlackListDAO,OfferDAO,providerDAO,operatorDAO,osDAO,unionAdPriceDAO,unionDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConfig,pullOfferJob,updateOffers,pullOffer,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2017-08-11 07:36:55,435 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2017-08-11 07:36:55,471 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2017-08-11 07:36:55,502 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2017-08-11 07:36:55,595 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 52.221.231.19:11211
+ 2017-08-11 07:36:55,688 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2017-08-11 07:36:55,703 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2017-08-11 07:36:55,704 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2017-08-11 07:36:55,705 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2017-08-11 07:36:55,706 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2017-08-11 07:36:55,707 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2017-08-11 07:36:55,707 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2017-08-11 07:36:55,709 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@a42b882
+ 2017-08-11 07:36:55,714 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2017-08-11 07:36:55,714 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2017-08-11 07:36:55,714 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2017-08-11 07:36:55,716 - [main][INFO] [PullOfferLauncher.java:20] - server start success.
+ 2017-08-11 07:37:00,014 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:27] - update offer start.....
+ 2017-08-11 07:37:02,406 - [startQuertz_Worker-1][ERROR] [JobRunShell.java:211] - Job DEFAULT.updateOffers threw an unhandled Exception: 
+ org.springframework.scheduling.quartz.JobMethodInvocationFailedException: Invocation of method 'updateOffers' on target class [class com.pilot.oversea.offer.jobs.PullOfferJob] failed; nested exception is java.lang.ExceptionInInitializerError
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:320)
+	at org.springframework.scheduling.quartz.QuartzJobBean.execute(QuartzJobBean.java:113)
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:202)
+	at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573)
+Caused by: java.lang.ExceptionInInitializerError
+	at com.pilot.oversea.offer.cache.redis.RedisFactory.getInstance(RedisFactory.java:45)
+	at com.pilot.oversea.offer.cache.redis.RedisFactory.getAllmap(RedisFactory.java:389)
+	at com.pilot.oversea.offer.cache.redis.RedisDb.updateRedisFromDb(RedisDb.java:60)
+	at com.pilot.oversea.offer.offers.android.v1.PullOfferV1.updateOffers(PullOfferV1.java:69)
+	at com.pilot.oversea.offer.jobs.PullOfferJob.pullAndroidOffers(PullOfferJob.java:67)
+	at com.pilot.oversea.offer.jobs.PullOfferJob.updateOffers(PullOfferJob.java:49)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.springframework.util.MethodInvoker.invoke(MethodInvoker.java:273)
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:311)
+	... 3 more
+Caused by: java.lang.NullPointerException
+	at com.pilot.oversea.offer.cache.redis.RedisFactory$RedisFactoryHolder.<clinit>(RedisFactory.java:57)
+	... 15 more
+2017-08-11 07:37:02,407 - [startQuertz_Worker-1][ERROR] [QuartzScheduler.java:2425] - Job (DEFAULT.updateOffers threw an exception.
+ org.quartz.SchedulerException: Job threw an unhandled exception. [See nested exception: org.springframework.scheduling.quartz.JobMethodInvocationFailedException: Invocation of method 'updateOffers' on target class [class com.pilot.oversea.offer.jobs.PullOfferJob] failed; nested exception is java.lang.ExceptionInInitializerError]
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:213)
+	at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573)
+Caused by: org.springframework.scheduling.quartz.JobMethodInvocationFailedException: Invocation of method 'updateOffers' on target class [class com.pilot.oversea.offer.jobs.PullOfferJob] failed; nested exception is java.lang.ExceptionInInitializerError
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:320)
+	at org.springframework.scheduling.quartz.QuartzJobBean.execute(QuartzJobBean.java:113)
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:202)
+	... 1 more
+Caused by: java.lang.ExceptionInInitializerError
+	at com.pilot.oversea.offer.cache.redis.RedisFactory.getInstance(RedisFactory.java:45)
+	at com.pilot.oversea.offer.cache.redis.RedisFactory.getAllmap(RedisFactory.java:389)
+	at com.pilot.oversea.offer.cache.redis.RedisDb.updateRedisFromDb(RedisDb.java:60)
+	at com.pilot.oversea.offer.offers.android.v1.PullOfferV1.updateOffers(PullOfferV1.java:69)
+	at com.pilot.oversea.offer.jobs.PullOfferJob.pullAndroidOffers(PullOfferJob.java:67)
+	at com.pilot.oversea.offer.jobs.PullOfferJob.updateOffers(PullOfferJob.java:49)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.springframework.util.MethodInvoker.invoke(MethodInvoker.java:273)
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:311)
+	... 3 more
+Caused by: java.lang.NullPointerException
+	at com.pilot.oversea.offer.cache.redis.RedisFactory$RedisFactoryHolder.<clinit>(RedisFactory.java:57)
+	... 15 more
+2017-08-11 07:38:46,596 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@3312fc47: startup date [Fri Aug 11 07:38:46 UTC 2017]; root of context hierarchy
+ 2017-08-11 07:38:46,641 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:D:/wp/wp2/offers/pull-sub/conf/applicationContext.xml]
+ 2017-08-11 07:38:46,962 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/log4j.properties]
+ 2017-08-11 07:38:46,962 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/mysql.properties]
+ 2017-08-11 07:38:46,962 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/memcache.properties]
+ 2017-08-11 07:38:46,963 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/redis.properties]
+ 2017-08-11 07:38:46,985 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6ce669f3: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,countryDAO,offerBlackListDAO,OfferDAO,providerDAO,operatorDAO,osDAO,unionAdPriceDAO,unionDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConfig,pullOfferJob,updateOffers,pullOffer,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2017-08-11 07:38:47,174 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2017-08-11 07:38:47,210 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2017-08-11 07:38:47,241 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2017-08-11 07:38:47,330 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 52.221.231.19:11211
+ 2017-08-11 07:38:47,447 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2017-08-11 07:38:47,461 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2017-08-11 07:38:47,462 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2017-08-11 07:38:47,463 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2017-08-11 07:38:47,464 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2017-08-11 07:38:47,466 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2017-08-11 07:38:47,467 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2017-08-11 07:38:47,468 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@6f9d96dd
+ 2017-08-11 07:38:47,474 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2017-08-11 07:38:47,474 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2017-08-11 07:38:47,475 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2017-08-11 07:38:47,477 - [main][INFO] [PullOfferLauncher.java:20] - server start success.
+ 2017-08-11 07:39:10,587 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@3312fc47: startup date [Fri Aug 11 07:39:10 UTC 2017]; root of context hierarchy
+ 2017-08-11 07:39:10,633 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:D:/wp/wp2/offers/pull-sub/conf/applicationContext.xml]
+ 2017-08-11 07:39:10,943 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/log4j.properties]
+ 2017-08-11 07:39:10,944 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/mysql.properties]
+ 2017-08-11 07:39:10,944 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/memcache.properties]
+ 2017-08-11 07:39:10,945 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/redis.properties]
+ 2017-08-11 07:39:10,966 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6ce669f3: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,countryDAO,offerBlackListDAO,OfferDAO,providerDAO,operatorDAO,osDAO,unionAdPriceDAO,unionDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConfig,pullOfferJob,updateOffers,pullOffer,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2017-08-11 07:39:11,140 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2017-08-11 07:39:11,175 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2017-08-11 07:39:11,204 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2017-08-11 07:39:11,295 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 52.221.231.19:11211
+ 2017-08-11 07:39:11,387 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2017-08-11 07:39:11,403 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2017-08-11 07:39:11,404 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2017-08-11 07:39:11,405 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2017-08-11 07:39:11,406 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2017-08-11 07:39:11,408 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2017-08-11 07:39:11,409 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2017-08-11 07:39:11,411 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@531bc06a
+ 2017-08-11 07:39:11,416 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2017-08-11 07:39:11,416 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2017-08-11 07:39:11,416 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2017-08-11 07:39:11,419 - [main][INFO] [PullOfferLauncher.java:20] - server start success.
+ 2017-08-11 07:40:00,016 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:27] - update offer start.....
+ 2017-08-11 07:40:02,436 - [startQuertz_Worker-1][ERROR] [JobRunShell.java:211] - Job DEFAULT.updateOffers threw an unhandled Exception: 
+ org.springframework.scheduling.quartz.JobMethodInvocationFailedException: Invocation of method 'updateOffers' on target class [class com.pilot.oversea.offer.jobs.PullOfferJob] failed; nested exception is java.lang.ExceptionInInitializerError
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:320)
+	at org.springframework.scheduling.quartz.QuartzJobBean.execute(QuartzJobBean.java:113)
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:202)
+	at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573)
+Caused by: java.lang.ExceptionInInitializerError
+	at com.pilot.oversea.offer.cache.redis.RedisFactory.getInstance(RedisFactory.java:45)
+	at com.pilot.oversea.offer.cache.redis.RedisFactory.getAllmap(RedisFactory.java:389)
+	at com.pilot.oversea.offer.cache.redis.RedisDb.updateRedisFromDb(RedisDb.java:60)
+	at com.pilot.oversea.offer.offers.android.v1.PullOfferV1.updateOffers(PullOfferV1.java:69)
+	at com.pilot.oversea.offer.jobs.PullOfferJob.pullAndroidOffers(PullOfferJob.java:67)
+	at com.pilot.oversea.offer.jobs.PullOfferJob.updateOffers(PullOfferJob.java:49)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.springframework.util.MethodInvoker.invoke(MethodInvoker.java:273)
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:311)
+	... 3 more
+Caused by: java.lang.NullPointerException
+	at com.pilot.oversea.offer.cache.redis.RedisFactory$RedisFactoryHolder.<clinit>(RedisFactory.java:57)
+	... 15 more
+2017-08-11 07:40:02,437 - [startQuertz_Worker-1][ERROR] [QuartzScheduler.java:2425] - Job (DEFAULT.updateOffers threw an exception.
+ org.quartz.SchedulerException: Job threw an unhandled exception. [See nested exception: org.springframework.scheduling.quartz.JobMethodInvocationFailedException: Invocation of method 'updateOffers' on target class [class com.pilot.oversea.offer.jobs.PullOfferJob] failed; nested exception is java.lang.ExceptionInInitializerError]
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:213)
+	at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573)
+Caused by: org.springframework.scheduling.quartz.JobMethodInvocationFailedException: Invocation of method 'updateOffers' on target class [class com.pilot.oversea.offer.jobs.PullOfferJob] failed; nested exception is java.lang.ExceptionInInitializerError
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:320)
+	at org.springframework.scheduling.quartz.QuartzJobBean.execute(QuartzJobBean.java:113)
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:202)
+	... 1 more
+Caused by: java.lang.ExceptionInInitializerError
+	at com.pilot.oversea.offer.cache.redis.RedisFactory.getInstance(RedisFactory.java:45)
+	at com.pilot.oversea.offer.cache.redis.RedisFactory.getAllmap(RedisFactory.java:389)
+	at com.pilot.oversea.offer.cache.redis.RedisDb.updateRedisFromDb(RedisDb.java:60)
+	at com.pilot.oversea.offer.offers.android.v1.PullOfferV1.updateOffers(PullOfferV1.java:69)
+	at com.pilot.oversea.offer.jobs.PullOfferJob.pullAndroidOffers(PullOfferJob.java:67)
+	at com.pilot.oversea.offer.jobs.PullOfferJob.updateOffers(PullOfferJob.java:49)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.springframework.util.MethodInvoker.invoke(MethodInvoker.java:273)
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:311)
+	... 3 more
+Caused by: java.lang.NullPointerException
+	at com.pilot.oversea.offer.cache.redis.RedisFactory$RedisFactoryHolder.<clinit>(RedisFactory.java:57)
+	... 15 more
+2017-08-11 07:46:16,682 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@2370b383: startup date [Fri Aug 11 07:46:16 UTC 2017]; root of context hierarchy
+ 2017-08-11 07:46:16,726 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:D:/wp/wp2/offers/pull-sub/conf/applicationContext.xml]
+ 2017-08-11 07:46:17,039 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/log4j.properties]
+ 2017-08-11 07:46:17,039 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/mysql.properties]
+ 2017-08-11 07:46:17,040 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/memcache.properties]
+ 2017-08-11 07:46:17,040 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/redis.properties]
+ 2017-08-11 07:46:17,062 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@b360860: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,countryDAO,offerBlackListDAO,OfferDAO,providerDAO,operatorDAO,osDAO,unionAdPriceDAO,unionDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConfig,pullOfferJob,updateOffers,pullOffer,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2017-08-11 07:46:17,239 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2017-08-11 07:46:17,273 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2017-08-11 07:46:17,302 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2017-08-11 07:46:17,391 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 52.221.231.19:11211
+ 2017-08-11 07:46:17,498 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2017-08-11 07:46:17,512 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2017-08-11 07:46:17,513 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2017-08-11 07:46:17,514 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2017-08-11 07:46:17,515 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2017-08-11 07:46:17,516 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2017-08-11 07:46:17,516 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2017-08-11 07:46:17,518 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@531bc06a
+ 2017-08-11 07:46:17,524 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2017-08-11 07:46:17,524 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2017-08-11 07:46:17,524 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2017-08-11 07:46:17,527 - [main][INFO] [PullOfferLauncher.java:20] - server start success.
+ 2017-08-11 07:47:00,012 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:27] - update offer start.....
+ 2017-08-11 07:47:02,405 - [startQuertz_Worker-1][ERROR] [JobRunShell.java:211] - Job DEFAULT.updateOffers threw an unhandled Exception: 
+ org.springframework.scheduling.quartz.JobMethodInvocationFailedException: Invocation of method 'updateOffers' on target class [class com.pilot.oversea.offer.jobs.PullOfferJob] failed; nested exception is java.lang.ExceptionInInitializerError
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:320)
+	at org.springframework.scheduling.quartz.QuartzJobBean.execute(QuartzJobBean.java:113)
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:202)
+	at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573)
+Caused by: java.lang.ExceptionInInitializerError
+	at com.pilot.oversea.offer.cache.redis.RedisFactory.getInstance(RedisFactory.java:45)
+	at com.pilot.oversea.offer.cache.redis.RedisFactory.getAllmap(RedisFactory.java:389)
+	at com.pilot.oversea.offer.cache.redis.RedisDb.updateRedisFromDb(RedisDb.java:61)
+	at com.pilot.oversea.offer.offers.android.v1.PullOfferV1.updateOffers(PullOfferV1.java:69)
+	at com.pilot.oversea.offer.jobs.PullOfferJob.pullAndroidOffers(PullOfferJob.java:67)
+	at com.pilot.oversea.offer.jobs.PullOfferJob.updateOffers(PullOfferJob.java:49)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.springframework.util.MethodInvoker.invoke(MethodInvoker.java:273)
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:311)
+	... 3 more
+Caused by: java.lang.NullPointerException
+	at com.pilot.oversea.offer.cache.redis.RedisFactory$RedisFactoryHolder.<clinit>(RedisFactory.java:57)
+	... 15 more
+2017-08-11 07:47:02,406 - [startQuertz_Worker-1][ERROR] [QuartzScheduler.java:2425] - Job (DEFAULT.updateOffers threw an exception.
+ org.quartz.SchedulerException: Job threw an unhandled exception. [See nested exception: org.springframework.scheduling.quartz.JobMethodInvocationFailedException: Invocation of method 'updateOffers' on target class [class com.pilot.oversea.offer.jobs.PullOfferJob] failed; nested exception is java.lang.ExceptionInInitializerError]
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:213)
+	at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573)
+Caused by: org.springframework.scheduling.quartz.JobMethodInvocationFailedException: Invocation of method 'updateOffers' on target class [class com.pilot.oversea.offer.jobs.PullOfferJob] failed; nested exception is java.lang.ExceptionInInitializerError
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:320)
+	at org.springframework.scheduling.quartz.QuartzJobBean.execute(QuartzJobBean.java:113)
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:202)
+	... 1 more
+Caused by: java.lang.ExceptionInInitializerError
+	at com.pilot.oversea.offer.cache.redis.RedisFactory.getInstance(RedisFactory.java:45)
+	at com.pilot.oversea.offer.cache.redis.RedisFactory.getAllmap(RedisFactory.java:389)
+	at com.pilot.oversea.offer.cache.redis.RedisDb.updateRedisFromDb(RedisDb.java:61)
+	at com.pilot.oversea.offer.offers.android.v1.PullOfferV1.updateOffers(PullOfferV1.java:69)
+	at com.pilot.oversea.offer.jobs.PullOfferJob.pullAndroidOffers(PullOfferJob.java:67)
+	at com.pilot.oversea.offer.jobs.PullOfferJob.updateOffers(PullOfferJob.java:49)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.springframework.util.MethodInvoker.invoke(MethodInvoker.java:273)
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:311)
+	... 3 more
+Caused by: java.lang.NullPointerException
+	at com.pilot.oversea.offer.cache.redis.RedisFactory$RedisFactoryHolder.<clinit>(RedisFactory.java:57)
+	... 15 more
+2017-08-11 07:48:14,773 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@50908fa9: startup date [Fri Aug 11 07:48:14 UTC 2017]; root of context hierarchy
+ 2017-08-11 07:48:14,817 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:D:/wp/wp2/offers/pull-sub/conf/applicationContext.xml]
+ 2017-08-11 07:48:15,141 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/log4j.properties]
+ 2017-08-11 07:48:15,141 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/mysql.properties]
+ 2017-08-11 07:48:15,142 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/memcache.properties]
+ 2017-08-11 07:48:15,142 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/redis.properties]
+ 2017-08-11 07:48:15,165 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@5386360b: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,countryDAO,offerBlackListDAO,OfferDAO,providerDAO,operatorDAO,osDAO,unionAdPriceDAO,unionDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConfig,pullOfferJob,updateOffers,pullOffer,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2017-08-11 07:48:15,352 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2017-08-11 07:48:15,386 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2017-08-11 07:48:15,414 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2017-08-11 07:48:15,501 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 52.221.231.19:11211
+ 2017-08-11 07:48:15,596 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2017-08-11 07:48:15,608 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2017-08-11 07:48:15,610 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2017-08-11 07:48:15,611 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2017-08-11 07:48:15,612 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2017-08-11 07:48:15,613 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2017-08-11 07:48:15,614 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2017-08-11 07:48:15,615 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@a42b882
+ 2017-08-11 07:48:15,620 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2017-08-11 07:48:15,620 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2017-08-11 07:48:15,620 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2017-08-11 07:48:15,624 - [main][INFO] [PullOfferLauncher.java:20] - server start success.
+ 2017-08-11 07:49:00,011 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:27] - update offer start.....
+ 2017-08-11 07:49:40,987 - [startQuertz_Worker-1][ERROR] [JobRunShell.java:211] - Job DEFAULT.updateOffers threw an unhandled Exception: 
+ org.springframework.scheduling.quartz.JobMethodInvocationFailedException: Invocation of method 'updateOffers' on target class [class com.pilot.oversea.offer.jobs.PullOfferJob] failed; nested exception is java.lang.ExceptionInInitializerError
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:320)
+	at org.springframework.scheduling.quartz.QuartzJobBean.execute(QuartzJobBean.java:113)
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:202)
+	at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573)
+Caused by: java.lang.ExceptionInInitializerError
+	at com.pilot.oversea.offer.cache.redis.RedisFactory.getInstance(RedisFactory.java:45)
+	at com.pilot.oversea.offer.cache.redis.RedisFactory.getAllmap(RedisFactory.java:389)
+	at com.pilot.oversea.offer.cache.redis.RedisDb.updateRedisFromDb(RedisDb.java:61)
+	at com.pilot.oversea.offer.offers.android.v1.PullOfferV1.updateOffers(PullOfferV1.java:69)
+	at com.pilot.oversea.offer.jobs.PullOfferJob.pullAndroidOffers(PullOfferJob.java:67)
+	at com.pilot.oversea.offer.jobs.PullOfferJob.updateOffers(PullOfferJob.java:49)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.springframework.util.MethodInvoker.invoke(MethodInvoker.java:273)
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:311)
+	... 3 more
+Caused by: java.lang.NullPointerException
+	at com.pilot.oversea.offer.cache.redis.RedisFactory$RedisFactoryHolder.<clinit>(RedisFactory.java:57)
+	... 15 more
+2017-08-11 07:49:40,989 - [startQuertz_Worker-1][ERROR] [QuartzScheduler.java:2425] - Job (DEFAULT.updateOffers threw an exception.
+ org.quartz.SchedulerException: Job threw an unhandled exception. [See nested exception: org.springframework.scheduling.quartz.JobMethodInvocationFailedException: Invocation of method 'updateOffers' on target class [class com.pilot.oversea.offer.jobs.PullOfferJob] failed; nested exception is java.lang.ExceptionInInitializerError]
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:213)
+	at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573)
+Caused by: org.springframework.scheduling.quartz.JobMethodInvocationFailedException: Invocation of method 'updateOffers' on target class [class com.pilot.oversea.offer.jobs.PullOfferJob] failed; nested exception is java.lang.ExceptionInInitializerError
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:320)
+	at org.springframework.scheduling.quartz.QuartzJobBean.execute(QuartzJobBean.java:113)
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:202)
+	... 1 more
+Caused by: java.lang.ExceptionInInitializerError
+	at com.pilot.oversea.offer.cache.redis.RedisFactory.getInstance(RedisFactory.java:45)
+	at com.pilot.oversea.offer.cache.redis.RedisFactory.getAllmap(RedisFactory.java:389)
+	at com.pilot.oversea.offer.cache.redis.RedisDb.updateRedisFromDb(RedisDb.java:61)
+	at com.pilot.oversea.offer.offers.android.v1.PullOfferV1.updateOffers(PullOfferV1.java:69)
+	at com.pilot.oversea.offer.jobs.PullOfferJob.pullAndroidOffers(PullOfferJob.java:67)
+	at com.pilot.oversea.offer.jobs.PullOfferJob.updateOffers(PullOfferJob.java:49)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.springframework.util.MethodInvoker.invoke(MethodInvoker.java:273)
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:311)
+	... 3 more
+Caused by: java.lang.NullPointerException
+	at com.pilot.oversea.offer.cache.redis.RedisFactory$RedisFactoryHolder.<clinit>(RedisFactory.java:57)
+	... 15 more
+2017-08-11 07:55:18,829 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@1c3a3b6b: startup date [Fri Aug 11 07:55:18 UTC 2017]; root of context hierarchy
+ 2017-08-11 07:55:18,876 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:D:/wp/wp2/offers/pull-sub/conf/applicationContext.xml]
+ 2017-08-11 07:55:19,197 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/log4j.properties]
+ 2017-08-11 07:55:19,198 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/mysql.properties]
+ 2017-08-11 07:55:19,198 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/memcache.properties]
+ 2017-08-11 07:55:19,198 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/redis.properties]
+ 2017-08-11 07:55:19,221 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6ce669f3: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,countryDAO,offerBlackListDAO,OfferDAO,providerDAO,operatorDAO,osDAO,unionAdPriceDAO,unionDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConnectionFactory,redisClient,pullOfferJob,updateOffers,pullOffer,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2017-08-11 07:55:19,399 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2017-08-11 07:55:19,436 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2017-08-11 07:55:19,465 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2017-08-11 07:55:19,555 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 52.221.231.19:11211
+ 2017-08-11 07:55:19,674 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2017-08-11 07:55:19,688 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2017-08-11 07:55:19,689 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2017-08-11 07:55:19,690 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2017-08-11 07:55:19,690 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2017-08-11 07:55:19,692 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2017-08-11 07:55:19,692 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2017-08-11 07:55:19,693 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@47b7eeee
+ 2017-08-11 07:55:19,699 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2017-08-11 07:55:19,699 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2017-08-11 07:55:19,699 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2017-08-11 07:55:19,702 - [main][INFO] [PullOfferLauncher.java:20] - server start success.
+ 2017-08-11 07:57:00,008 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:27] - update offer start.....
+ 2017-08-11 08:00:15,919 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:71] - flushAll
+ 2017-08-11 08:02:45,639 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@3312fc47: startup date [Fri Aug 11 08:02:45 UTC 2017]; root of context hierarchy
+ 2017-08-11 08:02:45,684 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:D:/wp/wp2/offers/pull-sub/conf/applicationContext.xml]
+ 2017-08-11 08:02:46,004 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/log4j.properties]
+ 2017-08-11 08:02:46,004 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/mysql.properties]
+ 2017-08-11 08:02:46,004 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/memcache.properties]
+ 2017-08-11 08:02:46,005 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/redis.properties]
+ 2017-08-11 08:02:46,027 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6ce669f3: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,countryDAO,offerBlackListDAO,OfferDAO,providerDAO,operatorDAO,osDAO,unionAdPriceDAO,unionDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConnectionFactory,redisClient,pullOfferJob,updateOffers,pullOffer,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2017-08-11 08:02:46,218 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2017-08-11 08:02:46,253 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2017-08-11 08:02:46,282 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2017-08-11 08:02:46,373 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 52.221.231.19:11211
+ 2017-08-11 08:02:46,472 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2017-08-11 08:02:46,484 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2017-08-11 08:02:46,485 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2017-08-11 08:02:46,486 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2017-08-11 08:02:46,487 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2017-08-11 08:02:46,488 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2017-08-11 08:02:46,489 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2017-08-11 08:02:46,490 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@7ca7700a
+ 2017-08-11 08:02:46,495 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2017-08-11 08:02:46,496 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2017-08-11 08:02:46,496 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2017-08-11 08:02:46,499 - [main][INFO] [PullOfferLauncher.java:20] - server start success.
+ 2017-08-11 08:04:00,012 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:27] - update offer start.....
+ 2017-08-11 08:07:29,406 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:71] - flushAll
+ 2017-08-11 08:08:55,930 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@3312fc47: startup date [Fri Aug 11 08:08:55 UTC 2017]; root of context hierarchy
+ 2017-08-11 08:08:55,976 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:D:/wp/wp2/offers/pull-sub/conf/applicationContext.xml]
+ 2017-08-11 08:08:56,306 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/log4j.properties]
+ 2017-08-11 08:08:56,306 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/mysql.properties]
+ 2017-08-11 08:08:56,307 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/memcache.properties]
+ 2017-08-11 08:08:56,307 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/redis.properties]
+ 2017-08-11 08:08:56,331 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6ce669f3: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,countryDAO,offerBlackListDAO,OfferDAO,providerDAO,operatorDAO,osDAO,unionAdPriceDAO,unionDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConnectionFactory,redisClient,pullOfferJob,updateOffers,pullOffer,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2017-08-11 08:08:56,518 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2017-08-11 08:08:56,556 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2017-08-11 08:08:56,587 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2017-08-11 08:08:56,673 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 52.221.231.19:11211
+ 2017-08-11 08:08:56,778 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2017-08-11 08:08:56,791 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2017-08-11 08:08:56,792 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2017-08-11 08:08:56,793 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2017-08-11 08:08:56,794 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2017-08-11 08:08:56,796 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2017-08-11 08:08:56,796 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2017-08-11 08:08:56,797 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@47b7eeee
+ 2017-08-11 08:08:56,803 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2017-08-11 08:08:56,803 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2017-08-11 08:08:56,803 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2017-08-11 08:08:56,806 - [main][INFO] [PullOfferLauncher.java:20] - server start success.
+ 2017-08-11 08:09:00,016 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:27] - update offer start.....
+ 2017-08-11 08:12:35,687 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:72] - flushAll
+ 2017-08-11 08:16:57,272 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@3312fc47: startup date [Fri Aug 11 08:16:57 UTC 2017]; root of context hierarchy
+ 2017-08-11 08:16:57,319 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:D:/wp/wp2/offers/pull-sub/conf/applicationContext.xml]
+ 2017-08-11 08:16:57,639 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/log4j.properties]
+ 2017-08-11 08:16:57,640 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/mysql.properties]
+ 2017-08-11 08:16:57,640 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/memcache.properties]
+ 2017-08-11 08:16:57,640 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/redis.properties]
+ 2017-08-11 08:16:57,663 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@b360860: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,countryDAO,offerBlackListDAO,OfferDAO,providerDAO,operatorDAO,osDAO,unionAdPriceDAO,unionDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConnectionFactory,redisClient,pullOfferJob,updateOffers,pullOffer,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2017-08-11 08:16:57,862 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2017-08-11 08:16:57,898 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2017-08-11 08:16:57,929 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2017-08-11 08:16:58,017 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 52.221.231.19:11211
+ 2017-08-11 08:16:58,119 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2017-08-11 08:16:58,132 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2017-08-11 08:16:58,133 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2017-08-11 08:16:58,134 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2017-08-11 08:16:58,135 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2017-08-11 08:16:58,136 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2017-08-11 08:16:58,136 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2017-08-11 08:16:58,138 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@5e621d8
+ 2017-08-11 08:16:58,143 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2017-08-11 08:16:58,143 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2017-08-11 08:16:58,144 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2017-08-11 08:16:58,146 - [main][INFO] [PullOfferLauncher.java:20] - server start success.
+ 2017-08-11 08:17:00,006 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:27] - update offer start.....
+ 2017-08-11 08:25:18,091 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@3312fc47: startup date [Fri Aug 11 08:25:18 UTC 2017]; root of context hierarchy
+ 2017-08-11 08:25:18,135 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:D:/wp/wp2/offers/pull-sub/conf/applicationContext.xml]
+ 2017-08-11 08:25:18,449 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/log4j.properties]
+ 2017-08-11 08:25:18,450 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/mysql.properties]
+ 2017-08-11 08:25:18,450 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/memcache.properties]
+ 2017-08-11 08:25:18,450 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/redis.properties]
+ 2017-08-11 08:25:18,473 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6ce669f3: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,countryDAO,offerBlackListDAO,OfferDAO,providerDAO,operatorDAO,osDAO,unionAdPriceDAO,unionDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConnectionFactory,redisClient,pullOfferJob,updateOffers,pullOffer,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2017-08-11 08:25:18,646 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2017-08-11 08:25:18,684 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2017-08-11 08:25:18,718 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2017-08-11 08:25:18,805 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 52.221.231.19:11211
+ 2017-08-11 08:25:18,904 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2017-08-11 08:25:18,916 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2017-08-11 08:25:18,917 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2017-08-11 08:25:18,918 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2017-08-11 08:25:18,919 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2017-08-11 08:25:18,924 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2017-08-11 08:25:18,924 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2017-08-11 08:25:18,926 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@21c44cc1
+ 2017-08-11 08:25:18,931 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2017-08-11 08:25:18,931 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2017-08-11 08:25:18,931 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2017-08-11 08:25:18,934 - [main][INFO] [PullOfferLauncher.java:20] - server start success.
+ 2017-08-11 08:27:00,006 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:27] - update offer start.....
+ 2017-08-11 08:30:58,391 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:72] - flushAll
+ 2017-08-11 08:34:25,538 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@3312fc47: startup date [Fri Aug 11 08:34:25 UTC 2017]; root of context hierarchy
+ 2017-08-11 08:34:25,582 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:D:/wp/wp2/offers/pull-sub/conf/applicationContext.xml]
+ 2017-08-11 08:34:25,900 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/log4j.properties]
+ 2017-08-11 08:34:25,900 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/mysql.properties]
+ 2017-08-11 08:34:25,901 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/memcache.properties]
+ 2017-08-11 08:34:25,901 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/redis.properties]
+ 2017-08-11 08:34:25,924 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6ce669f3: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,countryDAO,offerBlackListDAO,OfferDAO,providerDAO,operatorDAO,osDAO,unionAdPriceDAO,unionDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConnectionFactory,redisClient,pullOfferJob,updateOffers,pullOffer,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2017-08-11 08:34:26,124 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2017-08-11 08:34:26,160 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2017-08-11 08:34:26,191 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2017-08-11 08:34:26,281 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 52.221.231.19:11211
+ 2017-08-11 08:34:26,386 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2017-08-11 08:34:26,398 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2017-08-11 08:34:26,399 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2017-08-11 08:34:26,401 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2017-08-11 08:34:26,402 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2017-08-11 08:34:26,404 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2017-08-11 08:34:26,404 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2017-08-11 08:34:26,405 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@39919947
+ 2017-08-11 08:34:26,411 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2017-08-11 08:34:26,411 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2017-08-11 08:34:26,411 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2017-08-11 08:34:26,413 - [main][INFO] [PullOfferLauncher.java:20] - server start success.
+ 2017-08-11 08:36:00,007 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:27] - update offer start.....
+ 2017-08-11 08:40:09,669 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:72] - flushAll
+ 

@@ -1,0 +1,5 @@
+2016-09-01 11:24:27,663 - [XMemcached-HeartBeatPool[MemcachedClient-0]-0][WARN] [MemcachedHandler.java:246] - Session(52.77.50.116:11211) heartbeat fail 4 times,close session and try to heal it
+ 2016-09-01 11:24:27,664 - [XMemcached-HeartBeatPool[MemcachedClient-0]-0][WARN] [MemcachedConnector.java:365] - Remove a session: 52.77.50.116:11211
+ 2016-09-01 11:24:29,665 - [Heal-Session-Thread][WARN] [MemcachedConnector.java:125] - Trying to connect to 52.77.50.116:11211 for 1 times
+ 2016-09-01 11:24:29,902 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 52.77.50.116:11211
+ 

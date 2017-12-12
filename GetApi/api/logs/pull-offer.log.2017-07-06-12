@@ -1,0 +1,563 @@
+2017-07-06 03:11:38,882 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@2370b383: startup date [Thu Jul 06 03:11:38 UTC 2017]; root of context hierarchy
+ 2017-07-06 03:11:38,939 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:D:/wp/wp2/offers/pull-sub/conf/applicationContext.xml]
+ 2017-07-06 03:11:39,515 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/log4j.properties]
+ 2017-07-06 03:11:39,516 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/mysql.properties]
+ 2017-07-06 03:11:39,516 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/memcache.properties]
+ 2017-07-06 03:11:39,516 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/redis.properties]
+ 2017-07-06 03:11:39,540 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@b360860: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,countryDAO,offerBlackListDAO,OfferDAO,providerDAO,operatorDAO,osDAO,unionAdPriceDAO,unionDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConfig,pullOfferJob,updateOffers,updatePostCallBack,pullOffer,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2017-07-06 03:11:39,713 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2017-07-06 03:11:39,749 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2017-07-06 03:11:39,775 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2017-07-06 03:11:39,861 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 139.162.63.212:11211
+ 2017-07-06 03:11:39,955 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2017-07-06 03:11:39,969 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2017-07-06 03:11:39,970 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2017-07-06 03:11:39,970 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2017-07-06 03:11:39,971 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2017-07-06 03:11:39,973 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2017-07-06 03:11:39,973 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2017-07-06 03:11:39,974 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@45b47a71
+ 2017-07-06 03:11:39,980 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2017-07-06 03:11:39,981 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2017-07-06 03:11:39,981 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2017-07-06 03:11:39,983 - [main][INFO] [PullOfferLauncher.java:20] - server start success.
+ 2017-07-06 03:13:00,022 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:21] - update offer start.....
+ 2017-07-06 03:13:02,283 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:25] - delete all db tem
+ 2017-07-06 03:13:10,814 - [JobExecutorService-1][INFO] [Api_2001_YeahmobiOffer.java:65] - pages OVERSEA2001 size :9
+ 2017-07-06 03:14:47,840 - [JobExecutorService-1][INFO] [Api_2001_YeahmobiOffer.java:38] - begin put Api_2001_YeahmobiOffer = 2001 size :126
+ 2017-07-06 03:15:08,519 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:38] - update offer into tem  end.....
+ 2017-07-06 03:15:08,520 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:64] - updateGpOfferToDb2  start.............
+ 2017-07-06 03:15:08,817 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:117] - pkglist size:126
+ 2017-07-06 03:15:08,817 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:118] - offerlist size:126
+ 2017-07-06 03:15:08,817 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:119] - 
+ 2017-07-06 03:15:08,897 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:134] - adAll list:0
+ 2017-07-06 03:15:08,898 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:347] - all update into database
+ 2017-07-06 03:15:30,136 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:354] - get offer end, and providerid is null
+ 2017-07-06 03:15:30,137 - [startQuertz_Worker-1][INFO] [PullOfferJob.java:191] - updateGpOfferToDb2 end
+ 2017-07-06 03:15:30,138 - [startQuertz_Worker-1][INFO] [PullOfferJob.java:202] - update All Track...end
+ 2017-07-06 03:19:32,833 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@2370b383: startup date [Thu Jul 06 03:19:32 UTC 2017]; root of context hierarchy
+ 2017-07-06 03:19:32,877 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:D:/wp/wp2/offers/pull-sub/conf/applicationContext.xml]
+ 2017-07-06 03:19:33,193 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/log4j.properties]
+ 2017-07-06 03:19:33,194 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/mysql.properties]
+ 2017-07-06 03:19:33,194 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/memcache.properties]
+ 2017-07-06 03:19:33,194 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/redis.properties]
+ 2017-07-06 03:19:33,216 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@b360860: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,countryDAO,offerBlackListDAO,OfferDAO,providerDAO,operatorDAO,osDAO,unionAdPriceDAO,unionDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConfig,pullOfferJob,updateOffers,updatePostCallBack,pullOffer,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2017-07-06 03:19:33,402 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2017-07-06 03:19:33,436 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2017-07-06 03:19:33,463 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2017-07-06 03:19:33,550 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 139.162.63.212:11211
+ 2017-07-06 03:19:33,645 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2017-07-06 03:19:33,657 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2017-07-06 03:19:33,658 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2017-07-06 03:19:33,659 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2017-07-06 03:19:33,660 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2017-07-06 03:19:33,661 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2017-07-06 03:19:33,661 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2017-07-06 03:19:33,662 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@4bd2b477
+ 2017-07-06 03:19:33,668 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2017-07-06 03:19:33,668 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2017-07-06 03:19:33,668 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2017-07-06 03:19:33,671 - [main][INFO] [PullOfferLauncher.java:20] - server start success.
+ 2017-07-06 03:21:00,023 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:21] - update offer start.....
+ 2017-07-06 03:21:01,927 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:25] - delete all db tem
+ 2017-07-06 03:21:10,425 - [JobExecutorService-1][INFO] [Api_2001_YeahmobiOffer.java:64] - pages OVERSEA2001 size :9
+ 2017-07-06 03:22:42,194 - [JobExecutorService-1][INFO] [Api_2001_YeahmobiOffer.java:37] - begin put Api_2001_YeahmobiOffer = 2001 size :126
+ 2017-07-06 03:23:02,054 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:38] - update offer into tem  end.....
+ 2017-07-06 03:23:02,054 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:64] - updateGpOfferToDb2  start.............
+ 2017-07-06 03:23:02,357 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:117] - pkglist size:126
+ 2017-07-06 03:23:02,357 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:118] - offerlist size:126
+ 2017-07-06 03:23:02,357 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:119] - 
+ 2017-07-06 03:23:02,436 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:134] - adAll list:0
+ 2017-07-06 03:23:02,437 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:347] - all update into database
+ 2017-07-06 03:23:22,357 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:354] - get offer end, and providerid is null
+ 2017-07-06 03:23:22,358 - [startQuertz_Worker-1][INFO] [PullOfferJob.java:191] - updateGpOfferToDb2 end
+ 2017-07-06 03:23:22,358 - [startQuertz_Worker-1][INFO] [PullOfferJob.java:202] - update All Track...end
+ 2017-07-06 03:29:35,705 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@2370b383: startup date [Thu Jul 06 03:29:35 UTC 2017]; root of context hierarchy
+ 2017-07-06 03:29:35,748 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:D:/wp/wp2/offers/pull-sub/conf/applicationContext.xml]
+ 2017-07-06 03:29:36,052 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/log4j.properties]
+ 2017-07-06 03:29:36,053 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/mysql.properties]
+ 2017-07-06 03:29:36,053 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/memcache.properties]
+ 2017-07-06 03:29:36,053 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/redis.properties]
+ 2017-07-06 03:29:36,076 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@b360860: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,countryDAO,offerBlackListDAO,OfferDAO,providerDAO,operatorDAO,osDAO,unionAdPriceDAO,unionDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConfig,pullOfferJob,updateOffers,updatePostCallBack,pullOffer,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2017-07-06 03:29:36,257 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2017-07-06 03:29:36,290 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2017-07-06 03:29:36,317 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2017-07-06 03:29:36,400 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 139.162.63.212:11211
+ 2017-07-06 03:29:36,495 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2017-07-06 03:29:36,506 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2017-07-06 03:29:36,507 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2017-07-06 03:29:36,508 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2017-07-06 03:29:36,509 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2017-07-06 03:29:36,528 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2017-07-06 03:29:36,528 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2017-07-06 03:29:36,530 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@45b47a71
+ 2017-07-06 03:29:36,535 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2017-07-06 03:29:36,535 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2017-07-06 03:29:36,535 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2017-07-06 03:29:36,538 - [main][INFO] [PullOfferLauncher.java:20] - server start success.
+ 2017-07-06 03:31:00,024 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:21] - update offer start.....
+ 2017-07-06 03:31:02,027 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:25] - delete all db tem
+ 2017-07-06 03:31:22,817 - [JobExecutorService-1][INFO] [Api_2001_YeahmobiOffer.java:64] - pages OVERSEA2001 size :9
+ 2017-07-06 03:35:01,927 - [JobExecutorService-1][INFO] [Api_2001_YeahmobiOffer.java:37] - begin put Api_2001_YeahmobiOffer = 2001 size :126
+ 2017-07-06 03:35:21,185 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:38] - update offer into tem  end.....
+ 2017-07-06 03:35:21,186 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:64] - updateGpOfferToDb2  start.............
+ 2017-07-06 03:35:21,498 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:117] - pkglist size:126
+ 2017-07-06 03:35:21,498 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:118] - offerlist size:126
+ 2017-07-06 03:35:21,499 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:119] - 
+ 2017-07-06 03:35:21,575 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:134] - adAll list:0
+ 2017-07-06 03:35:21,575 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:347] - all update into database
+ 2017-07-06 03:35:41,577 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:354] - get offer end, and providerid is null
+ 2017-07-06 03:35:41,578 - [startQuertz_Worker-1][INFO] [PullOfferJob.java:191] - updateGpOfferToDb2 end
+ 2017-07-06 03:35:41,578 - [startQuertz_Worker-1][INFO] [PullOfferJob.java:202] - update All Track...end
+ 2017-07-06 03:38:49,961 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@3312fc47: startup date [Thu Jul 06 03:38:49 UTC 2017]; root of context hierarchy
+ 2017-07-06 03:38:50,004 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:D:/wp/wp2/offers/pull-sub/conf/applicationContext.xml]
+ 2017-07-06 03:38:50,316 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/log4j.properties]
+ 2017-07-06 03:38:50,316 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/mysql.properties]
+ 2017-07-06 03:38:50,316 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/memcache.properties]
+ 2017-07-06 03:38:50,317 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/redis.properties]
+ 2017-07-06 03:38:50,339 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6ce669f3: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,countryDAO,offerBlackListDAO,OfferDAO,providerDAO,operatorDAO,osDAO,unionAdPriceDAO,unionDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConfig,pullOfferJob,updateOffers,updatePostCallBack,pullOffer,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2017-07-06 03:38:50,527 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2017-07-06 03:38:50,562 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2017-07-06 03:38:50,589 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2017-07-06 03:38:50,676 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 139.162.63.212:11211
+ 2017-07-06 03:38:50,771 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2017-07-06 03:38:50,783 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2017-07-06 03:38:50,784 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2017-07-06 03:38:50,785 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2017-07-06 03:38:50,786 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2017-07-06 03:38:50,787 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2017-07-06 03:38:50,788 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2017-07-06 03:38:50,789 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@73b217c5
+ 2017-07-06 03:38:50,794 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2017-07-06 03:38:50,794 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2017-07-06 03:38:50,795 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2017-07-06 03:38:50,797 - [main][INFO] [PullOfferLauncher.java:20] - server start success.
+ 2017-07-06 03:40:00,025 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:21] - update offer start.....
+ 2017-07-06 03:40:01,939 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:25] - delete all db tem
+ 2017-07-06 03:40:10,031 - [JobExecutorService-1][INFO] [Api_2001_YeahmobiOffer.java:64] - pages OVERSEA2001 size :9
+ 2017-07-06 03:41:53,013 - [JobExecutorService-1][INFO] [Api_2001_YeahmobiOffer.java:37] - begin put Api_2001_YeahmobiOffer = 2001 size :126
+ 2017-07-06 03:42:12,960 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:38] - update offer into tem  end.....
+ 2017-07-06 03:42:12,961 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:64] - updateGpOfferToDb2  start.............
+ 2017-07-06 03:42:13,276 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:117] - pkglist size:126
+ 2017-07-06 03:42:13,277 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:118] - offerlist size:126
+ 2017-07-06 03:42:13,277 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:119] - 
+ 2017-07-06 03:42:13,355 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:134] - adAll list:0
+ 2017-07-06 03:42:13,356 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:347] - all update into database
+ 2017-07-06 03:42:33,426 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:354] - get offer end, and providerid is null
+ 2017-07-06 03:42:33,427 - [startQuertz_Worker-1][INFO] [PullOfferJob.java:191] - updateGpOfferToDb2 end
+ 2017-07-06 03:42:33,427 - [startQuertz_Worker-1][INFO] [PullOfferJob.java:202] - update All Track...end
+ 2017-07-06 05:48:00,917 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@3312fc47: startup date [Thu Jul 06 05:48:00 UTC 2017]; root of context hierarchy
+ 2017-07-06 05:48:00,961 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:D:/wp/wp2/offers/pull-sub/conf/applicationContext.xml]
+ 2017-07-06 05:48:01,270 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/log4j.properties]
+ 2017-07-06 05:48:01,270 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/mysql.properties]
+ 2017-07-06 05:48:01,271 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/memcache.properties]
+ 2017-07-06 05:48:01,271 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/redis.properties]
+ 2017-07-06 05:48:01,292 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@b360860: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,countryDAO,offerBlackListDAO,OfferDAO,providerDAO,operatorDAO,osDAO,unionAdPriceDAO,unionDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConfig,pullOfferJob,updateOffers,updatePostCallBack,pullOffer,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2017-07-06 05:48:01,462 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2017-07-06 05:48:01,496 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2017-07-06 05:48:01,523 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2017-07-06 05:48:01,611 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 139.162.63.212:11211
+ 2017-07-06 05:48:01,704 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2017-07-06 05:48:01,716 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2017-07-06 05:48:01,717 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2017-07-06 05:48:01,718 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2017-07-06 05:48:01,719 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2017-07-06 05:48:01,720 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2017-07-06 05:48:01,720 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2017-07-06 05:48:01,722 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@76461784
+ 2017-07-06 05:48:01,727 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2017-07-06 05:48:01,727 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2017-07-06 05:48:01,727 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2017-07-06 05:48:01,730 - [main][INFO] [PullOfferLauncher.java:20] - server start success.
+ 2017-07-06 05:49:00,022 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:21] - update offer start.....
+ 2017-07-06 05:49:01,963 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:25] - delete all db tem
+ 2017-07-06 05:49:46,340 - [JobExecutorService-1][INFO] [Api_2001_YeahmobiOffer.java:64] - pages OVERSEA2001 size :9
+ 2017-07-06 05:51:42,990 - [JobExecutorService-1][INFO] [Api_2001_YeahmobiOffer.java:37] - begin put Api_2001_YeahmobiOffer = 2001 size :127
+ 2017-07-06 05:52:02,654 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:38] - update offer into tem  end.....
+ 2017-07-06 05:52:02,655 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:65] - updateGpOfferToDb2  start.............
+ 2017-07-06 05:52:02,961 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:118] - pkglist size:127
+ 2017-07-06 05:52:02,961 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:119] - offerlist size:127
+ 2017-07-06 05:52:02,961 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:120] - 
+ 2017-07-06 05:52:03,038 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:135] - adAll list:0
+ 2017-07-06 05:52:03,039 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:347] - all update into database
+ 2017-07-06 05:52:23,307 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:354] - get offer end, and providerid is null
+ 2017-07-06 05:52:23,308 - [startQuertz_Worker-1][INFO] [PullOfferJob.java:191] - updateGpOfferToDb2 end
+ 2017-07-06 05:52:23,308 - [startQuertz_Worker-1][INFO] [PullOfferJob.java:202] - update All Track...end
+ 2017-07-06 05:56:31,714 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@3312fc47: startup date [Thu Jul 06 05:56:31 UTC 2017]; root of context hierarchy
+ 2017-07-06 05:56:31,757 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:D:/wp/wp2/offers/pull-sub/conf/applicationContext.xml]
+ 2017-07-06 05:56:32,069 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/log4j.properties]
+ 2017-07-06 05:56:32,069 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/mysql.properties]
+ 2017-07-06 05:56:32,070 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/memcache.properties]
+ 2017-07-06 05:56:32,070 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/redis.properties]
+ 2017-07-06 05:56:32,092 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6ce669f3: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,countryDAO,offerBlackListDAO,OfferDAO,providerDAO,operatorDAO,osDAO,unionAdPriceDAO,unionDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConfig,pullOfferJob,updateOffers,updatePostCallBack,pullOffer,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2017-07-06 05:56:32,259 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2017-07-06 05:56:32,293 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2017-07-06 05:56:32,319 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2017-07-06 05:56:32,403 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 139.162.63.212:11211
+ 2017-07-06 05:56:32,497 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2017-07-06 05:56:32,509 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2017-07-06 05:56:32,509 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2017-07-06 05:56:32,510 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2017-07-06 05:56:32,511 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2017-07-06 05:56:32,513 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2017-07-06 05:56:32,513 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2017-07-06 05:56:32,514 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@45f0d31e
+ 2017-07-06 05:56:32,519 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2017-07-06 05:56:32,519 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2017-07-06 05:56:32,520 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2017-07-06 05:56:32,522 - [main][INFO] [PullOfferLauncher.java:20] - server start success.
+ 2017-07-06 05:58:00,021 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:21] - update offer start.....
+ 2017-07-06 05:58:01,901 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:25] - delete all db tem
+ 2017-07-06 05:58:12,174 - [JobExecutorService-1][INFO] [Api_2001_YeahmobiOffer.java:64] - pages OVERSEA2001 size :9
+ 2017-07-06 05:59:49,605 - [JobExecutorService-1][INFO] [Api_2001_YeahmobiOffer.java:37] - begin put Api_2001_YeahmobiOffer = 2001 size :127
+ 2017-07-06 06:00:10,537 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:38] - update offer into tem  end.....
+ 2017-07-06 06:00:10,539 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:65] - updateGpOfferToDb2  start.............
+ 2017-07-06 06:00:10,827 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:118] - pkglist size:127
+ 2017-07-06 06:00:10,827 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:119] - offerlist size:127
+ 2017-07-06 06:00:10,827 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:120] - 
+ 2017-07-06 06:00:10,908 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:135] - adAll list:0
+ 2017-07-06 06:00:10,908 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:347] - all update into database
+ 2017-07-06 06:00:31,234 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:354] - get offer end, and providerid is null
+ 2017-07-06 06:00:31,235 - [startQuertz_Worker-1][INFO] [PullOfferJob.java:191] - updateGpOfferToDb2 end
+ 2017-07-06 06:00:31,236 - [startQuertz_Worker-1][INFO] [PullOfferJob.java:202] - update All Track...end
+ 2017-07-06 06:02:02,465 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@3312fc47: startup date [Thu Jul 06 06:02:02 UTC 2017]; root of context hierarchy
+ 2017-07-06 06:02:02,510 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:D:/wp/wp2/offers/pull-sub/conf/applicationContext.xml]
+ 2017-07-06 06:02:02,816 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/log4j.properties]
+ 2017-07-06 06:02:02,816 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/mysql.properties]
+ 2017-07-06 06:02:02,817 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/memcache.properties]
+ 2017-07-06 06:02:02,817 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/redis.properties]
+ 2017-07-06 06:02:02,839 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6ce669f3: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,countryDAO,offerBlackListDAO,OfferDAO,providerDAO,operatorDAO,osDAO,unionAdPriceDAO,unionDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConfig,pullOfferJob,updateOffers,updatePostCallBack,pullOffer,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2017-07-06 06:02:03,012 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2017-07-06 06:02:03,049 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2017-07-06 06:02:03,076 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2017-07-06 06:02:03,163 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 139.162.63.212:11211
+ 2017-07-06 06:02:03,256 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2017-07-06 06:02:03,269 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2017-07-06 06:02:03,269 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2017-07-06 06:02:03,270 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2017-07-06 06:02:03,271 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2017-07-06 06:02:03,272 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2017-07-06 06:02:03,273 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2017-07-06 06:02:03,274 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@45b47a71
+ 2017-07-06 06:02:03,280 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2017-07-06 06:02:03,280 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2017-07-06 06:02:03,280 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2017-07-06 06:02:03,283 - [main][INFO] [PullOfferLauncher.java:20] - server start success.
+ 2017-07-06 06:03:00,020 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:21] - update offer start.....
+ 2017-07-06 06:03:01,956 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:25] - delete all db tem
+ 2017-07-06 06:03:34,904 - [JobExecutorService-1][INFO] [Api_2001_YeahmobiOffer.java:64] - pages OVERSEA2001 size :9
+ 2017-07-06 06:06:15,046 - [JobExecutorService-1][INFO] [Api_2001_YeahmobiOffer.java:37] - begin put Api_2001_YeahmobiOffer = 2001 size :127
+ 2017-07-06 06:06:34,807 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:38] - update offer into tem  end.....
+ 2017-07-06 06:06:34,808 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:65] - updateGpOfferToDb2  start.............
+ 2017-07-06 06:06:35,119 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:118] - pkglist size:127
+ 2017-07-06 06:06:35,119 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:119] - offerlist size:127
+ 2017-07-06 06:06:35,120 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:120] - 
+ 2017-07-06 06:06:35,393 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:135] - adAll list:123
+ 2017-07-06 06:06:35,394 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:173] - dbList list:123
+ 2017-07-06 06:06:35,394 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:217] - dbhas:1
+ 2017-07-06 06:06:35,547 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:227] - comHas:122
+ 2017-07-06 06:06:35,548 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:229] - update comHas:122
+ 2017-07-06 06:06:35,550 - [startQuertz_Worker-1][INFO] [AdDAO.java:118] - updateCom 100 per t=0
+ 2017-07-06 06:06:35,641 - [startQuertz_Worker-1][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+ 2017-07-06 06:06:35,712 - [startQuertz_Worker-1][INFO] [SQLErrorCodesFactory.java:126] - SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
+ 2017-07-06 06:06:35,714 - [startQuertz_Worker-1][ERROR] [PullOfferJob.java:109] - org.springframework.jdbc.BadSqlGrammarException: PreparedStatementCallback; bad SQL grammar [UPDATE o_ad SET `provider`=?, `name`=?, `pkg`=?,`country`=?, `tracklink`=?,  `payout`=?,`status`=? ,`updatedate`=CURRENT_TIMESTAMP WHERE `provider`=? and `pkg`=? and `country`=? and `offerid`=? and `status`=0]; nested exception is java.sql.SQLException: No value specified for parameter 9
+ 2017-07-06 06:11:16,721 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@3312fc47: startup date [Thu Jul 06 06:11:16 UTC 2017]; root of context hierarchy
+ 2017-07-06 06:11:16,767 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:D:/wp/wp2/offers/pull-sub/conf/applicationContext.xml]
+ 2017-07-06 06:11:17,092 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/log4j.properties]
+ 2017-07-06 06:11:17,092 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/mysql.properties]
+ 2017-07-06 06:11:17,093 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/memcache.properties]
+ 2017-07-06 06:11:17,093 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/redis.properties]
+ 2017-07-06 06:11:17,116 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6ce669f3: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,countryDAO,offerBlackListDAO,OfferDAO,providerDAO,operatorDAO,osDAO,unionAdPriceDAO,unionDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConfig,pullOfferJob,updateOffers,updatePostCallBack,pullOffer,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2017-07-06 06:11:17,306 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2017-07-06 06:11:17,340 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2017-07-06 06:11:17,370 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2017-07-06 06:11:17,458 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 139.162.63.212:11211
+ 2017-07-06 06:11:17,554 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2017-07-06 06:11:17,566 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2017-07-06 06:11:17,567 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2017-07-06 06:11:17,568 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2017-07-06 06:11:17,569 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2017-07-06 06:11:17,570 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2017-07-06 06:11:17,571 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2017-07-06 06:11:17,572 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@45f0d31e
+ 2017-07-06 06:11:17,577 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2017-07-06 06:11:17,577 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2017-07-06 06:11:17,578 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2017-07-06 06:11:17,580 - [main][INFO] [PullOfferLauncher.java:20] - server start success.
+ 2017-07-06 06:13:00,023 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:21] - update offer start.....
+ 2017-07-06 06:13:03,650 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:25] - delete all db tem
+ 2017-07-06 06:13:23,950 - [JobExecutorService-1][INFO] [Api_2001_YeahmobiOffer.java:64] - pages OVERSEA2001 size :9
+ 2017-07-06 06:14:58,246 - [JobExecutorService-1][INFO] [Api_2001_YeahmobiOffer.java:37] - begin put Api_2001_YeahmobiOffer = 2001 size :127
+ 2017-07-06 06:15:17,895 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:38] - update offer into tem  end.....
+ 2017-07-06 06:15:17,895 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:65] - updateGpOfferToDb2  start.............
+ 2017-07-06 06:15:19,033 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:118] - pkglist size:127
+ 2017-07-06 06:15:19,033 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:119] - offerlist size:127
+ 2017-07-06 06:15:19,034 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:120] - 
+ 2017-07-06 06:15:19,381 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:135] - adAll list:122
+ 2017-07-06 06:15:19,382 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:173] - dbList list:122
+ 2017-07-06 06:15:19,382 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:217] - dbhas:0
+ 2017-07-06 06:15:19,382 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:227] - comHas:122
+ 2017-07-06 06:15:19,382 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:229] - update comHas:122
+ 2017-07-06 06:15:19,383 - [startQuertz_Worker-1][INFO] [AdDAO.java:118] - updateCom 100 per t=0
+ 2017-07-06 06:15:19,483 - [startQuertz_Worker-1][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+ 2017-07-06 06:15:19,521 - [startQuertz_Worker-1][INFO] [SQLErrorCodesFactory.java:126] - SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
+ 2017-07-06 06:15:19,523 - [startQuertz_Worker-1][ERROR] [PullOfferJob.java:109] - org.springframework.jdbc.BadSqlGrammarException: PreparedStatementCallback; bad SQL grammar [UPDATE o_ad SET `provider`=?, `name`=?, `pkg`=?,`country`=?, `tracklink`=?,  `payout`=?,`status`=? ,`updatedate`=CURRENT_TIMESTAMP WHERE `provider`=? and `pkg`=? and `country`=? and `offerid`=? and `status`=0]; nested exception is java.sql.SQLException: No value specified for parameter 9
+ 2017-07-06 06:19:46,391 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@3c196fa2: startup date [Thu Jul 06 06:19:46 UTC 2017]; root of context hierarchy
+ 2017-07-06 06:19:46,435 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:D:/wp/wp2/offers/pull-sub/conf/applicationContext.xml]
+ 2017-07-06 06:19:46,747 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/log4j.properties]
+ 2017-07-06 06:19:46,747 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/mysql.properties]
+ 2017-07-06 06:19:46,748 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/memcache.properties]
+ 2017-07-06 06:19:46,748 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/redis.properties]
+ 2017-07-06 06:19:46,770 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@85fdc60: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,countryDAO,offerBlackListDAO,OfferDAO,providerDAO,operatorDAO,osDAO,unionAdPriceDAO,unionDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConfig,pullOfferJob,updateOffers,updatePostCallBack,pullOffer,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2017-07-06 06:19:46,947 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2017-07-06 06:19:46,982 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2017-07-06 06:19:47,010 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2017-07-06 06:19:47,096 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 139.162.63.212:11211
+ 2017-07-06 06:19:47,189 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2017-07-06 06:19:47,202 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2017-07-06 06:19:47,203 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2017-07-06 06:19:47,204 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2017-07-06 06:19:47,205 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2017-07-06 06:19:47,206 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2017-07-06 06:19:47,206 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2017-07-06 06:19:47,208 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@4bd2b477
+ 2017-07-06 06:19:47,213 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2017-07-06 06:19:47,213 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2017-07-06 06:19:47,214 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2017-07-06 06:19:47,216 - [main][INFO] [PullOfferLauncher.java:20] - server start success.
+ 2017-07-06 06:21:00,016 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:21] - update offer start.....
+ 2017-07-06 06:21:01,923 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:25] - delete all db tem
+ 2017-07-06 06:21:11,202 - [JobExecutorService-1][INFO] [Api_2001_YeahmobiOffer.java:64] - pages OVERSEA2001 size :9
+ 2017-07-06 06:22:35,205 - [JobExecutorService-1][INFO] [Api_2001_YeahmobiOffer.java:37] - begin put Api_2001_YeahmobiOffer = 2001 size :126
+ 2017-07-06 06:22:55,135 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:38] - update offer into tem  end.....
+ 2017-07-06 06:22:55,136 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:65] - updateGpOfferToDb2  start.............
+ 2017-07-06 06:22:55,490 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:118] - pkglist size:126
+ 2017-07-06 06:22:55,490 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:119] - offerlist size:126
+ 2017-07-06 06:22:55,490 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:120] - 
+ 2017-07-06 06:22:55,919 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:135] - adAll list:122
+ 2017-07-06 06:22:55,920 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:173] - dbList list:122
+ 2017-07-06 06:22:55,920 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:217] - dbhas:1
+ 2017-07-06 06:22:56,132 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:227] - comHas:121
+ 2017-07-06 06:22:56,132 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:229] - update comHas:121
+ 2017-07-06 06:22:56,132 - [startQuertz_Worker-1][INFO] [AdDAO.java:127] - updateCom 100 per t=0
+ 2017-07-06 06:22:56,233 - [startQuertz_Worker-1][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+ 2017-07-06 06:22:56,270 - [startQuertz_Worker-1][INFO] [SQLErrorCodesFactory.java:126] - SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
+ 2017-07-06 06:22:56,272 - [startQuertz_Worker-1][ERROR] [PullOfferJob.java:109] - org.springframework.jdbc.BadSqlGrammarException: PreparedStatementCallback; bad SQL grammar [UPDATE o_ad SET `provider`=?, `name`=?, `pkg`=?,`country`=?, `tracklink`=?,  `payout`=?,`status`=? ,`updatedate`=CURRENT_TIMESTAMP WHERE `provider`=? and `pkg`=? and `country`=? and `offerid`=? and `status`=0]; nested exception is java.sql.SQLException: No value specified for parameter 11
+ 2017-07-06 06:25:19,849 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@1c3a3b6b: startup date [Thu Jul 06 06:25:19 UTC 2017]; root of context hierarchy
+ 2017-07-06 06:25:19,893 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:D:/wp/wp2/offers/pull-sub/conf/applicationContext.xml]
+ 2017-07-06 06:25:20,203 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/log4j.properties]
+ 2017-07-06 06:25:20,205 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/mysql.properties]
+ 2017-07-06 06:25:20,205 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/memcache.properties]
+ 2017-07-06 06:25:20,205 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/redis.properties]
+ 2017-07-06 06:25:20,228 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6ce669f3: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,countryDAO,offerBlackListDAO,OfferDAO,providerDAO,operatorDAO,osDAO,unionAdPriceDAO,unionDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConfig,pullOfferJob,updateOffers,updatePostCallBack,pullOffer,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2017-07-06 06:25:20,399 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2017-07-06 06:25:20,434 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2017-07-06 06:25:20,464 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2017-07-06 06:25:20,550 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 139.162.63.212:11211
+ 2017-07-06 06:25:20,642 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2017-07-06 06:25:20,654 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2017-07-06 06:25:20,655 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2017-07-06 06:25:20,656 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2017-07-06 06:25:20,657 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2017-07-06 06:25:20,659 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2017-07-06 06:25:20,659 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2017-07-06 06:25:20,661 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@45b47a71
+ 2017-07-06 06:25:20,666 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2017-07-06 06:25:20,666 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2017-07-06 06:25:20,666 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2017-07-06 06:25:20,669 - [main][INFO] [PullOfferLauncher.java:20] - server start success.
+ 2017-07-06 06:27:00,021 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:21] - update offer start.....
+ 2017-07-06 06:27:01,944 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:25] - delete all db tem
+ 2017-07-06 06:27:14,505 - [JobExecutorService-1][INFO] [Api_2001_YeahmobiOffer.java:64] - pages OVERSEA2001 size :9
+ 2017-07-06 06:28:47,178 - [JobExecutorService-1][INFO] [Api_2001_YeahmobiOffer.java:37] - begin put Api_2001_YeahmobiOffer = 2001 size :126
+ 2017-07-06 06:29:07,102 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:38] - update offer into tem  end.....
+ 2017-07-06 06:29:07,103 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:65] - updateGpOfferToDb2  start.............
+ 2017-07-06 06:29:07,405 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:118] - pkglist size:126
+ 2017-07-06 06:29:07,406 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:119] - offerlist size:126
+ 2017-07-06 06:29:07,406 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:120] - 
+ 2017-07-06 06:29:07,680 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:135] - adAll list:121
+ 2017-07-06 06:29:07,681 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:173] - dbList list:121
+ 2017-07-06 06:29:07,681 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:217] - dbhas:0
+ 2017-07-06 06:29:07,681 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:227] - comHas:121
+ 2017-07-06 06:29:07,681 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:229] - update comHas:121
+ 2017-07-06 06:29:07,682 - [startQuertz_Worker-1][INFO] [AdDAO.java:132] - updateCom 100 per t=0
+ 2017-07-06 06:29:23,490 - [startQuertz_Worker-1][INFO] [AdDAO.java:132] - updateCom 100 per t=100
+ 2017-07-06 06:29:26,784 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:234] - offerHas is :5
+ 2017-07-06 06:29:27,034 - [startQuertz_Worker-1][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+ 2017-07-06 06:29:27,072 - [startQuertz_Worker-1][INFO] [SQLErrorCodesFactory.java:126] - SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
+ 2017-07-06 06:29:27,073 - [startQuertz_Worker-1][ERROR] [PullOfferJob.java:109] - org.springframework.jdbc.BadSqlGrammarException: StatementCallback; bad SQL grammar [select * from o_provider WHERE `cap` IS NOT NULL]; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'cap' in 'where clause'
+ 2017-07-06 06:31:18,892 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@2370b383: startup date [Thu Jul 06 06:31:18 UTC 2017]; root of context hierarchy
+ 2017-07-06 06:31:18,937 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:D:/wp/wp2/offers/pull-sub/conf/applicationContext.xml]
+ 2017-07-06 06:31:19,259 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/log4j.properties]
+ 2017-07-06 06:31:19,260 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/mysql.properties]
+ 2017-07-06 06:31:19,260 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/memcache.properties]
+ 2017-07-06 06:31:19,260 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/redis.properties]
+ 2017-07-06 06:31:19,285 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@b360860: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,countryDAO,offerBlackListDAO,OfferDAO,providerDAO,operatorDAO,osDAO,unionAdPriceDAO,unionDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConfig,pullOfferJob,updateOffers,updatePostCallBack,pullOffer,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2017-07-06 06:31:19,469 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2017-07-06 06:31:19,503 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2017-07-06 06:31:19,532 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2017-07-06 06:31:19,615 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 139.162.63.212:11211
+ 2017-07-06 06:31:19,727 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2017-07-06 06:31:19,746 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2017-07-06 06:31:19,747 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2017-07-06 06:31:19,748 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2017-07-06 06:31:19,748 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2017-07-06 06:31:19,750 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2017-07-06 06:31:19,750 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2017-07-06 06:31:19,752 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@45b47a71
+ 2017-07-06 06:31:19,758 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2017-07-06 06:31:19,759 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2017-07-06 06:31:19,759 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2017-07-06 06:31:19,762 - [main][INFO] [PullOfferLauncher.java:20] - server start success.
+ 2017-07-06 06:33:00,024 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:21] - update offer start.....
+ 2017-07-06 06:33:01,913 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:25] - delete all db tem
+ 2017-07-06 06:33:18,583 - [JobExecutorService-1][INFO] [Api_2001_YeahmobiOffer.java:64] - pages OVERSEA2001 size :9
+ 2017-07-06 06:35:10,906 - [JobExecutorService-1][INFO] [Api_2001_YeahmobiOffer.java:37] - begin put Api_2001_YeahmobiOffer = 2001 size :126
+ 2017-07-06 06:35:31,993 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:38] - update offer into tem  end.....
+ 2017-07-06 06:35:31,993 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:65] - updateGpOfferToDb2  start.............
+ 2017-07-06 06:35:32,280 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:118] - pkglist size:126
+ 2017-07-06 06:35:32,281 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:119] - offerlist size:126
+ 2017-07-06 06:35:32,281 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:120] - 
+ 2017-07-06 06:35:32,542 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:135] - adAll list:121
+ 2017-07-06 06:35:32,542 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:173] - dbList list:121
+ 2017-07-06 06:35:32,543 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:217] - dbhas:0
+ 2017-07-06 06:35:32,543 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:227] - comHas:121
+ 2017-07-06 06:35:32,543 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:229] - update comHas:121
+ 2017-07-06 06:35:32,543 - [startQuertz_Worker-1][INFO] [AdDAO.java:132] - updateCom 100 per t=0
+ 2017-07-06 06:35:48,952 - [startQuertz_Worker-1][INFO] [AdDAO.java:132] - updateCom 100 per t=100
+ 2017-07-06 06:35:56,395 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:234] - offerHas is :5
+ 2017-07-06 06:35:56,557 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:239] - manual all offer is :6
+ 2017-07-06 06:35:56,558 - [startQuertz_Worker-1][ERROR] [PullOfferJob.java:109] - java.lang.NullPointerException
+ 2017-07-06 06:39:32,436 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@3312fc47: startup date [Thu Jul 06 06:39:32 UTC 2017]; root of context hierarchy
+ 2017-07-06 06:39:32,481 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:D:/wp/wp2/offers/pull-sub/conf/applicationContext.xml]
+ 2017-07-06 06:39:32,790 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/log4j.properties]
+ 2017-07-06 06:39:32,791 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/mysql.properties]
+ 2017-07-06 06:39:32,791 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/memcache.properties]
+ 2017-07-06 06:39:32,791 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/wp/wp2/offers/pull-sub/conf/redis.properties]
+ 2017-07-06 06:39:32,813 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6ce669f3: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,countryDAO,offerBlackListDAO,OfferDAO,providerDAO,operatorDAO,osDAO,unionAdPriceDAO,unionDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConfig,pullOfferJob,updateOffers,updatePostCallBack,pullOffer,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2017-07-06 06:39:32,992 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2017-07-06 06:39:33,027 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2017-07-06 06:39:33,056 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2017-07-06 06:39:33,141 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 139.162.63.212:11211
+ 2017-07-06 06:39:33,236 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2017-07-06 06:39:33,248 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2017-07-06 06:39:33,249 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2017-07-06 06:39:33,250 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2017-07-06 06:39:33,250 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2017-07-06 06:39:33,252 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2017-07-06 06:39:33,252 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2017-07-06 06:39:33,254 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@45b47a71
+ 2017-07-06 06:39:33,259 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2017-07-06 06:39:33,259 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2017-07-06 06:39:33,259 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2017-07-06 06:39:33,262 - [main][INFO] [PullOfferLauncher.java:20] - server start success.
+ 2017-07-06 06:40:00,022 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:21] - update offer start.....
+ 2017-07-06 06:40:01,989 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:25] - delete all db tem
+ 2017-07-06 06:40:10,522 - [JobExecutorService-1][INFO] [Api_2001_YeahmobiOffer.java:64] - pages OVERSEA2001 size :9
+ 2017-07-06 06:41:44,582 - [JobExecutorService-1][INFO] [Api_2001_YeahmobiOffer.java:37] - begin put Api_2001_YeahmobiOffer = 2001 size :126
+ 2017-07-06 06:42:04,334 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:38] - update offer into tem  end.....
+ 2017-07-06 06:42:04,335 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:65] - updateGpOfferToDb2  start.............
+ 2017-07-06 06:42:04,664 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:118] - pkglist size:126
+ 2017-07-06 06:42:04,665 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:119] - offerlist size:126
+ 2017-07-06 06:42:04,665 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:120] - 
+ 2017-07-06 06:42:04,923 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:135] - adAll list:121
+ 2017-07-06 06:42:04,923 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:173] - dbList list:121
+ 2017-07-06 06:42:04,924 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:217] - dbhas:0
+ 2017-07-06 06:42:04,924 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:227] - comHas:121
+ 2017-07-06 06:42:04,924 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:229] - update comHas:121
+ 2017-07-06 06:42:04,924 - [startQuertz_Worker-1][INFO] [AdDAO.java:132] - updateCom 100 per t=0
+ 2017-07-06 06:42:21,035 - [startQuertz_Worker-1][INFO] [AdDAO.java:132] - updateCom 100 per t=100
+ 2017-07-06 06:42:24,447 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:234] - offerHas is :5
+ 2017-07-06 06:42:24,531 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:239] - manual all offer is :6
+ 2017-07-06 06:42:24,532 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:305] - offerHas2 (in manual) is :1
+ 2017-07-06 06:42:24,770 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:329] - new offer but db exit=0
+ 2017-07-06 06:42:24,771 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:330] - new offer insert=1
+ 2017-07-06 06:42:24,771 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:333] - comHas2 (in manual)is:4
+ 2017-07-06 06:42:25,404 - [startQuertz_Worker-1][INFO] [BaseAndroidOffer.java:346] - get offer end, and providerid is null
+ 2017-07-06 06:42:25,405 - [startQuertz_Worker-1][INFO] [PullOfferJob.java:191] - updateGpOfferToDb2 end
+ 2017-07-06 06:42:25,405 - [startQuertz_Worker-1][INFO] [PullOfferJob.java:202] - update All Track...end
+ 

@@ -1,0 +1,229 @@
+2015-12-16 12:20:36,842 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@59c749fc: startup date [Wed Dec 16 12:20:36 CST 2015]; root of context hierarchy
+ 2015-12-16 12:20:36,924 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:E:/workspace/oversea/pull-offer/conf/applicationContext.xml]
+ 2015-12-16 12:20:38,217 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:E:/workspace/oversea/pull-offer/conf/log4j.properties]
+ 2015-12-16 12:20:38,221 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:E:/workspace/oversea/pull-offer/conf/mysql.properties]
+ 2015-12-16 12:20:38,247 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:E:/workspace/oversea/pull-offer/conf/memcache.properties]
+ 2015-12-16 12:20:38,251 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:E:/workspace/oversea/pull-offer/conf/redis.properties]
+ 2015-12-16 12:20:38,340 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6e584368: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,offerBlackListDAO,providerDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConfig,pullOfferJob,updateOffers,updatePostCallBack,pullOffer,updateClick,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2015-12-16 12:20:38,776 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2015-12-16 12:20:38,889 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2015-12-16 12:20:39,010 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2015-12-16 12:20:39,123 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 46.51.216.238:11211
+ 2015-12-16 12:20:39,485 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2015-12-16 12:20:39,547 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2015-12-16 12:20:39,549 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2015-12-16 12:20:39,552 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2015-12-16 12:20:39,553 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2015-12-16 12:20:39,554 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2015-12-16 12:20:39,555 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2015-12-16 12:20:39,557 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@51586211
+ 2015-12-16 12:20:39,560 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2015-12-16 12:20:39,561 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2015-12-16 12:20:39,561 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2015-12-16 12:20:39,815 - [main][ERROR] [BaseSerializingTranscoder.java:113] - Caught CNFE decoding 53506 bytes of data
+ java.lang.ClassNotFoundException: com.omla.ads.bean.AdData
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:366)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:355)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:354)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at net.rubyeye.xmemcached.transcoders.BaseSerializingTranscoder$1.resolveClass(BaseSerializingTranscoder.java:102)
+	at java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:1612)
+	at java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1517)
+	at java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:1771)
+	at java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1350)
+	at java.io.ObjectInputStream.readObject(ObjectInputStream.java:370)
+	at java.util.ArrayList.readObject(ArrayList.java:771)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at java.io.ObjectStreamClass.invokeReadObject(ObjectStreamClass.java:1017)
+	at java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:1893)
+	at java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:1798)
+	at java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1350)
+	at java.io.ObjectInputStream.readObject(ObjectInputStream.java:370)
+	at net.rubyeye.xmemcached.transcoders.BaseSerializingTranscoder.deserialize(BaseSerializingTranscoder.java:106)
+	at net.rubyeye.xmemcached.transcoders.SerializingTranscoder.decode0(SerializingTranscoder.java:92)
+	at net.rubyeye.xmemcached.transcoders.SerializingTranscoder.decode(SerializingTranscoder.java:86)
+	at net.rubyeye.xmemcached.XMemcachedClient.fetch0(XMemcachedClient.java:657)
+	at net.rubyeye.xmemcached.XMemcachedClient.get0(XMemcachedClient.java:1058)
+	at net.rubyeye.xmemcached.XMemcachedClient.get(XMemcachedClient.java:1016)
+	at net.rubyeye.xmemcached.XMemcachedClient.get(XMemcachedClient.java:1027)
+	at net.rubyeye.xmemcached.XMemcachedClient.get(XMemcachedClient.java:1049)
+	at com.xyh.oversea.offer.cache.memcache.MemCacheFactory.get(MemCacheFactory.java:60)
+	at com.xyh.oversea.offer.PullOfferLauncher.test(PullOfferLauncher.java:54)
+	at com.xyh.oversea.offer.PullOfferLauncher.main(PullOfferLauncher.java:26)
+2015-12-16 12:28:05,695 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@2fc2534f: startup date [Wed Dec 16 12:28:05 CST 2015]; root of context hierarchy
+ 2015-12-16 12:28:05,820 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:E:/workspace/oversea/pull-offer/conf/applicationContext.xml]
+ 2015-12-16 12:28:07,114 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:E:/workspace/oversea/pull-offer/conf/log4j.properties]
+ 2015-12-16 12:28:07,115 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:E:/workspace/oversea/pull-offer/conf/mysql.properties]
+ 2015-12-16 12:28:07,138 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:E:/workspace/oversea/pull-offer/conf/memcache.properties]
+ 2015-12-16 12:28:07,140 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:E:/workspace/oversea/pull-offer/conf/redis.properties]
+ 2015-12-16 12:28:07,220 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@fc925db: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,offerBlackListDAO,providerDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConfig,pullOfferJob,updateOffers,updatePostCallBack,pullOffer,updateClick,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2015-12-16 12:28:07,720 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2015-12-16 12:28:07,843 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2015-12-16 12:28:07,940 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2015-12-16 12:28:08,037 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 46.51.216.238:11211
+ 2015-12-16 12:28:08,295 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2015-12-16 12:28:08,354 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2015-12-16 12:28:08,362 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2015-12-16 12:28:08,365 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2015-12-16 12:28:08,366 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2015-12-16 12:28:08,368 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2015-12-16 12:28:08,368 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2015-12-16 12:28:08,370 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@7a7bce95
+ 2015-12-16 12:28:08,378 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2015-12-16 12:28:08,378 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2015-12-16 12:28:08,378 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2015-12-16 12:28:08,754 - [main][ERROR] [PullOfferLauncher.java:30] - server start failed.
+ java.lang.NullPointerException
+	at com.xyh.oversea.offer.PullOfferLauncher.test(PullOfferLauncher.java:69)
+	at com.xyh.oversea.offer.PullOfferLauncher.main(PullOfferLauncher.java:27)
+2015-12-16 12:28:08,788 - [Thread-9][WARN] [MemcachedConnector.java:365] - Remove a session: 46.51.216.238:11211
+ 2015-12-16 12:28:08,790 - [Thread-9][INFO] [AbstractController.java:478] - Controller has been stopped.
+ 2015-12-16 12:28:56,017 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@5c57b13a: startup date [Wed Dec 16 12:28:56 CST 2015]; root of context hierarchy
+ 2015-12-16 12:28:56,077 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:E:/workspace/oversea/pull-offer/conf/applicationContext.xml]
+ 2015-12-16 12:28:56,693 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:E:/workspace/oversea/pull-offer/conf/log4j.properties]
+ 2015-12-16 12:28:56,694 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:E:/workspace/oversea/pull-offer/conf/mysql.properties]
+ 2015-12-16 12:28:56,694 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:E:/workspace/oversea/pull-offer/conf/memcache.properties]
+ 2015-12-16 12:28:56,695 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:E:/workspace/oversea/pull-offer/conf/redis.properties]
+ 2015-12-16 12:28:56,740 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@62b3529b: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,offerBlackListDAO,providerDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConfig,pullOfferJob,updateOffers,updatePostCallBack,pullOffer,updateClick,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2015-12-16 12:28:57,054 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2015-12-16 12:28:57,126 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2015-12-16 12:28:57,171 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2015-12-16 12:28:57,290 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 46.51.216.238:11211
+ 2015-12-16 12:28:57,587 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2015-12-16 12:28:57,634 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2015-12-16 12:28:57,636 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2015-12-16 12:28:57,640 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2015-12-16 12:28:57,648 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2015-12-16 12:28:57,653 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2015-12-16 12:28:57,653 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2015-12-16 12:28:57,656 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@18e73d0
+ 2015-12-16 12:28:57,663 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2015-12-16 12:28:57,664 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2015-12-16 12:28:57,664 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2015-12-16 12:29:58,300 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@5c57b13a: startup date [Wed Dec 16 12:29:58 CST 2015]; root of context hierarchy
+ 2015-12-16 12:29:58,361 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:E:/workspace/oversea/pull-offer/conf/applicationContext.xml]
+ 2015-12-16 12:29:58,929 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:E:/workspace/oversea/pull-offer/conf/log4j.properties]
+ 2015-12-16 12:29:58,930 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:E:/workspace/oversea/pull-offer/conf/mysql.properties]
+ 2015-12-16 12:29:58,931 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:E:/workspace/oversea/pull-offer/conf/memcache.properties]
+ 2015-12-16 12:29:58,932 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:E:/workspace/oversea/pull-offer/conf/redis.properties]
+ 2015-12-16 12:29:58,972 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6af470bc: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,offerBlackListDAO,providerDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConfig,pullOfferJob,updateOffers,updatePostCallBack,pullOffer,updateClick,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2015-12-16 12:29:59,286 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2015-12-16 12:29:59,351 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2015-12-16 12:29:59,397 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2015-12-16 12:29:59,503 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 46.51.216.238:11211
+ 2015-12-16 12:29:59,758 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2015-12-16 12:29:59,816 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2015-12-16 12:29:59,818 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2015-12-16 12:29:59,821 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2015-12-16 12:29:59,823 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2015-12-16 12:29:59,828 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2015-12-16 12:29:59,828 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2015-12-16 12:29:59,832 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@51586211
+ 2015-12-16 12:29:59,837 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2015-12-16 12:29:59,837 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2015-12-16 12:29:59,837 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2015-12-16 12:30:29,448 - [main][ERROR] [PullOfferLauncher.java:30] - server start failed.
+ java.lang.NullPointerException
+	at com.xyh.oversea.offer.PullOfferLauncher.test(PullOfferLauncher.java:70)
+	at com.xyh.oversea.offer.PullOfferLauncher.main(PullOfferLauncher.java:27)
+2015-12-16 12:30:29,475 - [Thread-9][WARN] [MemcachedConnector.java:365] - Remove a session: 46.51.216.238:11211
+ 2015-12-16 12:30:29,477 - [Thread-9][INFO] [AbstractController.java:478] - Controller has been stopped.
+ 2015-12-16 12:31:59,812 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@5f0e2499: startup date [Wed Dec 16 12:31:59 CST 2015]; root of context hierarchy
+ 2015-12-16 12:31:59,873 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:E:/workspace/oversea/pull-offer/conf/applicationContext.xml]
+ 2015-12-16 12:32:00,487 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:E:/workspace/oversea/pull-offer/conf/log4j.properties]
+ 2015-12-16 12:32:00,488 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:E:/workspace/oversea/pull-offer/conf/mysql.properties]
+ 2015-12-16 12:32:00,489 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:E:/workspace/oversea/pull-offer/conf/memcache.properties]
+ 2015-12-16 12:32:00,489 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:E:/workspace/oversea/pull-offer/conf/redis.properties]
+ 2015-12-16 12:32:00,524 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@757b80d0: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,offerBlackListDAO,providerDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConfig,pullOfferJob,updateOffers,updatePostCallBack,pullOffer,updateClick,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2015-12-16 12:32:00,795 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2015-12-16 12:32:00,857 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2015-12-16 12:32:00,903 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2015-12-16 12:32:01,014 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 46.51.216.238:11211
+ 2015-12-16 12:32:01,272 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2015-12-16 12:32:01,334 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2015-12-16 12:32:01,336 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2015-12-16 12:32:01,339 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2015-12-16 12:32:01,341 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2015-12-16 12:32:01,344 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2015-12-16 12:32:01,345 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2015-12-16 12:32:01,355 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@d6c902b
+ 2015-12-16 12:32:01,364 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2015-12-16 12:32:01,365 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2015-12-16 12:32:01,365 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2015-12-16 12:32:50,652 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@5c57b13a: startup date [Wed Dec 16 12:32:50 CST 2015]; root of context hierarchy
+ 2015-12-16 12:32:50,716 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:E:/workspace/oversea/pull-offer/conf/applicationContext.xml]
+ 2015-12-16 12:32:51,334 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:E:/workspace/oversea/pull-offer/conf/log4j.properties]
+ 2015-12-16 12:32:51,335 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:E:/workspace/oversea/pull-offer/conf/mysql.properties]
+ 2015-12-16 12:32:51,336 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:E:/workspace/oversea/pull-offer/conf/memcache.properties]
+ 2015-12-16 12:32:51,336 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:E:/workspace/oversea/pull-offer/conf/redis.properties]
+ 2015-12-16 12:32:51,380 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1ce24900: defining beans [propertyConfigurer,adDAO,adTemDAO,apkDAO,blackAppDAO,classApkDAO,offerBlackListDAO,providerDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConfig,pullOfferJob,updateOffers,updatePostCallBack,pullOffer,updateClick,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2015-12-16 12:32:51,699 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2015-12-16 12:32:51,760 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2015-12-16 12:32:51,811 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2015-12-16 12:32:51,909 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 46.51.216.238:11211
+ 2015-12-16 12:32:52,182 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2015-12-16 12:32:52,217 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2015-12-16 12:32:52,219 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2015-12-16 12:32:52,223 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2015-12-16 12:32:52,225 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2015-12-16 12:32:52,259 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2015-12-16 12:32:52,259 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2015-12-16 12:32:52,262 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@6c970086
+ 2015-12-16 12:32:52,270 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2015-12-16 12:32:52,271 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2015-12-16 12:32:52,271 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2015-12-16 12:33:26,135 - [main][ERROR] [PullOfferLauncher.java:30] - server start failed.
+ java.lang.NullPointerException
+	at com.xyh.oversea.offer.PullOfferLauncher.test(PullOfferLauncher.java:70)
+	at com.xyh.oversea.offer.PullOfferLauncher.main(PullOfferLauncher.java:27)
+2015-12-16 12:33:26,164 - [Thread-9][WARN] [MemcachedConnector.java:365] - Remove a session: 46.51.216.238:11211
+ 2015-12-16 12:33:26,168 - [Thread-9][INFO] [AbstractController.java:478] - Controller has been stopped.
+ 

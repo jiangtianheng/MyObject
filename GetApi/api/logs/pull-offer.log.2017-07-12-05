@@ -1,0 +1,18 @@
+2017-07-12 05:59:39,778 - [Xmemcached-Reactor-2][ERROR] [MemcachedHandler.java:137] - XMemcached network layout exception
+ java.io.IOException: 您的主机中的软件中止了一个已建立的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:197)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:379)
+	at com.google.code.yanf4j.nio.impl.NioTCPSession.readFromBuffer(NioTCPSession.java:203)
+	at com.google.code.yanf4j.nio.impl.AbstractNioSession.onRead(AbstractNioSession.java:196)
+	at com.google.code.yanf4j.nio.impl.AbstractNioSession.onEvent(AbstractNioSession.java:341)
+	at com.google.code.yanf4j.nio.impl.SocketChannelController.dispatchReadEvent(SocketChannelController.java:56)
+	at com.google.code.yanf4j.nio.impl.NioController.onRead(NioController.java:157)
+	at com.google.code.yanf4j.nio.impl.Reactor.dispatchEvent(Reactor.java:295)
+	at com.google.code.yanf4j.nio.impl.Reactor.run(Reactor.java:142)
+2017-07-12 05:59:39,787 - [Xmemcached-Reactor-2][WARN] [MemcachedConnector.java:365] - Remove a session: 139.162.63.212:11211
+ 2017-07-12 05:59:41,791 - [Heal-Session-Thread][WARN] [MemcachedConnector.java:125] - Trying to connect to 139.162.63.212:11211 for 1 times
+ 2017-07-12 05:59:41,875 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 139.162.63.212:11211
+ 
