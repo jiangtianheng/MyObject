@@ -1,6 +1,5 @@
 package com.cappuccino.offer.dao.cache;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -12,9 +11,7 @@ import com.cappuccino.offer.cache.key.KeyInfo;
 import com.cappuccino.offer.cache.memcache.MemCacheFactory;
 import com.cappuccino.offer.cache.redis.RedisClusterClient;
 import com.cappuccino.offer.dao.AdDAO;
-import com.cappuccino.offer.domain.GlobalConst;
 import com.cappuccino.offer.domain.ad.Ad;
-import com.cappuccino.offer.domain.ad.AdIos;
 import com.cappuccino.offer.domain.ad.AdTem;
 
 @Component(value = "adDAO")
@@ -106,32 +103,6 @@ public class CacheAdDAO extends AdDAO {
 
 	}
 
-	/**
-	 * 将最新的状态为0的offer放入redis缓存
-	 * 
-	 * @author chenbq
-	 * 
-	 * @return
-	 */
-	@SuppressWarnings("unused")
-	private boolean updateIosRedisFromDb(List<AdIos> adList) {
-		// 清除现有的key
-		KeyInfo keyInfo = new KeyInfo(CacheKeyDic.REDIS_IOS_KEY_DB_COUNTRY_KEYS, 0);
-		Map<String, String> keysMap = RedisClusterClient.hgetAll(keyInfo);
-		if (keysMap != null) {
-			for (String key : keysMap.keySet()) {
-				RedisClusterClient.del(new KeyInfo(key, 0));
-			}
-		}
-
-		RedisClusterClient.del(keyInfo);
-
-		// 添加新的offer数据
-		replaceIosByCountry(adList);
-
-		return true;
-
-	}
 
 	/**
 	 * 替换所有数据库offer到redis
@@ -155,26 +126,6 @@ public class CacheAdDAO extends AdDAO {
 	}
 
 	/**
-	 * 替换所有数据库ios offer到redis
-	 * 
-	 * @param key
-	 *            每个国家对应的key
-	 * @param countryKeys
-	 *            记录增加的所有keys
-	 * @param list
-	 *            需要替换的广告列表
-	 * @return
-	 */
-	private List<AdIos> replaceIosByCountry(List<AdIos> list) {
-
-		if (list == null || list.size() <= 0) {
-			return null;
-		}
-		for (AdIos item : list) {
-			updateIosOfferByCountry(item);
-		}
-		return list;
-	}
 
 	/**
 	 * 增加单个offer到redis
@@ -210,57 +161,7 @@ public class CacheAdDAO extends AdDAO {
 		RedisClusterClient.hmset(new KeyInfo(CacheKeyDic.REDIS_KEY_DB_COUNTRY_KEYS, 0), keysMap);
 	}
 
-	/**
-	 * 增加单个ios offer到redis
-	 * 
-	 * @param key
-	 * @param countryKeys
-	 * @param ad
-	 */
-	private void updateIosOfferByCountry(AdIos ad) {
-		if (ad == null)
-			return;
-		String couKey = "";
-		KeyInfo keyInfo = new KeyInfo(CacheKeyDic.REDIS_IOS_KEY_DB_COUNTRY_KEYS, 0);
-		Map<String, String> keysMap = RedisClusterClient.hgetAll(keyInfo);
-		String k = String.valueOf(ad.getId());
-		String country = ad.getCountry();
-		if (country.equalsIgnoreCase("ALL")) {
-			couKey = CacheKeyDic.REDIS_IOS_KEY_DB_COUNTRY + "ALL";
-			keysMap.put(couKey, "ALL");
-			RedisClusterClient.hset(new KeyInfo(couKey, 0), k, JSON.toJSONString(ad));
-		} else if (country.indexOf(":") > 0) {
-			String[] countryList = country.split(":");
-			for (int i = 0; i < countryList.length; i++) {
-				couKey = CacheKeyDic.REDIS_IOS_KEY_DB_COUNTRY + countryList[i];
-				keysMap.put(couKey, countryList[i]);
-				RedisClusterClient.hset(new KeyInfo(couKey, 0), k, JSON.toJSONString(ad));
-			}
-		} else {
-			couKey = CacheKeyDic.REDIS_IOS_KEY_DB_COUNTRY + country;
-			keysMap.put(couKey, country);
-			RedisClusterClient.hset(new KeyInfo(couKey, 0), k, JSON.toJSONString(ad));
-		}
-		RedisClusterClient.hmset(new KeyInfo(CacheKeyDic.REDIS_IOS_KEY_DB_COUNTRY_KEYS, 0), keysMap);
-	}
 
 
-	/**
-	 * ios所以
-	 * 
-	 * @param ads
-	 */
-	public void refresh_o_ad_iosToRedis(List<AdIos> ads) {
-		List<AdIos> ios = null;
-		if (ads != null) {
-			ios = new ArrayList<AdIos>();
-			for (AdIos ai : ads) {
-				if (ai.getType() == GlobalConst.AD_AFFLIATE)
-					ios.add(ai);
-			}
-		}
-		KeyInfo keyInfo = new KeyInfo(CacheKeyDic.REDIS_IOS_KEY_DB_ALL, 0);
-		RedisClusterClient.set(keyInfo, JSON.toJSONString(ios));
-	}
 
 }

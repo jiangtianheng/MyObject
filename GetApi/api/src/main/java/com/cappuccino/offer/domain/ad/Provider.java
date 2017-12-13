@@ -1,141 +1,163 @@
 package com.cappuccino.offer.domain.ad;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class Provider implements Serializable {
+public class Provider
+{
+    private Long id;
 
-	private static final long serialVersionUID = 1L;
+    private String name;
 
-	public Long id;
-	public Integer status;
-	public Date createdate;
-	public Date updatedate;
-	public String name;
-	public Integer click;
-	public Integer cap;
-	public Integer cr;
-	public Integer weight;
-	public String api_url;
-	public String postback_url;
-	public String username;
-	public String password;
-	public String introduction;
+    private Integer template;
 
-	public Long getId() {
-		return id;
-	}
+    private String apiUrl;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    private String clickParams;
 
-	public Integer getStatus() {
-		return status;
-	}
+    private String callbackDomain;
 
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
+    private Integer maxCap;
 
-	public Date getCreatedate() {
-		return createdate;
-	}
+    private Integer maxClick;
 
-	public void setCreatedate(Date createdate) {
-		this.createdate = createdate;
-	}
+    private Long maxPayout;
 
-	public Date getUpdatedate() {
-		return updatedate;
-	}
+    private Byte status;
 
-	public void setUpdatedate(Date updatedate) {
-		this.updatedate = updatedate;
-	}
+    private Date createdate;
 
-	public String getName() {
-		return name;
-	}
+    private Date updatedate;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    private String remarks;
 
-	public Integer getClick() {
-		return click;
-	}
+    public Long getId()
+    {
+        return id;
+    }
 
-	public void setClick(Integer click) {
-		this.click = click;
-	}
+    public void setId(Long id)
+    {
+        this.id = id;
+    }
 
-	public Integer getCap() {
-		return cap;
-	}
+    public String getName()
+    {
+        return name;
+    }
 
-	public void setCap(Integer cap) {
-		this.cap = cap;
-	}
+    public void setName(String name)
+    {
+        this.name = name == null ? null : name.trim();
+    }
 
-	public Integer getWeight() {
-		return weight;
-	}
+    public Integer getTemplate()
+    {
+        return template;
+    }
 
-	public void setWeight(Integer weight) {
-		this.weight = weight;
-	}
+    public void setTemplate(Integer template)
+    {
+        this.template = template;
+    }
 
-	public String getApi_url() {
-		return api_url;
-	}
+    public String getApiUrl()
+    {
+        return apiUrl;
+    }
 
-	public void setApi_url(String api_url) {
-		this.api_url = api_url;
-	}
+    public void setApiUrl(String apiUrl)
+    {
+        this.apiUrl = apiUrl == null ? null : apiUrl.trim();
+    }
 
-	public String getPostback_url() {
-		return postback_url;
-	}
+    public String getClickParams()
+    {
+        return clickParams;
+    }
 
-	public void setPostback_url(String postback_url) {
-		this.postback_url = postback_url;
-	}
+    public void setClickParams(String clickParams)
+    {
+        this.clickParams = clickParams == null ? null : clickParams.trim();
+    }
 
-	public String getUsername() {
-		return username;
-	}
+    public String getCallbackDomain()
+    {
+        return callbackDomain;
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public void setCallbackDomain(String callbackDomain)
+    {
+        this.callbackDomain = callbackDomain == null ? null : callbackDomain
+                .trim();
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public Integer getMaxCap()
+    {
+        return maxCap;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setMaxCap(Integer maxCap)
+    {
+        this.maxCap = maxCap;
+    }
 
-	public String getIntroduction() {
-		return introduction;
-	}
+    public Integer getMaxClick()
+    {
+        return maxClick;
+    }
 
-	public void setIntroduction(String introduction) {
-		this.introduction = introduction;
-	}
+    public void setMaxClick(Integer maxClick)
+    {
+        this.maxClick = maxClick;
+    }
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+    public Long getMaxPayout()
+    {
+        return maxPayout;
+    }
 
-	public Integer getCr() {
-		return cr;
-	}
+    public void setMaxPayout(Long maxPayout)
+    {
+        this.maxPayout = maxPayout;
+    }
 
-	public void setCr(Integer cr) {
-		this.cr = cr;
-	}
+    public Byte getStatus()
+    {
+        return status;
+    }
 
+    public void setStatus(Byte status)
+    {
+        this.status = status;
+    }
+
+    public Date getCreatedate()
+    {
+        return createdate;
+    }
+
+    public void setCreatedate(Date createdate)
+    {
+        this.createdate = createdate;
+    }
+
+    public Date getUpdatedate()
+    {
+        return updatedate;
+    }
+
+    public void setUpdatedate(Date updatedate)
+    {
+        this.updatedate = updatedate;
+    }
+
+    public String getRemarks()
+    {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks)
+    {
+        this.remarks = remarks == null ? null : remarks.trim();
+    }
 }

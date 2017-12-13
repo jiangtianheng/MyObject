@@ -23,7 +23,7 @@
 		</property>
 	</bean>
 
-	<context:component-scan base-package="com.pilot.oversea.offer.dao" />
+	<context:component-scan base-package="com.cappuccino.offer.dao" />
 
 	<!-- jdbc dataSource -->
 	<bean id="db" class="org.logicalcobwebs.proxool.ProxoolDataSource">
@@ -82,18 +82,18 @@
 		<property name="testOnBorrow" value="${redis.testOnBorrow}" />
 	</bean>
 
-	<bean id="redisConnectionFactory" class="com.pilot.oversea.offer.cache.redis.RedisConfig">
+	<bean id="redisConnectionFactory" class="com.cappuccino.offer.cache.redis.RedisConfig">
 		<property name="host" value="${redis.host}" />
 		<property name="port" value="${redis.port}" />
 		<property name="timeOut" value="${redis.timeOut}" />
 		<property name="jedisPoolConfig" ref="redisPoolConfig" />
 	</bean>
-	<bean id="redisClient" class="com.pilot.oversea.offer.cache.redis.RedisFactory">
+	<bean id="redisClient" class="com.cappuccino.offer.cache.redis.RedisFactory">
 		<property name="redisConfig" ref="redisConnectionFactory" />
 	</bean>
-	<bean id="pullOfferJob" class="com.pilot.oversea.offer.jobs.PullOfferJob">
+	<bean id="pullOfferJob" class="com.cappuccino.offer.jobs.PullOfferJob">
 		<property name="version" value="1" /><!-- 第一套 -->
-		<property name="os" value="android" /><!-- 拉取android的offer -->
+		<property name="os" value="cpi" /><!-- 拉取android的offer -->
 	</bean>
 
 
@@ -116,8 +116,8 @@
 			<ref bean="updateOffers" />
 		</property>
 		<property name="cronExpression">
-		<!--  	<value>0 0/30 * * * ?</value>-->
-			 <value>0 15 10 ? * *</value> 
+			<!-- <value>0 0/30 * * * ?</value> -->
+			<value>0 17 16 ? * *</value>
 		</property>
 	</bean>
 
