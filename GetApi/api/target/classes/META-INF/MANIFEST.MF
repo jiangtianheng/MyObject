@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Built-By: Administrator
+Built-By: thj??thj
 Build-Jdk: 1.6.0_13
 Class-Path: lib/slf4j-api-1.6.1.jar lib/slf4j-log4j12-1.6.1.jar lib/lo
  g4j-1.2.16.jar lib/log4j-1.2-api-2.0.2.jar lib/log4j-api-2.0.2.jar li
