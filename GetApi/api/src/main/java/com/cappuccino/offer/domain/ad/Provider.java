@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Provider
 {
-    private Long id;
+    private Integer id;
 
     private String name;
 
@@ -22,7 +22,7 @@ public class Provider
 
     private Long maxPayout;
 
-    private Byte status;
+    private Integer status;
 
     private Date createdate;
 
@@ -30,12 +30,12 @@ public class Provider
 
     private String remarks;
 
-    public Long getId()
+    public Integer getId()
     {
         return id;
     }
 
-    public void setId(Long id)
+    public void setId(Integer id)
     {
         this.id = id;
     }
@@ -121,12 +121,12 @@ public class Provider
         this.maxPayout = maxPayout;
     }
 
-    public Byte getStatus()
+    public Integer getStatus()
     {
         return status;
     }
 
-    public void setStatus(Byte status)
+    public void setStatus(Integer status)
     {
         this.status = status;
     }

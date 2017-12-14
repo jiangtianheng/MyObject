@@ -11,13 +11,13 @@ import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
 
+import com.cappuccino.offer.dao.AdsTemDAO;
 import com.cappuccino.offer.dao.cache.CacheAdDAO;
-import com.cappuccino.offer.dao.cache.CacheAdTemDAO;
+import com.cappuccino.offer.dao.cache.CacheAdsTemDAO;
 import com.cappuccino.offer.dao.cache.CacheBlackAppDAO;
 import com.cappuccino.offer.dao.cache.CacheOfferBlackListDAO;
 import com.cappuccino.offer.domain.GlobalConst;
-import com.cappuccino.offer.domain.ad.Ad;
-import com.cappuccino.offer.domain.ad.AdTem;
+import com.cappuccino.offer.domain.ad.AdsTem;
 import com.cappuccino.offer.domain.ad.BlackApp;
 import com.cappuccino.offer.domain.ad.OfferBlackList;
 import com.cappuccino.offer.domain.ad.Provider;
@@ -35,7 +35,7 @@ public abstract class BaseCpiOffer implements Callable<Boolean>
 
     public abstract void work();
 
-    public abstract List<AdTem> getOfferList();
+    public abstract List<AdsTem> getOfferList();
 
     @Override
     public Boolean call() throws Exception
@@ -47,21 +47,17 @@ public abstract class BaseCpiOffer implements Callable<Boolean>
         return true;
     }
 
-    public void PutOfferTo_TemDB(List<AdTem> adlist)
+    /**
+     * 添加临时表
+     */
+    public void PutOfferTo_TemDB(List<AdsTem> adlist)
     {
         if (adlist != null && adlist.size() > 0)
         {
-            CacheAdTemDAO adTemDAO = SpringHelper.getBean("adTemDAO",
-                    CacheAdTemDAO.class);
-            adTemDAO.insertBatch_tem(adlist);
+            AdsTemDAO AdsTemDAO = SpringHelper.getBean("adsTemDAO",
+                    AdsTemDAO.class);
+            AdsTemDAO.insertBatch_tem(adlist);
         }
-    }
-
-    public void Del_TemAd(int provider)
-    {
-        CacheAdTemDAO adTemDAO = SpringHelper.getBean("adTemDAO",
-                CacheAdTemDAO.class);
-        adTemDAO.delAdTem(provider);
     }
 
     @SuppressWarnings("unused")
@@ -71,16 +67,16 @@ public abstract class BaseCpiOffer implements Callable<Boolean>
         logger.info("updateGpOfferToDb2  start.............");
         Map<String, String> pkgMap = new HashMap<String, String>();// key : pkg
         // 根据provider 取 List<overseaAd> adsList
-        List<AdTem> offer_Tem_List = null;
+        List<AdsTem> offer_Tem_List = null;
         //
-        List<AdTem> offer_com_List = new ArrayList<AdTem>();
+        List<AdsTem> offer_com_List = new ArrayList<AdsTem>();
         // 将adlist 格式化 便于与数据库对比
-        List<AdTem> pkglist = new ArrayList<AdTem>(); // overseaAd
+        List<AdsTem> pkglist = new ArrayList<AdsTem>(); // overseaAd
         // 对象------------------------------------------------
-        AdTem aditem = new AdTem();
-        Map<String, AdTem> offerMap = new HashMap<String, AdTem>();
-        CacheAdTemDAO temDao = SpringHelper.getBean("adTemDAO",
-                CacheAdTemDAO.class);
+        AdsTem aditem = new AdsTem();
+        Map<String, AdsTem> offerMap = new HashMap<String, AdsTem>();
+        CacheAdsTemDAO temDao = SpringHelper.getBean("AdsTemDAO",
+                CacheAdsTemDAO.class);
         // 获取数据库中的数据
         CacheAdDAO adDao = SpringHelper.getBean("adDAO", CacheAdDAO.class);
         // offer list
@@ -127,8 +123,8 @@ public abstract class BaseCpiOffer implements Callable<Boolean>
                 offerlist.add(key);
             }
 
-            logger.info("adtem pkglist size:" + pkglist.size());
-            logger.info("adtem offerlist size:" + offerlist.size());
+            logger.info("AdsTem pkglist size:" + pkglist.size());
+            logger.info("AdsTem offerlist size:" + offerlist.size());
             logger.info("");
             // offerlist与原有数据库做对比
             boolean theoldsqlisnull = true;
@@ -149,7 +145,7 @@ public abstract class BaseCpiOffer implements Callable<Boolean>
             // 获取状态为-2的offer
             List<Ad> mulAll = null;
             List<String> mulList = new ArrayList<String>();
-            List<AdTem> offer_com2_List = new ArrayList<AdTem>();
+            List<AdsTem> offer_com2_List = new ArrayList<AdsTem>();
             List<String> offerHas2 = null;
             List<String> comHas2 = null;
             List<String> dbHas2 = null;
@@ -376,7 +372,7 @@ public abstract class BaseCpiOffer implements Callable<Boolean>
                     int cap = 0, proweight = 0, sinstal = 0, offer2 = 0, offer2_real = 0;
                     for (String key : offerHas2)
                     {
-                        AdTem tempad = offerMap.get(key);
+                        AdsTem tempad = offerMap.get(key);
                         // 以key找出status=-2 判断是否有，有修改状态为0 ，没有跳过 key
                         // =p+":"+k+":"+c+":"+offerid
                         String[] keys = key.split(":");
@@ -417,7 +413,7 @@ public abstract class BaseCpiOffer implements Callable<Boolean>
                 // 全部插入
                 for (String k : offerMap.keySet())
                 {
-                    AdTem tempad = offerMap.get(k);
+                    AdsTem tempad = offerMap.get(k);
                     adDao.insertTem(tempad);
                 }
             }
@@ -457,24 +453,24 @@ public abstract class BaseCpiOffer implements Callable<Boolean>
      * @param list
      * @return
      */
-    public static List<AdTem> removeBlackItem(List<AdTem> list,
+    public static List<AdsTem> removeBlackItem(List<AdsTem> list,
             Map<String, String> blackMap)
     {
 
-        AdTem overseaAdtem = null;
+        AdsTem overseaAdsTem = null;
         try
         {
-            Iterator<AdTem> iterator = list.iterator();
+            Iterator<AdsTem> iterator = list.iterator();
             while (iterator.hasNext())
             {
-                overseaAdtem = iterator.next();
-                String tempStr1 = blackMap.get(overseaAdtem.getPkg()
+                overseaAdsTem = iterator.next();
+                String tempStr1 = blackMap.get(overseaAdsTem.getPkg()
                         + ":null:null");
-                String tempStr2 = blackMap.get(overseaAdtem.getPkg() + ":"
-                        + overseaAdtem.getProvider() + ":null");
-                String tempStr3 = blackMap.get(overseaAdtem.getPkg() + ":"
-                        + overseaAdtem.getProvider() + ":"
-                        + overseaAdtem.getCountry());
+                String tempStr2 = blackMap.get(overseaAdsTem.getPkg() + ":"
+                        + overseaAdsTem.getProvider() + ":null");
+                String tempStr3 = blackMap.get(overseaAdsTem.getPkg() + ":"
+                        + overseaAdsTem.getProvider() + ":"
+                        + overseaAdsTem.getCountry());
 
                 if (tempStr1 != null || tempStr2 != null || tempStr3 != null)
                 {
@@ -559,13 +555,13 @@ public abstract class BaseCpiOffer implements Callable<Boolean>
      * @param list
      * @return
      */
-    public List<AdTem> removeAppBlack(List<AdTem> list)
+    public List<AdsTem> removeAppBlack(List<AdsTem> list)
     {
         Map<String, String> appBlackItem = getAppBlackItem();
-        Iterator<AdTem> iterator = list.iterator();
+        Iterator<AdsTem> iterator = list.iterator();
         while (iterator.hasNext())
         {
-            AdTem item = (AdTem) iterator.next();
+            AdsTem item = (AdsTem) iterator.next();
             String key = item.getPkg();
             if (!StringUtil.isBlank(appBlackItem.get(key)))
             {

@@ -11,8 +11,8 @@ import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.PreparedStatementSetter;
 
 import com.cappuccino.offer.cache.redis.RedisDb;
-import com.cappuccino.offer.domain.ad.Ad;
-import com.cappuccino.offer.domain.ad.AdTem;
+import com.cappuccino.offer.domain.ad.Ads;
+import com.cappuccino.offer.domain.ad.AdsTem;
 import com.cappuccino.offer.domain.ad.Ranking;
 import com.cappuccino.offer.domain.ad.Result;
 import com.cappuccino.offer.util.MyEnum;
@@ -26,32 +26,32 @@ public class AdDAO extends BaseDAO {
 		return TBLPREFIX;
 	}
 
-	public List<Ad> findAffliateByProvider() {
+	public List<Ads> findAffliateByProvider() {
 		String sql = "select * from " + table() + " where   status = 0  and auto=0";
-		return super.queryForList(sql, Ad.class);
+		return super.queryForList(sql, Ads.class);
 	}
 
-	public List<Ad> getAll() {
+	public List<Ads> getAll() {
 		String sql = "select * from " + table() + " where   status = 0 ";
-		return super.queryForList(sql, Ad.class);
+		return super.queryForList(sql, Ads.class);
 	}
 
-	public List<Ad> listAll() {
+	public List<Ads> listAll() {
 		String sql = "select * from " + table();
-		return super.queryForList(sql, Ad.class);
+		return super.queryForList(sql, Ads.class);
 	}
 
-	public List<Ad> findUngpAffliateByProvider(String provider) {
+	public List<Ads> findUngpAffliateByProvider(String provider) {
 		String sql = "select * from " + table() + " where type = 4 and provider in (" + provider + ") and status = 3";
-		return super.queryForList(sql, Ad.class);
+		return super.queryForList(sql, Ads.class);
 	}
 
-	public List<Ad> findAffliateByProvider(int type, int provider) {
+	public List<Ads> findAffliateByProvider(int type, int provider) {
 		String sql = "select * from " + table() + " where type = ? and provider = ? and status = 0 ";
-		return super.queryForList(sql, new Object[] { type, provider }, Ad.class);
+		return super.queryForList(sql, new Object[] { type, provider }, Ads.class);
 	}
 
-	public void updateStatus_AD(Ad item) {
+	public void updateStatus_AD(Ads item) {
 		if (item == null) {
 			return;
 		}
@@ -63,10 +63,10 @@ public class AdDAO extends BaseDAO {
 	}
 
 	// jary 都有的
-	public void updateCom(List<AdTem> item1) {
+	public void updateCom(List<AdsTem> item1) {
 
 		int t = 0;
-		for (final AdTem item : item1) {
+		for (final AdsTem item : item1) {
 
 			if (item == null) {
 				return;
@@ -87,67 +87,6 @@ public class AdDAO extends BaseDAO {
 						ps.setInt(i++, -1);
 					}
 
-					if (item.getProvider() != null) {
-						ps.setString(i++, item.getProvider());
-					} else {
-						ps.setNull(i++, Types.NULL);
-					}
-					if (item.getName() != null) {
-						ps.setString(i++, item.getName());
-					} else {
-						ps.setNull(i++, Types.NULL);
-					}
-					if (item.getPkg() != null) {
-						ps.setString(i++, item.getPkg());
-					} else {
-						ps.setNull(i++, Types.NULL);
-					}
-					if (item.getCountry() != null) {
-						ps.setString(i++, item.getCountry());
-					} else {
-						ps.setNull(i++, Types.NULL);
-					}
-					if (item.getTracklink() != null) {
-						ps.setString(i++, item.getTracklink());
-					} else {
-						ps.setNull(i++, Types.NULL);
-					}
-					if (item.getPreviewlink() != null) {
-						ps.setString(i++, item.getPreviewlink());
-					} else {
-						ps.setNull(i++, Types.NULL);
-					}
-					if (item.getPayout() != null) {
-						ps.setDouble(i++, item.getPayout());
-					} else {
-						ps.setNull(i++, Types.NULL);
-					}
-
-					if (item.getStatus() != null) {
-						ps.setInt(i++, item.getStatus());
-					} else {
-						ps.setNull(i++, Types.NULL);
-					}
-					if (item.getProvider() != null) {
-						ps.setString(i++, item.getProvider());
-					} else {
-						ps.setNull(i++, Types.NULL);
-					}
-					if (item.getPkg() != null) {
-						ps.setString(i++, item.getPkg());
-					} else {
-						ps.setNull(i++, Types.NULL);
-					}
-					if (item.getCountry() != null) {
-						ps.setString(i++, item.getCountry());
-					} else {
-						ps.setNull(i++, Types.NULL);
-					}
-					if (item.getOfferid() != null) {
-						ps.setString(i++, item.getOfferid());
-					} else {
-						ps.setNull(i++, Types.NULL);
-					}
 
 				}
 			};
@@ -158,14 +97,14 @@ public class AdDAO extends BaseDAO {
 		}
 	}
 
-	public List<Ad> findManual() {
+	public List<Ads> findManual() {
 		StringBuffer sb = new StringBuffer();
 		sb.append("select * from  " + table()).append(" where status = -2");
 		System.out.println(sb.toString());
-		return super.queryForList(sb.toString(), Ad.class);
+		return super.queryForList(sb.toString(), Ads.class);
 	}
 
-	public void update3(final AdTem item) {
+	public void update3(final AdsTem item) {
 
 		if (item == null) {
 			return;
@@ -178,69 +117,20 @@ public class AdDAO extends BaseDAO {
 		PreparedStatementSetter psc = new PreparedStatementSetter() {
 			public void setValues(PreparedStatement ps) throws SQLException {
 				int i = 1;
-				if (item.getProvider() != null) {
-					ps.setString(i++, item.getProvider());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
-				if (item.getName() != null) {
-					ps.setString(i++, item.getName());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
-				if (item.getPkg() != null) {
-					ps.setString(i++, item.getPkg());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
-
-				if (item.getCountry() != null) {
-					ps.setString(i++, item.getCountry());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
-				if (item.getTracklink() != null) {
-					ps.setString(i++, item.getTracklink());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
-				if (item.getPreviewlink() != null) {
-					ps.setString(i++, item.getPreviewlink());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
-
-				if (item.getCap() != null) {
-					ps.setInt(i++, item.getCap());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
-
-				if (item.getPayout() != null) {
-					ps.setDouble(i++, item.getPayout());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
-
-				if (item.getOfferid() != null) {
-					ps.setString(i++, item.getOfferid());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
 				ps.setLong(i++, item.getId());
 			}
 		};
 		getJdbcTemplate().update(sb.toString(), psc);
 	}
 
-	public List<Ad> findByKey(String k0, String k1, String k2, String k3) {
+	public List<Ads> findByKey(String k0, String k1, String k2, String k3) {
 		StringBuffer sb = new StringBuffer("select * from " + table());
 		sb.append(" where `provider`=" + k0 + " and `pkg`='" + k1 + "' and `country`='" + k2 + "' and `offerid`='" + k3 + "' and `status`=-2  ORDER BY updatedate DESC");
 		System.out.println(sb.toString());
-		return super.queryForList(sb.toString(), Ad.class);
+		return super.queryForList(sb.toString(), Ads.class);
 	}
 
-	public int insertTem(final AdTem item) {
+	public int insertTem(final AdsTem item) {
 
 		if (item == null) {
 			return 0;
@@ -254,142 +144,6 @@ public class AdDAO extends BaseDAO {
 			public PreparedStatement createPreparedStatement(Connection conn) throws SQLException {
 				PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 				int i = 1;
-				// name
-				if (item.getName() != null) {
-					ps.setString(i++, item.getName());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
-				// provider
-				if (item.getProvider() != null) {
-					ps.setString(i++, item.getProvider());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
-				// country
-				if (item.getCountry() != null) {
-					ps.setString(i++, item.getCountry());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
-				// payout
-				if (item.getPayout() != null) {
-					ps.setDouble(i++, item.getPayout());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
-				// carrier
-				if (item.getCarrier() != null) {
-					ps.setString(i++, item.getCarrier());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
-				// os
-				if (item.getOs() != null) {
-					ps.setInt(i++, item.getOs());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
-				// tracklink
-				if (item.getTracklink() != null) {
-					ps.setString(i++, item.getTracklink());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
-				// previewlink
-				if (item.getPreviewlink() != null) {
-					ps.setString(i++, item.getPreviewlink());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
-				// offerid
-				if (item.getOfferid() != null) {
-					ps.setString(i++, item.getOfferid());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
-				// pkg
-				if (item.getPkg() != null) {
-					ps.setString(i++, item.getPkg());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
-				// type
-				if (item.getType() != null) {
-					ps.setInt(i++, item.getType());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
-
-				// network
-				if (item.getNetwork() != null) {
-					ps.setInt(i++, item.getNetwork());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
-				// icon
-				if (item.getIcon() != null) {
-					ps.setString(i++, item.getIcon());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
-				// traffic
-				if (item.getTraffic() != null) {
-					ps.setString(i++, item.getTraffic());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
-				// conversion_flow
-				if (item.getConversion_flow() != null) {
-					ps.setInt(i++, item.getConversion_flow());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
-
-				// status
-				if (item.getStatus() != null) {
-					ps.setInt(i++, item.getStatus());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
-
-				// cap
-				if (item.getCap() != null) {
-					ps.setInt(i++, item.getCap());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
-
-				// category
-				if (item.getCategory() != null) {
-					ps.setInt(i++, item.getCategory());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
-				// isIframe
-				if (item.getIsIframe() != null) {
-					ps.setInt(i++, item.getIsIframe());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
-				// auto
-				if (item.getAuto() != null) {
-					ps.setInt(i++, item.getAuto());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
-				// incentive
-				if (item.getIncentive() != null) {
-					ps.setInt(i++, item.getIncentive());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
-				// offer_type
-				if (item.getOffer_type() != null) {
-					ps.setInt(i++, item.getOffer_type());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
 				//
 				return ps;
 			}
@@ -398,8 +152,8 @@ public class AdDAO extends BaseDAO {
 		return id;
 	}
 
-	public void updateStatus_Tem(final List<AdTem> item1) {
-		for (final AdTem item : item1) {
+	public void updateStatus_Tem(final List<AdsTem> item1) {
+		for (final AdsTem item : item1) {
 
 			if (item == null) {
 				return;
@@ -412,41 +166,21 @@ public class AdDAO extends BaseDAO {
 			PreparedStatementSetter psc = new PreparedStatementSetter() {
 				public void setValues(PreparedStatement ps) throws SQLException {
 					int i = 1;
-					if (item.getProvider() != null) {
-						ps.setString(i++, item.getProvider());
-					} else {
-						ps.setNull(i++, Types.NULL);
-					}
-					if (item.getPkg() != null) {
-						ps.setString(i++, item.getPkg());
-					} else {
-						ps.setNull(i++, Types.NULL);
-					}
-					if (item.getCountry() != null) {
-						ps.setString(i++, item.getCountry());
-					} else {
-						ps.setNull(i++, Types.NULL);
-					}
-					if (item.getOfferid() != null) {
-						ps.setString(i++, item.getOfferid());
-					} else {
-						ps.setNull(i++, Types.NULL);
-					}
 				}
 			};
 			super.getJdbcTemplate().update(sb.toString(), psc);
 		}
 	}
 
-	public List<Ad> findByStatus() {
+	public List<Ads> findByStatus() {
 		String sql = "select * from " + table() + " where status = 2 and (type = 2 or type = 3)";
-		return super.queryForList(sql, Ad.class);
+		return super.queryForList(sql, Ads.class);
 	}
 
-	public List<Ad> findByStatus(int status) {
+	public List<Ads> findByStatus(int status) {
 		String sql = "select * from " + table() + " where status = ?";
 		logger.info("sql:" + sql);
-		return super.queryForList(sql, new Object[] { status }, Ad.class);
+		return super.queryForList(sql, new Object[] { status }, Ads.class);
 	}
 
 	public void updateStatusByPkg(final String pkg) {
@@ -460,23 +194,23 @@ public class AdDAO extends BaseDAO {
 		getJdbcTemplate().update(sb.toString(), pkg);
 	}
 
-	public List<Ad> findAffliateByProviderInsertToday(int provider, long datetime) {
+	public List<Ads> findAffliateByProviderInsertToday(int provider, long datetime) {
 		String sql = "select * from " + table() + " where  provider = ? and status = 0";
-		return super.queryForList(sql, new Object[] { provider }, Ad.class);
+		return super.queryForList(sql, new Object[] { provider }, Ads.class);
 	}
 
-	public List<Ad> findAffliateByProviderInsertToday2(int type, int provider, long datetime) {
+	public List<Ads> findAffliateByProviderInsertToday2(int type, int provider, long datetime) {
 		String sql = "select * from " + table() + " where status=0  and type =1";
-		return super.queryForList(sql, null, Ad.class);
+		return super.queryForList(sql, null, Ads.class);
 	}
 
 	// 根据Id寻找offer
-	public Ad getListById(Long id) {
-		List<Ad> list = RedisDb.getInstance().getAll(MyEnum.REDIS_KEY_DB_ID_KEYS + id);
+	public Ads getListById(Long id) {
+		List<Ads> list = RedisDb.getInstance().getAll(MyEnum.REDIS_KEY_DB_ID_KEYS + id);
 		if (list == null || list.size() <= 0) {
 			String sql = "select * from o_ad where id='" + id + "'";
 			System.out.println("=================================sql==========================================");
-			list = super.queryForList(sql, Ad.class);
+			list = super.queryForList(sql, Ads.class);
 			RedisDb.getInstance().replaceAll(MyEnum.REDIS_KEY_DB_ID_KEYS + id, list);
 		}
 		return list.get(0);

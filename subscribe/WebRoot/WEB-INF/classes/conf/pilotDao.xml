@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/aop 
+           http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<!-- 下发数据库 -->
+	<bean id="dsHots" class="org.logicalcobwebs.proxool.ProxoolDataSource">
+		<property name="driver">
+			<value>${mysql.driver}</value>
+		</property>
+		<property name="driverUrl">
+			<value>${mysql.url}</value>
+		</property>
+		<property name="user" value="${mysql.username}" />
+		<property name="password" value="${mysql.password}" />
+		<property name="alias" value="Hots" />
+		<property name="maximumActiveTime" value="${mysql.maxActiveTime}" />
+		<property name="maximumConnectionCount" value="${mysql.maxConnCount}" />
+		<property name="minimumConnectionCount" value="${mysql.minConnCount}" />
+		<property name="simultaneousBuildThrottle" value="${mysql.buildThrottle}" />
+		<property name="houseKeepingTestSql" value="${mysql.keepTestSql}" />
+	</bean>
+	<bean id="PilotAdDao" class="com.turing.pilot.dao.PilotAdDao">
+		<property name="dataSource">
+			<ref local="dsHots" />
+		</property>
+	</bean>
+
+
+	<bean id="SupervisorsDao" class="com.turing.pilot.dao.SupervisorsDao">
+		<property name="dataSource">
+			<ref local="dsHots" />
+		</property>
+	</bean>
+
+
+	<bean id="AdsUnionDao" class="com.turing.pilot.dao.AdsUnionDao">
+		<property name="dataSource">
+			<ref local="dsHots" />
+		</property>
+	</bean>
+	<bean id="AdConverDao" class="com.turing.pilot.dao.AdConverDao">
+		<property name="dataSource">
+			<ref local="dsHots" />
+		</property>
+	</bean>
+	<bean id="InfoDailyDao" class="com.turing.pilot.dao.InfoDailyDao">
+		<property name="dataSource">
+			<ref local="dsHots" />
+		</property>
+	</bean>
+
+	<bean id="ControlCrDao" class="com.turing.pilot.dao.ControlCrDao">
+		<property name="dataSource">
+			<ref local="dsHots" />
+		</property>
+	</bean>
+	<bean id="OfferBlackListDao" class="com.turing.pilot.dao.OfferBlackListDao">
+		<property name="dataSource">
+			<ref local="dsHots" />
+		</property>
+	</bean>
+	<bean id="Hour_report_providerDao" class="com.turing.pilot.dao.Hour_report_providerDao">
+		<property name="dataSource">
+			<ref local="dsHots" />
+		</property>
+	</bean>
+	
+	<bean id="ProviderBackRateDao" class="com.turing.pilot.dao.ProviderBackRateDao">
+		<property name="dataSource">
+			<ref local="dsHots" />
+		</property>
+	</bean>
+
+
+	<bean id="bSpringHelper" class="com.turing.util.TuringSpringHelper"></bean>
+</beans>

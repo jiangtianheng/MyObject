@@ -1,6 +1,7 @@
 package com.cappuccino.offer.offers.cpi.v1;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +11,9 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.cappuccino.offer.domain.GlobalConst;
-import com.cappuccino.offer.domain.ad.AdTem;
+import com.cappuccino.offer.domain.ad.AdsTem;
 import com.cappuccino.offer.domain.ad.Provider;
+import com.cappuccino.offer.jobs.AditemJob;
 import com.cappuccino.offer.jobs.CapService;
 import com.cappuccino.offer.offers.cpi.BaseCpiOffer;
 import com.cappuccino.offer.util.HttpUtil;
@@ -30,7 +32,8 @@ public class AvazuTemplate extends BaseCpiOffer
 
         try
         {
-            List<AdTem> adlist = getOfferList();
+
+            List<AdsTem> adlist = getOfferList();
             PutOfferTo_TemDB(adlist);
         }
         catch (Exception e)
@@ -39,12 +42,13 @@ public class AvazuTemplate extends BaseCpiOffer
         }
     }
 
-    public List<AdTem> getOfferList()
+    public List<AdsTem> getOfferList()
     {
+        System.out.println("come in");
         // 定义初始化变量
         JSONObject json1;
         JSONArray array = null;
-        List<AdTem> adsList = new ArrayList<AdTem>();
+        List<AdsTem> adsList = new ArrayList<AdsTem>();
         try
         {
             logger.info("get " + entity.getName() + " offer start");
@@ -73,7 +77,6 @@ public class AvazuTemplate extends BaseCpiOffer
                         {
                             continue;
                         }
-                        String pkg = ad.getString("pkgname");
                         String tracklink = ad.getString("trackinglink");
                         tracklink = tracklink + entity.getClickParams();
                         Double payout = ad.getDouble("payout");
@@ -84,12 +87,48 @@ public class AvazuTemplate extends BaseCpiOffer
                         String icon = GlobalConst.icon;
                         int incentive = GlobalConst.Incentive;
                         int osMinVersion = GlobalConst.MinVersion4;
-                        AdTem aditem = InsertAdTem(name, pkg, offerid,
-                                countries, payout, payoutType, tracklink,
-                                previewlink, icon, creativeFiles, incentive,
-                                osMinVersion, carriers,
-                                CapService.work(payout), entity.getStatus(),description);
-                        adsList.add(aditem);
+                        String pkg = "";
+                        Integer platform =0;
+                        if (previewlink.indexOf("itunes.apple.com") > 0)
+                        {
+                            pkg = previewlink.substring(
+                                    previewlink.indexOf("id"),
+                                    previewlink.length());
+                            if (pkg.indexOf("?") > 0)
+                            {
+                                pkg = pkg.substring(pkg.indexOf("id"),
+                                        pkg.indexOf("?"));
+                            }
+                            else
+                            {
+                                pkg = pkg.substring(pkg.indexOf("id"),
+                                        pkg.length());
+                            }
+                            platform=2;
+                        }
+                        else if (previewlink.indexOf("play.google.com") > 0)
+                        {
+                            pkg = previewlink.substring(
+                                    previewlink.indexOf("?id") + 4,
+                                    previewlink.length());
+                            platform=1;
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                        if (pkg.length() <= 5)
+                        {
+                            continue;
+                        }
+                        AditemJob AditemJob = new AditemJob();
+                        AdsTem adsitem = AditemJob.InsertAdsTem(name,
+                                entity.getId(), pkg, offerid, countries,platform,
+                                payout, payoutType, tracklink, previewlink,
+                                icon, creativeFiles, incentive, osMinVersion,
+                                carriers, CapService.work(payout),
+                                entity.getStatus(), description);
+                        adsList.add(adsitem);
                     }
                 }
             }
@@ -103,35 +142,6 @@ public class AvazuTemplate extends BaseCpiOffer
             e.printStackTrace();
         }
         return adsList;
-    }
-
-    private AdTem InsertAdTem(String name, String pkg, String offerid,
-            String countries, Double payout, int payoutType, String tracklink,
-            String previewlink, String icon, String creativeFiles,
-            int incentive, int osMinVersion, String carriers, Integer integer,
-            Byte status, String description)
-    {
-        AdTem aditem = new AdTem();
-        aditem.setName(name);
-        aditem.setAuto(0);
-        aditem.setOfferid(offerid);
-        aditem.setPayout(payout);
-        aditem.setCountry(countrys);
-        // aditem.setCap(CapService.work(payout));
-        aditem.setPreviewlink(previewlink);
-        aditem.setTracklink(trackinglink);
-        aditem.setPkg(pkg);
-        aditem.setIcon("");
-        aditem.setNetwork(2);
-        aditem.setStatus(0);
-        aditem.setConversion_flow(-1);
-        aditem.setProvider(entity.getId() + "");
-        aditem.setIsIframe(1);
-        aditem.setIncentive(0);
-        aditem.setConversion_flow(0);
-        aditem.setTraffic(description);
-        aditem.setCarrier("ALL");
-        return null;
     }
 
     public static void main(String[] args)

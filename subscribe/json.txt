@@ -1,0 +1,288 @@
+
+注册API
+http://host/hots/api/1
+输入
+{
+	"imsi":"232232",
+	"channel":"default",
+	"imei":"1dabad",
+	"mac":"ae:bc:dd:db",
+	"android_id":"12ada-abdc",
+	"language":"en-US",
+	"network":1,
+	"root":0,
+	"model":"hua wei",
+	"cpu":"ARMv7 Processor rev 1 (v7l) ",
+	"os_ver":"4.0.4",
+	"resolution":"480x800",
+	"sign":"2323232xds",
+	"appid":"12121",
+	"pkg":"com.ada.c"
+}
+输出
+{
+	"devid":"3232323232",
+}
+
+初始化 API接口
+http://host/hots/api/2
+输入
+{
+	"channel":"default",
+	"pkg":"com.ada.c",
+	"install_time":121212,
+	"appid":12121,
+	"sign":"323dwewe",
+	"imsi":"4600033232",
+	"android_id":"1212",
+	"mac":"ad:bc:ea",
+	"imei":"aeedwew",
+	"devid":"12121"
+}
+
+输出
+{
+	"ad_inteval":60,
+	"admob_key":"121221",
+	"tapjoy_key":"1212",
+	"supersnoic_key":"323232",
+	"show_admob":1,
+	"show_tapjoy":1,
+	"show_supersnoic":1,
+	"country":"IN",
+	"ip":"200.22.45.1",
+	"apps":
+	[
+		{
+			"name":"video decoder",
+			"description": "video decoders",
+			"icon":"http://121.dwew.com/2.png",
+			"apk":"http://wew.com/2.apk",
+			"pkg":"com.a.b",
+			"point":6,
+			"request": "instal and active"
+		},
+		{
+			"name":"video downloader",
+			"description": "video decoders",
+			"icon":"http://121.dwew.com/2.png",
+			"apk":"http://wew.com/2.apk",
+			"pkg":"a.b.c",
+			"point":6,
+			"request": "instal and active"
+		}
+	]
+}
+
+请求home的API：
+http://host/hots/api/3
+输入
+{
+	"imsi":"232232",
+	"channel":"default",
+	"imei":"1dabad",
+	"mac":"ae:bc:dd:db",
+	"android_id":"12ada-abdc",
+	"language":"en-US",
+	"devid":"121212",
+	"index":50,
+	"num": 12
+}
+输出
+{
+	"home":
+	[
+		{
+			"title":"happy before married",
+			"description":"Director :eya <br/> Screenwriter:",
+			"small_icon": "http://1.agee.com/2.jpg",
+			"main_icon":"http://2.ageee.com/2.jpg",
+			"country":"japan",
+			"area":"asia",
+			"watch":1212,
+			"low_point":25,
+			"high_point":30,
+			"url":"http://www.xvideo.com/1.html",
+			"bt_url":"http://www.adada.com/2.torrent",
+			"video":"http://2.wead.com/2.avi",
+			"video2":"http://w.ea.com/2.avi",
+			"score":5,
+			"id":1
+		},
+		{
+			"title":"happy before married",
+			"description":"Director :eya <br/> Screenwriter:",
+			"small_icon": "http://1.agee.com/2.jpg",
+			"main_icon":"http://2.ageee.com/2.jpg",
+			"country":"japan",
+			"area":"asia",
+			"watch":1212,
+			"low_point":25,
+			"high_point":30,
+			"url":"http://www.xvideo.com/1.html",
+			"bt_url":"http://www.adada.com/2.torrent",
+			"video":"http://2.wead.com/2.avi",
+			"video2":"http://w.ea.com/2.avi",
+			"score":5,
+			"id":2
+		}
+	],
+	"group":
+	[
+		{
+			"title":"happy before married",
+			"description":"Director :eya <br/> Screenwriter:",
+			"small_icon": "http://1.agee.com/2.jpg",
+			"main_icon":"http://2.ageee.com/2.jpg",
+			"country":"japan",
+			"area":"asia",
+			"watch":1212,
+			"low_point":25,
+			"high_point":30,
+			"url":"http://www.xvideo.com/1.html",
+			"bt_url":"http://www.adada.com/2.torrent",
+			"video":"http://2.wead.com/2.avi",
+			"video2":"http://w.ea.com/2.avi",
+			"score":5,
+			"id":1
+		},
+		{
+			"title":"happy before married",
+			"description":"Director :eya <br/> Screenwriter:",
+			"small_icon": "http://1.agee.com/2.jpg",
+			"main_icon":"http://2.ageee.com/2.jpg",
+			"country":"japan",
+			"area":"asia",
+			"watch":1212,
+			"low_point":25,
+			"high_point":30,
+			"url":"http://www.xvideo.com/1.html",
+			"bt_url":"http://www.adada.com/2.torrent",
+			"video":"http://2.wead.com/2.avi",
+			"video2":"http://w.ea.com/2.avi",
+			"score":5,
+			"id":2
+		}
+	]
+}
+
+请求movie的API：
+http://host/hots/api/4
+输入
+{
+	"imsi":"232232",
+	"channel":"default",
+	"imei":"1dabad",
+	"mac":"ae:bc:dd:db",
+	"androidid":"12ada-abdc",
+	"language":"en-US",
+	"devid":"121212",
+	"index":40,
+	"num":12
+}
+输出
+{
+	"hots":
+	[
+		{
+			"title":"happy before married",
+			"description":"Director :eya <br/> Screenwriter:",
+			"small_icon": "http://1.agee.com/2.jpg",
+			"main_icon":"http://2.ageee.com/2.jpg",
+			"country":"japan",
+			"area":"asia",
+			"watch":1212,
+			"low_point":25,
+			"high_point":30,
+			"url":"http://www.xvideo.com/1.html",
+			"bt_url":"http://www.adada.com/2.torrent",
+			"video":"http://2.wead.com/2.avi",
+			"video2":"http://w.ea.com/2.avi",
+			"type":1,
+			"score":5,
+			"id":3
+		},
+		{
+			"title":"happy before married",
+			"description":"Director :eya <br/> Screenwriter:",
+			"small_icon": "http://1.agee.com/2.jpg",
+			"main_icon":"http://2.ageee.com/2.jpg",
+			"country":"japan",
+			"area":"asia",
+			"watch":1212,
+			"low_point":25,
+			"high_point":30,
+			"url":"http://www.xvideo.com/1.html",
+			"bt_url":"http://www.adada.com/2.torrent",
+			"video":"http://2.wead.com/2.avi",
+			"video2":"http://w.ea.com/2.avi",
+			"type":1, 
+			"score":5
+			"id":4
+		}
+	]
+}
+
+请求广告的API：
+http://host/hots/api/5
+输入
+{
+	"imsi":"232232",
+	"channel":"default",
+	"imei":"1dabad",
+	"mac":"ae:bc:dd:db",
+	"androidid":"12ada-abdc",
+	"language":"en-US",
+	"devid":"121212"
+}
+
+输出
+{
+    "ads": [
+        {
+            "apk": "http://d.altascdn.com/apk/com.lazyswipe-1710.apk",
+            "description": "Lazy swipe",
+            "icon": "https://appnext-a.akamaihd.net/banner/ONk2mpNonT08sEw_default.png",
+            "id": 1,
+            "name": "Lazyswipe",
+            "point": 5,
+            "request": "Install and open",
+            "track": "http://c.cldlr.com/?a=23235&c=72550&E=N0JM9qMfrKE%3d&s1=",
+            "type": 0
+        }
+    ],
+    "result": 0,
+    "status": 0
+}
+
+请求快速积分广告的API：
+http://host/hots/api/6
+输入
+{
+	"imsi":"232232",
+	"channel":"default",
+	"imei":"1dabad",
+	"mac":"ae:bc:dd:db",
+	"androidid":"12ada-abdc",
+	"language":"en-US",
+	"devid":"121212"
+}
+
+输出
+{
+    "quick_ads": [
+        {
+            "apk": "http://d.altascdn.com/apk/com.eterno-90.apk",
+            "description": "(APP) Newshunt ",
+            "icon": "https://appnext-a.akamaihd.net/banner/r1UBNcHF0gXms1w_uploaded.jpg",
+            "id": 2,
+            "name": "(APP) Newshunt ",
+            "point": 5,
+            "request": "Install and open",
+            "track": "http://clmbtrk.com/?a=23235&c=69878&s1=25678",
+            "type": 1
+        }
+    ],
+    "result": 0,
+    "status": 0
+}

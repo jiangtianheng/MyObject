@@ -8,7 +8,7 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 
 import com.alibaba.fastjson.JSON;
-import com.cappuccino.offer.domain.ad.Ad;
+import com.cappuccino.offer.domain.ad.Ads;
 import com.cappuccino.offer.domain.ad.SupervisorsBean;
 import com.cappuccino.offer.util.MyEnum;
 
@@ -24,24 +24,24 @@ public class RedisDb {
 		return instance;
 	}
 
-	public List<Ad> getAll(String key) {
-		List<Ad> list = new ArrayList<Ad>();
+	public List<Ads> getAll(String key) {
+		List<Ads> list = new ArrayList<Ads>();
 		Map<String, String> map = RedisFactory.hgetAll(key);
 		for (String k : map.keySet()) {
 			String value = map.get(k);
-			Ad item = JSON.parseObject(value, Ad.class);
+			Ads item = JSON.parseObject(value, Ads.class);
 			list.add(item);
 		}
 		return list;
 	}
 
-	public List<Ad> replaceAll(String key, List<Ad> list) {
+	public List<Ads> replaceAll(String key, List<Ads> list) {
 		if (list == null || list.size() <= 0) {
 			return null;
 		}
 		RedisFactory.del(key);
 		Map<String, String> map = new HashMap<String, String>();
-		for (Ad item : list) {
+		for (Ads item : list) {
 			String k = String.valueOf(item.getId());
 			map.put(k, toJson(item));
 		}
@@ -60,7 +60,7 @@ public class RedisDb {
 	 * 
 	 * @return
 	 */
-	public boolean updateRedisFromDb(List<Ad> adList) {
+	public boolean updateRedisFromDb(List<Ads> adList) {
 		// 清除现有的key
 		Map<String, String> keysMap = RedisFactory.getAllmap(MyEnum.REDIS_ADDB_ALLKEYS);
 		if (keysMap != null) {
@@ -87,12 +87,12 @@ public class RedisDb {
 	 *            需要替换的广告列表
 	 * @return
 	 */
-	public List<Ad> replaceById(List<Ad> list) {
+	public List<Ads> replaceById(List<Ads> list) {
 
 		if (list == null || list.size() <= 0) {
 			return null;
 		}
-		for (Ad item : list) {
+		for (Ads item : list) {
 			updateOfferById(item);
 		}
 		return list;
@@ -105,7 +105,7 @@ public class RedisDb {
 	 * @param countryKeys
 	 * @param ad
 	 */
-	public void updateOfferById(Ad ad) {
+	public void updateOfferById(Ads ad) {
 		String couKey = "";
 		Map<String, String> keysMap = RedisFactory.getAllmap(MyEnum.REDIS_ADDB_ALLKEYS);
 		if (ad == null) {
@@ -124,7 +124,7 @@ public class RedisDb {
 	 * @param adAll
 	 * @return
 	 */
-	public Boolean updateRedisPkgCountry(List<Ad> adAll) {
+	public Boolean updateRedisPkgCountry(List<Ads> adAll) {
 		// 清除现有的key
 		Map<String, String> keysMap = RedisFactory.getAllmap(MyEnum.REDIS_KEYS_COUNTRYPKG);
 		if (keysMap != null) {
@@ -133,24 +133,24 @@ public class RedisDb {
 			}
 		}
 		// 添加新的offer数据
-		Map<String, List<Ad>> map = new HashMap<String, List<Ad>>();
-		for (Ad ad : adAll) {
+		Map<String, List<Ads>> map = new HashMap<String, List<Ads>>();
+		for (Ads ad : adAll) {
 			String pkg = ad.getPkg().replace("id", "");
-			String key = pkg + "_" + ad.getCountry();
+			String key = pkg + "_" + ad.getCountries();
 			keysMap.put(key, key);
 			if (map.get(key) != null) {
-				List<Ad> list = map.get(key);
+				List<Ads> list = map.get(key);
 				list.add(ad);
 				map.remove(key);
 				map.put(key, list);
 			} else {
-				List<Ad> list = new ArrayList<Ad>();
+				List<Ads> list = new ArrayList<Ads>();
 				list.add(ad);
 				map.put(key, list);
 			}
 		}
 
-		for (Map.Entry<String, List<Ad>> entry : map.entrySet()) {
+		for (Map.Entry<String, List<Ads>> entry : map.entrySet()) {
 			RedisFactory.set(MyEnum.REDIS_KEYS_COUNTRYPKG, keysMap);
 			replaceAll(entry.getKey(), map.get(entry.getKey()));
 		}

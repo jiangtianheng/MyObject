@@ -11,54 +11,54 @@ import com.cappuccino.offer.cache.key.KeyInfo;
 import com.cappuccino.offer.cache.memcache.MemCacheFactory;
 import com.cappuccino.offer.cache.redis.RedisClusterClient;
 import com.cappuccino.offer.dao.AdDAO;
-import com.cappuccino.offer.domain.ad.Ad;
-import com.cappuccino.offer.domain.ad.AdTem;
+import com.cappuccino.offer.domain.ad.Ads;
+import com.cappuccino.offer.domain.ad.AdsTem;
 
 @Component(value = "adDAO")
 public class CacheAdDAO extends AdDAO {
 
 	@Override
-	public int insertTem(AdTem item) {
+	public int insertTem(AdsTem item) {
 		return super.insertTem(item);
 	}
 	
 	@Override
-	public List<Ad> findAffliateByProvider() {
+	public List<Ads> findAffliateByProvider() {
 		return super.findAffliateByProvider();
 	}
 
 	@Override
-	public List<Ad> findByKey(String k0, String k1, String k2, String k3) {
+	public List<Ads> findByKey(String k0, String k1, String k2, String k3) {
 		return super.findByKey(k0, k1, k2, k3);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Ad> findAffliateByProvider(int type, int provider) {
+	public List<Ads> findAffliateByProvider(int type, int provider) {
 		String key = CacheKeyDic.CACHE_KEY_AD_TYPE_PROVIDER + type + "_" + provider;
 		KeyInfo keyInfo = new KeyInfo(key, CacheKeyDic.ONE_HOUR * 3);
 		Object o = MemCacheFactory.get(keyInfo);
 		if (o != null && o instanceof List<?>) {
-			return (List<Ad>) o;
+			return (List<Ads>) o;
 		}
-		List<Ad> ads = super.findAffliateByProvider(type, provider);
+		List<Ads> ads = super.findAffliateByProvider(type, provider);
 		if (ads != null && !ads.isEmpty())
 			MemCacheFactory.add(keyInfo, ads);
 		return ads;
 	}
 
 	@Override
-	public List<Ad> findAffliateByProviderInsertToday(int provider, long datetime) {
+	public List<Ads> findAffliateByProviderInsertToday(int provider, long datetime) {
 		return super.findAffliateByProviderInsertToday(provider, datetime);
 	}
 
 	@Override
-	public List<Ad> findByStatus() {
+	public List<Ads> findByStatus() {
 		return super.findByStatus();
 	}
 
 	@Override
-	public List<Ad> findManual() {
+	public List<Ads> findManual() {
 		return super.findManual();
 	}
 
@@ -70,8 +70,8 @@ public class CacheAdDAO extends AdDAO {
 	/**
 	 * 刷新offer在redis中的缓存
 	 */
-	public List<Ad> updateRedisFromDb() {
-		List<Ad> ads = super.findByStatus(1);
+	public List<Ads> updateRedisFromDb() {
+		List<Ads> ads = super.findByStatus(1);
 		// updateRedisFromDb(ads);
 		return ads;
 	}
@@ -84,7 +84,7 @@ public class CacheAdDAO extends AdDAO {
 	 * @return
 	 */
 	@SuppressWarnings("unused")
-	private boolean updateRedisFromDb(List<Ad> adList) {
+	private boolean updateRedisFromDb(List<Ads> adList) {
 		// 清除现有的key
 		KeyInfo keyInfo = new KeyInfo(CacheKeyDic.REDIS_KEY_DB_COUNTRY_KEYS, 0);
 		Map<String, String> keysMap = RedisClusterClient.hgetAll(keyInfo);
@@ -115,11 +115,11 @@ public class CacheAdDAO extends AdDAO {
 	 *            需要替换的广告列表
 	 * @return
 	 */
-	private List<Ad> replaceByCountry(List<Ad> list) {
+	private List<Ads> replaceByCountry(List<Ads> list) {
 		if (list == null || list.size() <= 0) {
 			return null;
 		}
-		for (Ad item : list) {
+		for (Ads item : list) {
 			updateOfferByCountry(item);
 		}
 		return list;
@@ -134,14 +134,14 @@ public class CacheAdDAO extends AdDAO {
 	 * @param countryKeys
 	 * @param ad
 	 */
-	private void updateOfferByCountry(Ad ad) {
+	private void updateOfferByCountry(Ads ad) {
 		if (ad == null)
 			return;
 		String couKey = "";
 		KeyInfo keyInfo = new KeyInfo(CacheKeyDic.REDIS_KEY_DB_COUNTRY_KEYS, 0);
 		Map<String, String> keysMap = RedisClusterClient.hgetAll(keyInfo);
 		String k = String.valueOf(ad.getId());
-		String country = ad.getCountry();
+		String country = ad.getCountries();
 		if (country.equalsIgnoreCase("ALL")) {
 			couKey = CacheKeyDic.REDIS_KEY_DB_COUNTRY + "ALL";
 			keysMap.put(couKey, "ALL");
