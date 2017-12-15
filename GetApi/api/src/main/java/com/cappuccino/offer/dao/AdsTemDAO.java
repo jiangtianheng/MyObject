@@ -50,12 +50,6 @@ public class AdsTemDAO extends BaseDAO
         getJdbcTemplate().update(sql.toString(), provider);
     }
 
-    public List<AdsTem> findAffliateByProvider()
-    {
-        String sql = "select * from " + table_tem();
-        return super.queryForList(sql, AdsTem.class);
-    }
-
     public List<AdsTem> findProviders()
     {
         String sql = "select provider from " + table_tem();
@@ -140,9 +134,9 @@ public class AdsTemDAO extends BaseDAO
                         ps.setObject(i++, null);
                     }
                     // offerId
-                    if (item.getOffrerid() != null)
+                    if (item.getOfferId() != null)
                     {
-                        ps.setString(i++, item.getOffrerid());
+                        ps.setString(i++, item.getOfferId());
                     }
                     else
                     {
@@ -278,5 +272,13 @@ public class AdsTemDAO extends BaseDAO
             };
             super.getJdbcTemplate().update(sb.toString(), psc);
         }
+    }
+    /**
+     * 获取临时表全部数据
+     */
+    public List<AdsTem> listAll()
+    {
+        String sql = "select * from " + table_tem() + " where status>=0";
+        return super.queryForList(sql, AdsTem.class);
     }
 }

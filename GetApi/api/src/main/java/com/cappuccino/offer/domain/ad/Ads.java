@@ -1,6 +1,6 @@
 package com.cappuccino.offer.domain.ad;
 
-import java.math.BigDecimal;
+import java.util.Date;
 
 public class Ads
 {
@@ -8,8 +8,8 @@ public class Ads
     private String name;
     private Integer providerId;
     private String pkg;
-    private String offrerid;
-    private BigDecimal payout;
+    private String offerId;
+    private Double payout;
     private Integer payoutType;
     private String tracklink;
     private String previewlink;
@@ -23,6 +23,9 @@ public class Ads
     private Integer cap;
     private Integer status;
     private String description;
+    private Date createdate;
+    private Date updatedate;
+    private Integer auto;
 
     public Long getId()
     {
@@ -64,22 +67,22 @@ public class Ads
         this.pkg = pkg;
     }
 
-    public String getOffrerid()
+    public String getOfferId()
     {
-        return offrerid;
+        return offerId;
     }
 
-    public void setOffrerid(String offrerid)
+    public void setOfferId(String offerId)
     {
-        this.offrerid = offrerid;
+        this.offerId = offerId;
     }
 
-    public BigDecimal getPayout()
+    public Double getPayout()
     {
         return payout;
     }
 
-    public void setPayout(BigDecimal payout)
+    public void setPayout(Double payout)
     {
         this.payout = payout;
     }
@@ -212,6 +215,36 @@ public class Ads
     public void setDescription(String description)
     {
         this.description = description;
+    }
+
+    public Date getCreatedate()
+    {
+        return createdate;
+    }
+
+    public void setCreatedate(Date createdate)
+    {
+        this.createdate = createdate;
+    }
+
+    public Date getUpdatedate()
+    {
+        return updatedate;
+    }
+
+    public void setUpdatedate(Date updatedate)
+    {
+        this.updatedate = updatedate;
+    }
+
+    public Integer getAuto()
+    {
+        return auto;
+    }
+
+    public void setAuto(Integer auto)
+    {
+        this.auto = auto;
     }
 
 }

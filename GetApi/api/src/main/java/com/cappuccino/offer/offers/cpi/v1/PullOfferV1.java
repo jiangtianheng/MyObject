@@ -1,7 +1,9 @@
 package com.cappuccino.offer.offers.cpi.v1;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.Future;
 
 import org.apache.log4j.Logger;
@@ -11,6 +13,7 @@ import com.cappuccino.offer.dao.ProviderDAO;
 import com.cappuccino.offer.domain.GlobalConst;
 import com.cappuccino.offer.domain.ad.Provider;
 import com.cappuccino.offer.jobs.JobExecutorService;
+import com.cappuccino.offer.offers.cpi.BaseCpiOffer;
 import com.cappuccino.offer.util.SpringHelper;
 
 public class PullOfferV1
@@ -25,12 +28,12 @@ public class PullOfferV1
     {
         logger.info("update offer start.....");
         List<Future<Boolean>> tasks = new ArrayList<Future<Boolean>>();
-        
-        //清空临时表数据
-        AdsTemDAO adsTemDAO = SpringHelper.getBean("adsTemDAO",
-                AdsTemDAO.class);
+
+        // 清空临时表数据
+        AdsTemDAO adsTemDAO = SpringHelper
+                .getBean("adsTemDAO", AdsTemDAO.class);
         adsTemDAO.delAll();
-        
+
         /**
          * 模板写入数据
          */
@@ -59,6 +62,11 @@ public class PullOfferV1
                 logger.error(e);
             }
         }
+
+      //  Map<String, String> blackMap = BaseCpiOffer.getBlackItem();
+        Map<String, String> blackMap =new HashMap<String, String>();
+        logger.info("updateAndroidOfferToDb");
+        BaseCpiOffer.updateCpiOfferToDb(blackMap);
         logger.info("update offer into tem  end.....");
     }
 }

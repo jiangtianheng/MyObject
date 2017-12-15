@@ -22,11 +22,6 @@ public class CacheAdsTemDAO extends AdsTemDAO
         super.insertBatch_tem(adTems);
     }
 
-    @Override
-    public List<AdsTem> findAffliateByProvider()
-    {
-        return super.findAffliateByProvider();
-    }
 
     @Override
     public List<AdsTem> findProviders()

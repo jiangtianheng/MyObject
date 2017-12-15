@@ -11,12 +11,12 @@ import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
 
+import com.cappuccino.offer.dao.AdDAO;
 import com.cappuccino.offer.dao.AdsTemDAO;
-import com.cappuccino.offer.dao.cache.CacheAdDAO;
-import com.cappuccino.offer.dao.cache.CacheAdsTemDAO;
 import com.cappuccino.offer.dao.cache.CacheBlackAppDAO;
 import com.cappuccino.offer.dao.cache.CacheOfferBlackListDAO;
 import com.cappuccino.offer.domain.GlobalConst;
+import com.cappuccino.offer.domain.ad.Ads;
 import com.cappuccino.offer.domain.ad.AdsTem;
 import com.cappuccino.offer.domain.ad.BlackApp;
 import com.cappuccino.offer.domain.ad.OfferBlackList;
@@ -61,32 +61,28 @@ public abstract class BaseCpiOffer implements Callable<Boolean>
     }
 
     @SuppressWarnings("unused")
-    public static List<Provider> updateAndroidOfferToDb(
+    public static List<Provider> updateCpiOfferToDb(
             Map<String, String> blackMap)
     {
-        logger.info("updateGpOfferToDb2  start.............");
+        logger.info("updateGpOfferToDb  start.............");
         Map<String, String> pkgMap = new HashMap<String, String>();// key : pkg
-        // 根据provider 取 List<overseaAd> adsList
         List<AdsTem> offer_Tem_List = null;
-        //
         List<AdsTem> offer_com_List = new ArrayList<AdsTem>();
         // 将adlist 格式化 便于与数据库对比
-        List<AdsTem> pkglist = new ArrayList<AdsTem>(); // overseaAd
+        List<AdsTem> pkglist = new ArrayList<AdsTem>(); //
         // 对象------------------------------------------------
         AdsTem aditem = new AdsTem();
         Map<String, AdsTem> offerMap = new HashMap<String, AdsTem>();
-        CacheAdsTemDAO temDao = SpringHelper.getBean("AdsTemDAO",
-                CacheAdsTemDAO.class);
+        AdsTemDAO temDao = SpringHelper.getBean("adsTemDAO", AdsTemDAO.class);
         // 获取数据库中的数据
-        CacheAdDAO adDao = SpringHelper.getBean("adDAO", CacheAdDAO.class);
+        AdDAO adDao = SpringHelper.getBean("adDAO", AdDAO.class);
         // offer list
         List<String> offerlist = new ArrayList<String>();// list : pkg+country
-        // 取adlist
-        offer_Tem_List = temDao.findAffliateByProvider();
-        logger.info("before black offer_tem_List size():"
-                + offer_Tem_List.size());
+        // 获取临时表数据
+        offer_Tem_List = temDao.listAll();
+        logger.info("before black adsTem list size():" + offer_Tem_List.size());
         // 移除黑名单中的选项
-        offer_Tem_List = removeBlackItem(offer_Tem_List, blackMap);
+        //  offer_Tem_List = removeBlackItem(offer_Tem_List, blackMap);
         logger.info("after blackOffer offer_tem  List size():"
                 + offer_Tem_List.size());
         if (offer_Tem_List != null && offer_Tem_List.size() != 0)
@@ -99,21 +95,21 @@ public abstract class BaseCpiOffer implements Callable<Boolean>
                 String c;
                 try
                 {
-                    c = aditem.getCountry().trim();
+                    c = aditem.getCountries().trim();
                 }
                 catch (Exception e)
                 {
                     continue;
                 }
-                if (aditem.getOfferid() != null)
+                if (aditem.getOfferId() != null)
                 {
-                    offerid = aditem.getOfferid().trim();
+                    offerid = aditem.getOfferId().trim();
                 }
                 else
                 {
                     continue;
                 }
-                String p = aditem.getProvider() + "";
+                String p = aditem.getProviderId() + "";
                 String k = aditem.getPkg().trim();
 
                 String key = p + ":" + k + ":" + c + ":" + offerid;
@@ -137,13 +133,13 @@ public abstract class BaseCpiOffer implements Callable<Boolean>
             List<String> minList = null;
 
             // 从数据库获取对应的offer
-            List<Ad> adAll = adDao.findAffliateByProvider();
-            Map<String, Ad> dbMapall = new HashMap<String, Ad>();
+            List<Ads> adAll = adDao.getListByAuto(GlobalConst.AUTO);
+            Map<String, Ads> dbMapall = new HashMap<String, Ads>();
             List<String> dbList = new ArrayList<String>();// list : pkg+country
             logger.info("adAll list:" + adAll.size());
 
             // 获取状态为-2的offer
-            List<Ad> mulAll = null;
+            List<Ads> mulAll = null;
             List<String> mulList = new ArrayList<String>();
             List<AdsTem> offer_com2_List = new ArrayList<AdsTem>();
             List<String> offerHas2 = null;
@@ -158,29 +154,29 @@ public abstract class BaseCpiOffer implements Callable<Boolean>
             else
             {
                 theoldsqlisnull = false;
-                for (Ad itemad : adAll)
+                for (Ads itemad : adAll)
                 {
                     String offerid;
                     String c;
                     try
                     {
-                        c = itemad.getCountry().trim();
+                        c = itemad.getCountries().trim();
                     }
                     catch (Exception e)
                     {
                         // TODO: handle exception
                         continue;
                     }
-                    if (itemad.getOfferid() != null)
+                    if (itemad.getOfferId() != null)
                     {
 
-                        offerid = itemad.getOfferid().trim();
+                        offerid = itemad.getOfferId().trim();
                     }
                     else
                     {
                         continue;
                     }
-                    String p = itemad.getProvider().trim();
+                    String p = itemad.getProviderId() + "";
                     String k = itemad.getPkg().trim();
                     String key = p + ":" + k + ":" + c + ":" + offerid;
                     dbMapall.put(key, itemad);
@@ -243,11 +239,11 @@ public abstract class BaseCpiOffer implements Callable<Boolean>
                 {
                     for (String temp1 : dbHas)
                     {
-                        Ad tempad = dbMapall.get(temp1);
-                        // tempad.setStatus(-1);
+                        // 仅数据库中有 状态改为-2 下线状态
+                        Ads tempad = dbMapall.get(temp1);
                         tempad.setStatus(-2);// 改为-2 避免与手工下架的起冲突
-                        adDao.updateStatus_AD(tempad);// 问题1
-                        logger.info("only ad dbhas:" + tempad.getOfferid());
+                        adDao.updateStatus(tempad);//
+                        logger.info("only ad dbhas:" + tempad.getOfferId());
                     }
                 }
                 // 都有的
@@ -255,17 +251,19 @@ public abstract class BaseCpiOffer implements Callable<Boolean>
                 if (comHas != null)
                 {
                     logger.info("update comHas:" + comHas.size());
+                    // api和offer库都有 修改参数
                     adDao.updateCom(offer_com_List);
                 }
 
                 // 仅offer有
                 logger.info("offerHas is :" + offerHas.size());
-                // db查询manual=0和状态为-2，和offerhas进行对比：1，相同设置状态为0，不同直接插入
-                mulAll = adDao.findManual();
+                // 查询状态为-2的offer对比临时表中的offer做数据恢复
+                mulAll = adDao.getAllOffline(GlobalConst.AUTO);
+                ;
                 // 查找provide表的preweight,cap,sinstall
                 Map<Long, Provider> proMap = new HashMap<Long, Provider>();
                 logger.info("ad offer is -2 :" + mulAll.size());
-                for (Ad itemad : mulAll)
+                for (Ads itemad : mulAll)
                 {
                     String offerid;
                     String c = "";
@@ -273,9 +271,9 @@ public abstract class BaseCpiOffer implements Callable<Boolean>
                     String k = "";
                     try
                     {
-                        if (itemad.getCountry() != null)
+                        if (itemad.getCountries() != null)
                         {
-                            c = itemad.getCountry().trim();
+                            c = itemad.getCountries().trim();
                         }
                         else
                         {
@@ -287,18 +285,18 @@ public abstract class BaseCpiOffer implements Callable<Boolean>
                         // TODO: handle exception
                         continue;
                     }
-                    if (itemad.getOfferid() != null)
+                    if (itemad.getOfferId() != null)
                     {
 
-                        offerid = itemad.getOfferid().trim();
+                        offerid = itemad.getOfferId().trim();
                     }
                     else
                     {
                         continue;
                     }
-                    if (itemad.getProvider() != null)
+                    if (itemad.getProviderId() != null)
                     {
-                        p = itemad.getProvider().trim();
+                        p = itemad.getProviderId() + "";
                     }
                     else
                     {
@@ -366,7 +364,7 @@ public abstract class BaseCpiOffer implements Callable<Boolean>
                 }
                 // 仅offer有
                 logger.info("ads offerHas2 (-2) is :" + offerHas2.size());
-                List<Ad> listKey = null;
+                List<Ads> listKey = null;
                 if (offerHas2 != null)
                 {
                     int cap = 0, proweight = 0, sinstal = 0, offer2 = 0, offer2_real = 0;
@@ -381,16 +379,18 @@ public abstract class BaseCpiOffer implements Callable<Boolean>
                                 keys[3]);
                         if (listKey.size() != 0)
                         {
-                            Ad keybean = null;
+                            Ads keybean = null;
                             offer2++;
                             keybean = listKey.get(0);// 可能会有2个或多个
                             tempad.setId(keybean.getId());// 取原有表的id ，方便只根据id更新
-                            adDao.update3(tempad);
+                            // 重新上线
+                            adDao.update(tempad);
                             // if(offer2%50==0)
                             // logger.info("offerHas2(%50)-->id:"+tempad.getId()+" provider:"+tempad.getProvider());
                         }
                         else
                         {
+                            // offer录入
                             adDao.insertTem(tempad);
                             offer2_real++;
                         }
@@ -399,8 +399,8 @@ public abstract class BaseCpiOffer implements Callable<Boolean>
                     logger.info("new offer insert="
                             + (offerHas2.size() - offer2));
                 }
-                // offer 和 manual 都有的(pi liang)
-                logger.info("comHas2 (in manual)is:" + comHas2.size());
+                // 下线offer重新恢复
+                logger.info("comHas2 (-2)is:" + comHas2.size());
                 if (comHas2 != null)
                 {
                     adDao.updateStatus_Tem(offer_com2_List);
@@ -467,10 +467,10 @@ public abstract class BaseCpiOffer implements Callable<Boolean>
                 String tempStr1 = blackMap.get(overseaAdsTem.getPkg()
                         + ":null:null");
                 String tempStr2 = blackMap.get(overseaAdsTem.getPkg() + ":"
-                        + overseaAdsTem.getProvider() + ":null");
+                        + overseaAdsTem.getProviderId() + ":null");
                 String tempStr3 = blackMap.get(overseaAdsTem.getPkg() + ":"
-                        + overseaAdsTem.getProvider() + ":"
-                        + overseaAdsTem.getCountry());
+                        + overseaAdsTem.getProviderId() + ":"
+                        + overseaAdsTem.getProviderId());
 
                 if (tempStr1 != null || tempStr2 != null || tempStr3 != null)
                 {

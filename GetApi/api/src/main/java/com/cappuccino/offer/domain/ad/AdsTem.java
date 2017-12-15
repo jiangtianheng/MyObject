@@ -8,7 +8,7 @@ public class AdsTem
     private String name;
     private Integer providerId;
     private String pkg;
-    private String offrerId;
+    private String offerId;
     private Double payout;
     private Integer payoutType;
     private String tracklink;
@@ -66,14 +66,14 @@ public class AdsTem
         this.pkg = pkg == null ? null : pkg.trim();
     }
 
-    public String getOffrerid()
+    public String getOfferId()
     {
-        return offrerId;
+        return offerId;
     }
 
-    public void setOffrerid(String offrerId)
+    public void setOfferId(String offerId)
     {
-        this.offrerId = offrerId == null ? null : offrerId.trim();
+        this.offerId = offerId;
     }
 
     public Double getPayout()

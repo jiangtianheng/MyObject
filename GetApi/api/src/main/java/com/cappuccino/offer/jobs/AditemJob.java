@@ -8,13 +8,13 @@ public class AditemJob
             String offerid, String countries, Integer platform, Double payout,
             int payoutType, String tracklink, String previewlink, String icon,
             String creativeFiles, int incentive, int osMinVersion,
-            String carriers, Integer cap, Integer status, String description)
+            String carriers, Integer cap, String description)
     {
         AdsTem aditem = new AdsTem();
         aditem.setName(name);
         aditem.setProviderId(providerId);
         aditem.setPkg(pkg);
-        aditem.setOffrerid(offerid);
+        aditem.setOfferId(offerid);
         aditem.setPlatform(platform);
         aditem.setCountries(countries);
         aditem.setPayout(payout);
@@ -27,7 +27,7 @@ public class AditemJob
         aditem.setOsMinVersion(osMinVersion);
         aditem.setCarriers(carriers);
         aditem.setCap(cap);
-        aditem.setStatus(status);
+        aditem.setStatus(0);
         aditem.setDescription(description);
         return aditem;
     }

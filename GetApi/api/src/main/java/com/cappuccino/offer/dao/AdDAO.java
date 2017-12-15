@@ -1,261 +1,559 @@
 package com.cappuccino.offer.dao;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.List;
 
-import org.springframework.jdbc.core.BatchPreparedStatementSetter;
-import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.PreparedStatementSetter;
+import org.springframework.stereotype.Component;
 
-import com.cappuccino.offer.cache.redis.RedisDb;
+import com.cappuccino.offer.domain.GlobalConst;
 import com.cappuccino.offer.domain.ad.Ads;
 import com.cappuccino.offer.domain.ad.AdsTem;
-import com.cappuccino.offer.domain.ad.Ranking;
-import com.cappuccino.offer.domain.ad.Result;
-import com.cappuccino.offer.util.MyEnum;
-import com.mysql.jdbc.Statement;
 
-public class AdDAO extends BaseDAO {
+@Component(value = "adDAO")
+public class AdDAO extends BaseDAO
+{
 
-	private final String TBLPREFIX = "o_ad";
+    private final String TBLPREFIX = "o_ads";
 
-	public String table() {
-		return TBLPREFIX;
-	}
+    public String table()
+    {
+        return TBLPREFIX;
+    }
 
-	public List<Ads> findAffliateByProvider() {
-		String sql = "select * from " + table() + " where   status = 0  and auto=0";
-		return super.queryForList(sql, Ads.class);
-	}
+    /**
+     * 查询所有在线可以自动更新的offer
+     */
+    public List<Ads> getListByAuto(int auto)
+    {
+        String sql = "select * from " + table() + " where status=0 and auto=? ";
+        return queryForList(sql, new Object[]
+        { auto }, Ads.class);
+    }
 
-	public List<Ads> getAll() {
-		String sql = "select * from " + table() + " where   status = 0 ";
-		return super.queryForList(sql, Ads.class);
-	}
+    /**
+     * 修改offer状态
+     */
+    public void updateStatus(Ads item)
+    {
+        if (item == null)
+        {
+            return;
+        }
+        StringBuffer sb = new StringBuffer();
+        sb.append("UPDATE ");
+        sb.append(table());
+        sb.append(" SET  `status`=?,`updatedate`= NOW() WHERE `id`=?");
+        super.getJdbcTemplate().update(sb.toString(), item.getStatus(),
+                item.getId());
 
-	public List<Ads> listAll() {
-		String sql = "select * from " + table();
-		return super.queryForList(sql, Ads.class);
-	}
+    }
 
-	public List<Ads> findUngpAffliateByProvider(String provider) {
-		String sql = "select * from " + table() + " where type = 4 and provider in (" + provider + ") and status = 3";
-		return super.queryForList(sql, Ads.class);
-	}
+    /**
+     * api和offer库都有 修改参数
+     */
+    public void updateCom(List<AdsTem> item1)
+    {
+        int t = 0;
+        for (final AdsTem item : item1)
+        {
 
-	public List<Ads> findAffliateByProvider(int type, int provider) {
-		String sql = "select * from " + table() + " where type = ? and provider = ? and status = 0 ";
-		return super.queryForList(sql, new Object[] { type, provider }, Ads.class);
-	}
+            if (item == null)
+            {
+                return;
+            }
 
-	public void updateStatus_AD(Ads item) {
-		if (item == null) {
-			return;
-		}
-		StringBuffer sb = new StringBuffer();
-		sb.append("UPDATE ");
-		sb.append(table());
-		sb.append(" SET  `status`=?,`updatedate`= NOW() WHERE `id`=?");
-		super.getJdbcTemplate().update(sb.toString(), item.getStatus(), item.getId());
-	}
+            StringBuffer sb = new StringBuffer();
+            sb.append("UPDATE ");
+            sb.append(table());
+            sb.append(" SET `cap`=?,`providerId`=?, `name`=?, `pkg`=?,`countries`=?, `tracklink`=?, `previewlink`=?, "
+                    + "`payout`=?,`updatedate`=CURRENT_TIMESTAMP WHERE `providerId`=? and `pkg`=? and `country`=? and `offerid`=? ");
+            PreparedStatementSetter psc = new PreparedStatementSetter()
+            {
+                public void setValues(PreparedStatement ps) throws SQLException
+                {
+                    int i = 1;
 
-	// jary 都有的
-	public void updateCom(List<AdsTem> item1) {
+                    if (item.getCap() != null)
+                    {
+                        ps.setInt(i++, item.getCap());
+                    }
+                    else
+                    {
+                        ps.setInt(i++, 50);
+                    }
 
-		int t = 0;
-		for (final AdsTem item : item1) {
+                    if (item.getProviderId() != null)
+                    {
+                        ps.setInt(i++, item.getProviderId());
+                    }
+                    else
+                    {
+                        ps.setNull(i++, Types.NULL);
+                    }
+                    if (item.getName() != null)
+                    {
+                        ps.setString(i++, item.getName());
+                    }
+                    else
+                    {
+                        ps.setNull(i++, Types.NULL);
+                    }
+                    if (item.getPkg() != null)
+                    {
+                        ps.setString(i++, item.getPkg());
+                    }
+                    else
+                    {
+                        ps.setNull(i++, Types.NULL);
+                    }
+                    if (item.getCountries() != null)
+                    {
+                        ps.setString(i++, item.getCountries());
+                    }
+                    else
+                    {
+                        ps.setNull(i++, Types.NULL);
+                    }
+                    if (item.getTracklink() != null)
+                    {
+                        ps.setString(i++, item.getTracklink());
+                    }
+                    else
+                    {
+                        ps.setNull(i++, Types.NULL);
+                    }
+                    if (item.getPreviewlink() != null)
+                    {
+                        ps.setString(i++, item.getPreviewlink());
+                    }
+                    else
+                    {
+                        ps.setNull(i++, Types.NULL);
+                    }
+                    if (item.getPayout() != null)
+                    {
+                        ps.setDouble(i++, item.getPayout());
+                    }
+                    else
+                    {
+                        ps.setNull(i++, Types.NULL);
+                    }
+                    if (item.getProviderId() != null)
+                    {
+                        ps.setInt(i++, item.getProviderId());
+                    }
+                    else
+                    {
+                        ps.setNull(i++, Types.NULL);
+                    }
+                    if (item.getPkg() != null)
+                    {
+                        ps.setString(i++, item.getPkg());
+                    }
+                    else
+                    {
+                        ps.setNull(i++, Types.NULL);
+                    }
+                    if (item.getCountries() != null)
+                    {
+                        ps.setString(i++, item.getCountries());
+                    }
+                    else
+                    {
+                        ps.setNull(i++, Types.NULL);
+                    }
+                    if (item.getOfferId() != null)
+                    {
+                        ps.setString(i++, item.getOfferId());
+                    }
+                    else
+                    {
+                        ps.setNull(i++, Types.NULL);
+                    }
 
-			if (item == null) {
-				return;
-			}
+                }
+            };
+            if (t % 100 == 0)
+                logger.info("updateCom 100 per t=" + t);
+            super.getJdbcTemplate().update(sb.toString(), psc);
+            t++;
+        }
 
-			StringBuffer sb = new StringBuffer();
-			sb.append("UPDATE ");
-			sb.append(table());
-			sb.append(" SET `cap`=?,`provider`=?, `name`=?, `pkg`=?,`country`=?, `tracklink`=?, `previewlink`=?, "
-					+ "`payout`=?,`status`=? ,`updatedate`=CURRENT_TIMESTAMP WHERE `provider`=? and `pkg`=? and `country`=? and `offerid`=? and `status`=0");
-			PreparedStatementSetter psc = new PreparedStatementSetter() {
-				public void setValues(PreparedStatement ps) throws SQLException {
-					int i = 1;
+    }
 
-					if (item.getCap() != null) {
-						ps.setInt(i++, item.getCap());
-					} else {
-						ps.setInt(i++, -1);
-					}
+    /**
+     * 查询状态为-2的自动更新的offer
+     */
+    public List<Ads> getAllOffline(int auto)
+    {
+        String sql = "select * from " + table()
+                + " where status=-2 and auto=? ";
+        return queryForList(sql, new Object[]
+        { auto }, Ads.class);
+    }
 
+    /**
+     * 以key找出status=-2 判断是否有，有修改状态为0 ，没有跳过 key
+     */
+    public List<Ads> findByKey(String k0, String k1, String k2, String k3)
+    {
+        {
+            StringBuffer sb = new StringBuffer("select * from " + table());
+            sb.append(" where `provider`=" + k0 + " and `pkg`='" + k1
+                    + "' and `country`='" + k2 + "' and `offerid`='" + k3
+                    + "' and `status`=-2  ORDER BY updatedate DESC");
+            return super.queryForList(sb.toString(), Ads.class);
+        }
+    }
 
-				}
-			};
-			if (t % 100 == 0)
-				logger.info("updateCom 100 per t=" + t);
-			super.getJdbcTemplate().update(sb.toString(), psc);
-			t++;
-		}
-	}
+    /**
+     * 修改信息
+     */
+    public void update(final AdsTem item)
+    {
+        if (item == null)
+        {
+            return;
+        }
 
-	public List<Ads> findManual() {
-		StringBuffer sb = new StringBuffer();
-		sb.append("select * from  " + table()).append(" where status = -2");
-		System.out.println(sb.toString());
-		return super.queryForList(sb.toString(), Ads.class);
-	}
+        StringBuffer sb = new StringBuffer();
+        sb.append("UPDATE ");
+        sb.append(table());
+        sb.append(" SET `providerId`=?, `name`=?, `pkg`=?, `countries`=?,  `tracklink`=?,`previewlink`=? `cap`=?,`payout`=?,`offerid`=?,`updatedate`=CURRENT_TIMESTAMP WHERE `id`=?");
+        PreparedStatementSetter psc = new PreparedStatementSetter()
+        {
+            public void setValues(PreparedStatement ps) throws SQLException
+            {
+                int i = 1;
+                if (item.getProviderId() != null)
+                {
+                    ps.setInt(i++, item.getProviderId());
+                }
+                else
+                {
+                    ps.setNull(i++, Types.NULL);
+                }
+                if (item.getName() != null)
+                {
+                    ps.setString(i++, item.getName());
+                }
+                else
+                {
+                    ps.setNull(i++, Types.NULL);
+                }
+                if (item.getPkg() != null)
+                {
+                    ps.setString(i++, item.getPkg());
+                }
+                else
+                {
+                    ps.setNull(i++, Types.NULL);
+                }
 
-	public void update3(final AdsTem item) {
+                if (item.getCarriers() != null)
+                {
+                    ps.setString(i++, item.getCarriers());
+                }
+                else
+                {
+                    ps.setNull(i++, Types.NULL);
+                }
+                if (item.getTracklink() != null)
+                {
+                    ps.setString(i++, item.getTracklink());
+                }
+                else
+                {
+                    ps.setNull(i++, Types.NULL);
+                }
+                if (item.getPreviewlink() != null)
+                {
+                    ps.setString(i++, item.getPreviewlink());
+                }
+                else
+                {
+                    ps.setNull(i++, Types.NULL);
+                }
 
-		if (item == null) {
-			return;
-		}
+                if (item.getCap() != null)
+                {
+                    ps.setInt(i++, item.getCap());
+                }
+                else
+                {
+                    ps.setNull(i++, Types.NULL);
+                }
 
-		StringBuffer sb = new StringBuffer();
-		sb.append("UPDATE ");
-		sb.append(table());
-		sb.append(" SET `provider`=?, `name`=?, `pkg`=?, `country`=?,  `tracklink`=?,`previewlink`=? `cap`=?,`payout`=?,`offerid`=?,`updatedate`=CURRENT_TIMESTAMP WHERE `id`=?");
-		PreparedStatementSetter psc = new PreparedStatementSetter() {
-			public void setValues(PreparedStatement ps) throws SQLException {
-				int i = 1;
-				ps.setLong(i++, item.getId());
-			}
-		};
-		getJdbcTemplate().update(sb.toString(), psc);
-	}
+                if (item.getPayout() != null)
+                {
+                    ps.setDouble(i++, item.getPayout());
+                }
+                else
+                {
+                    ps.setNull(i++, Types.NULL);
+                }
 
-	public List<Ads> findByKey(String k0, String k1, String k2, String k3) {
-		StringBuffer sb = new StringBuffer("select * from " + table());
-		sb.append(" where `provider`=" + k0 + " and `pkg`='" + k1 + "' and `country`='" + k2 + "' and `offerid`='" + k3 + "' and `status`=-2  ORDER BY updatedate DESC");
-		System.out.println(sb.toString());
-		return super.queryForList(sb.toString(), Ads.class);
-	}
+                if (item.getOfferId() != null)
+                {
+                    ps.setString(i++, item.getOfferId());
+                }
+                else
+                {
+                    ps.setNull(i++, Types.NULL);
+                }
+                ps.setLong(i++, item.getId());
+            }
+        };
+        getJdbcTemplate().update(sb.toString(), psc);
 
-	public int insertTem(final AdsTem item) {
+    }
 
-		if (item == null) {
-			return 0;
-		}
-		StringBuffer sb = new StringBuffer();
-		sb.append("INSERT INTO ");
-		sb.append(table());
-		sb.append(" (`name`,`provider`,`country`, `payout`,`carrier`, `os`,`tracklink`,`previewlink`, `offerid`, `pkg`, `type`,`network`, `icon`, `traffic`,`conversion_flow`,`status`,`cap`,`category`,`isIframe`,`auto`,`incentive`,`offer_type`,`createdate`,`updatedate`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)");
-		final String sql = sb.toString();
-		PreparedStatementCreator psc = new PreparedStatementCreator() {
-			public PreparedStatement createPreparedStatement(Connection conn) throws SQLException {
-				PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-				int i = 1;
-				//
-				return ps;
-			}
-		};
-		int id = getJdbcTemplate().update(psc);
-		return id;
-	}
+    public void insertTem(final AdsTem item)
+    {
 
-	public void updateStatus_Tem(final List<AdsTem> item1) {
-		for (final AdsTem item : item1) {
+        if (item == null)
+        {
+            return;
+        }
 
-			if (item == null) {
-				return;
-			}
+        StringBuffer sb = new StringBuffer();
+        sb.append("INSERT INTO ");
+        sb.append(table());
+        sb.append(" (`name`,`providerId`,`pkg`, `offerId`,`payout`, `payoutType`,`tracklink`,"
+                + "`previewlink`, `countries`, `platform`, `icon`,`creativeFiles`, `incentive`, `osMinVersion`,`carriers`,`cap`,`status`,`description`,`createdate`,`updatedate`,`auto`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,?)");
+        PreparedStatementSetter psc = new PreparedStatementSetter()
+        {
+            public void setValues(PreparedStatement ps) throws SQLException
+            {
+                int i = 1;
+                // name
+                if (item.getName() != null)
+                {
+                    ps.setString(i++, item.getName());
+                }
+                else
+                {
+                    ps.setObject(i++, null);
+                }
+                // providerId
+                if (item.getProviderId() != null)
+                {
+                    ps.setInt(i++, item.getProviderId());
+                }
+                else
+                {
+                    ps.setObject(i++, null);
+                }
+                // pkg
+                if (item.getPkg() != null)
+                {
+                    ps.setString(i++, item.getPkg());
+                }
+                else
+                {
+                    ps.setObject(i++, null);
+                }
+                // offerId
+                if (item.getOfferId() != null)
+                {
+                    ps.setString(i++, item.getOfferId());
+                }
+                else
+                {
+                    ps.setObject(i++, null);
+                }
+                // payout
+                if (item.getPayout() != null)
+                {
+                    ps.setObject(i++, item.getPayout());
+                }
+                else
+                {
+                    ps.setObject(i++, null);
+                }
+                // payoutType
+                if (item.getPayoutType() != null)
+                {
+                    ps.setInt(i++, item.getPayoutType());
+                }
+                else
+                {
+                    ps.setInt(i++, 0);
+                }
+                // tracklink
+                if (item.getTracklink() != null)
+                {
+                    ps.setString(i++, item.getTracklink());
+                }
+                else
+                {
+                    ps.setObject(i++, null);
+                }
+                // previewlink
+                if (item.getPreviewlink() != null)
+                {
+                    ps.setString(i++, item.getPreviewlink());
+                }
+                else
+                {
+                    ps.setObject(i++, null);
+                }
+                // countries
+                if (item.getCountries() != null)
+                {
+                    ps.setString(i++, item.getCountries());
+                }
+                else
+                {
+                    ps.setObject(i++, null);
+                }
+                // platform
+                if (item.getPlatform() != null)
+                {
+                    ps.setInt(i++, item.getPlatform());
+                }
+                else
+                {
+                    ps.setObject(i++, null);
+                }
+                // icon
+                if (item.getIcon() != null)
+                {
+                    ps.setString(i++, item.getIcon());
+                }
+                else
+                {
+                    ps.setString(i++, GlobalConst.icon);
+                }
+                // creativeFiles
+                if (item.getCreativeFiles() != null)
+                {
+                    ps.setString(i++, item.getCreativeFiles());
+                }
+                else
+                {
+                    ps.setObject(i++, null);
+                }
+                // incentive
+                if (item.getIncentive() != null)
+                {
+                    ps.setInt(i++, item.getIncentive());
+                }
+                else
+                {
+                    ps.setInt(i++, 2);
+                }
+                // osMinVersion
+                if (item.getOsMinVersion() != null)
+                {
+                    ps.setInt(i++, item.getOsMinVersion());
+                }
+                else
+                {
+                    ps.setInt(i++, 0);
+                }
+                // carriers
+                if (item.getCarriers() != null)
+                {
+                    ps.setString(i++, item.getCarriers());
+                }
+                else
+                {
+                    ps.setObject(i++, null);
+                }
+                // cap
+                if (item.getCap() != null)
+                {
+                    ps.setInt(i++, item.getCap());
+                }
+                else
+                {
+                    ps.setInt(i++, 50);
+                }
+                // status
+                if (item.getStatus() != null)
+                {
+                    ps.setInt(i++, item.getStatus());
+                }
+                else
+                {
+                    ps.setInt(i++, 0);
+                }
+                // description
+                if (item.getDescription() != null)
+                {
+                    ps.setString(i++, item.getDescription());
+                }
+                else
+                {
+                    ps.setObject(i++, null);
+                }
+                // auot
+                ps.setInt(i++, 0);
+            }
+        };
+        super.getJdbcTemplate().update(sb.toString(), psc);
 
-			StringBuffer sb = new StringBuffer();
-			sb.append("UPDATE ");
-			sb.append(table());
-			sb.append(" SET  `status`=0 ,`updatedate`=CURRENT_TIMESTAMP  WHERE `provider`=? and `pkg`=? and `country`=? and `offerid`=?");
-			PreparedStatementSetter psc = new PreparedStatementSetter() {
-				public void setValues(PreparedStatement ps) throws SQLException {
-					int i = 1;
-				}
-			};
-			super.getJdbcTemplate().update(sb.toString(), psc);
-		}
-	}
+    }
 
-	public List<Ads> findByStatus() {
-		String sql = "select * from " + table() + " where status = 2 and (type = 2 or type = 3)";
-		return super.queryForList(sql, Ads.class);
-	}
+    public void updateStatus_Tem(List<AdsTem> AdsTem)
+    {
+        for (final AdsTem item : AdsTem)
+        {
 
-	public List<Ads> findByStatus(int status) {
-		String sql = "select * from " + table() + " where status = ?";
-		logger.info("sql:" + sql);
-		return super.queryForList(sql, new Object[] { status }, Ads.class);
-	}
+            if (item == null)
+            {
+                return;
+            }
 
-	public void updateStatusByPkg(final String pkg) {
-		if (pkg == null) {
-			return;
-		}
-		StringBuffer sb = new StringBuffer();
-		sb.append("UPDATE ");
-		sb.append(table());
-		sb.append(" SET `status`= 0, `updatedate`=CURRENT_TIMESTAMP WHERE `pkg`=?");
-		getJdbcTemplate().update(sb.toString(), pkg);
-	}
+            StringBuffer sb = new StringBuffer();
+            sb.append("UPDATE ");
+            sb.append(table());
+            sb.append(" SET  `status`=0 ,`updatedate`=CURRENT_TIMESTAMP  WHERE `providerId`=? and `pkg`=? and `countries`=? and `offerid`=?");
+            PreparedStatementSetter psc = new PreparedStatementSetter()
+            {
+                public void setValues(PreparedStatement ps) throws SQLException
+                {
+                    int i = 1;
+                    if (item.getProviderId() != null)
+                    {
+                        ps.setInt(i++, item.getProviderId());
+                    }
+                    else
+                    {
+                        ps.setNull(i++, Types.NULL);
+                    }
+                    if (item.getPkg() != null)
+                    {
+                        ps.setString(i++, item.getPkg());
+                    }
+                    else
+                    {
+                        ps.setNull(i++, Types.NULL);
+                    }
+                    if (item.getCountries() != null)
+                    {
+                        ps.setString(i++, item.getCountries());
+                    }
+                    else
+                    {
+                        ps.setNull(i++, Types.NULL);
+                    }
+                    if (item.getOfferId() != null)
+                    {
+                        ps.setString(i++, item.getOfferId());
+                    }
+                    else
+                    {
+                        ps.setNull(i++, Types.NULL);
+                    }
+                }
+            };
+            super.getJdbcTemplate().update(sb.toString(), psc);
+        }
 
-	public List<Ads> findAffliateByProviderInsertToday(int provider, long datetime) {
-		String sql = "select * from " + table() + " where  provider = ? and status = 0";
-		return super.queryForList(sql, new Object[] { provider }, Ads.class);
-	}
-
-	public List<Ads> findAffliateByProviderInsertToday2(int type, int provider, long datetime) {
-		String sql = "select * from " + table() + " where status=0  and type =1";
-		return super.queryForList(sql, null, Ads.class);
-	}
-
-	// 根据Id寻找offer
-	public Ads getListById(Long id) {
-		List<Ads> list = RedisDb.getInstance().getAll(MyEnum.REDIS_KEY_DB_ID_KEYS + id);
-		if (list == null || list.size() <= 0) {
-			String sql = "select * from o_ad where id='" + id + "'";
-			System.out.println("=================================sql==========================================");
-			list = super.queryForList(sql, Ads.class);
-			RedisDb.getInstance().replaceAll(MyEnum.REDIS_KEY_DB_ID_KEYS + id, list);
-		}
-		return list.get(0);
-	}
-
-	public void updateStatusById(Long id, int status) {
-		String sql = "update  o_ad set status='" + status + "' where id='" + id + "'";
-		System.out.println(sql);
-		getJdbcTemplate().update(sql);
-	}
-
-	public List<Ranking> findAdPricelistByDate(String date) {
-		String sql = "select id id, price from " + table() + " where status = 0 order by price desc";
-		return super.queryForList(sql, Ranking.class);
-	}
-
-	public List<Ranking> findPreWeightlistByDate(String date) {
-		String sql = "select id id, preweight num from " + table() + " where  status = 0 ORDER BY num desc";
-		return super.queryForList(sql, Ranking.class);
-	}
-
-	public void updateWeightNoDb(final List<Result> list) {
-		StringBuffer sb = new StringBuffer();
-		sb.append("UPDATE ");
-		sb.append(table());
-		sb.append(" SET `weight`=? WHERE `id`=?");
-		final String sql = sb.toString();
-		getJdbcTemplate().batchUpdate(sql, new BatchPreparedStatementSetter() {
-			public void setValues(PreparedStatement ps, int index) throws SQLException {
-				Result item = list.get(index);
-				int i = 1;
-				if (item.getScore() != null) {
-					ps.setFloat(i++, item.getScore());
-				} else {
-					ps.setNull(i++, Types.NULL);
-				}
-				ps.setLong(i++, item.getAdid());
-
-			}
-
-			// 返回更新的结果集条数
-			public int getBatchSize() {
-				return list.size();
-			}
-		});
-	}
-
+    }
 }

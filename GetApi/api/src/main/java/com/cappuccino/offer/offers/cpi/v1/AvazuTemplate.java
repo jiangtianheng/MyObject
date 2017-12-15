@@ -1,7 +1,6 @@
 package com.cappuccino.offer.offers.cpi.v1;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,10 +50,11 @@ public class AvazuTemplate extends BaseCpiOffer
         List<AdsTem> adsList = new ArrayList<AdsTem>();
         try
         {
-            logger.info("get " + entity.getName() + " offer start");
             String str = HttpUtil.sendGet(entity.getApiUrl().trim().toString());
             json1 = JSON.parseObject(str);
             array = json1.getJSONArray("campaigns");
+            logger.info("get " + entity.getName() + "  size=" + array.size()
+                    + " offer start");
             if (array.size() > 0)
             {
                 for (int i = 0; i < array.size(); i++)
@@ -88,7 +88,7 @@ public class AvazuTemplate extends BaseCpiOffer
                         int incentive = GlobalConst.Incentive;
                         int osMinVersion = GlobalConst.MinVersion4;
                         String pkg = "";
-                        Integer platform =0;
+                        Integer platform = 0;
                         if (previewlink.indexOf("itunes.apple.com") > 0)
                         {
                             pkg = previewlink.substring(
@@ -104,14 +104,14 @@ public class AvazuTemplate extends BaseCpiOffer
                                 pkg = pkg.substring(pkg.indexOf("id"),
                                         pkg.length());
                             }
-                            platform=2;
+                            platform = 2;
                         }
                         else if (previewlink.indexOf("play.google.com") > 0)
                         {
                             pkg = previewlink.substring(
                                     previewlink.indexOf("?id") + 4,
                                     previewlink.length());
-                            platform=1;
+                            platform = 1;
                         }
                         else
                         {
@@ -123,11 +123,12 @@ public class AvazuTemplate extends BaseCpiOffer
                         }
                         AditemJob AditemJob = new AditemJob();
                         AdsTem adsitem = AditemJob.InsertAdsTem(name,
-                                entity.getId(), pkg, offerid, countries,platform,
-                                payout, payoutType, tracklink, previewlink,
-                                icon, creativeFiles, incentive, osMinVersion,
-                                carriers, CapService.work(payout),
-                                entity.getStatus(), description);
+                                entity.getId(), pkg, offerid, countries,
+                                platform, payout, payoutType, tracklink,
+                                previewlink, icon, creativeFiles, incentive,
+                                osMinVersion, carriers,
+                                CapService.work(payout),
+                                description);
                         adsList.add(adsitem);
                     }
                 }
