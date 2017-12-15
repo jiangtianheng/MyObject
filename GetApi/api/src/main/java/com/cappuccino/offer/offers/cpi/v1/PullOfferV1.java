@@ -42,13 +42,27 @@ public class PullOfferV1
         List<Provider> providerList = ProviderDao.getListAll();
         for (Provider entity : providerList)
         {
+            /**
+             * AVAZU模板
+             */
             if (entity.getTemplate() == GlobalConst.avazu_template)
             {
-                System.out.println("====");
                 AvazuTemplate AvazuTemplate = new AvazuTemplate(
                         GlobalConst.CALL_WORK, entity);
                 tasks.add(jobExecutorService.submitTask(AvazuTemplate));
             }
+            /**
+             * SOLO模板
+             */
+            if (entity.getTemplate() == GlobalConst.s)
+            {
+                AvazuTemplate AvazuTemplate = new AvazuTemplate(
+                        GlobalConst.CALL_WORK, entity);
+                tasks.add(jobExecutorService.submitTask(AvazuTemplate));
+            }
+            
+            
+            
         }
 
         for (Future<Boolean> f : tasks)

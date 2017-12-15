@@ -36,6 +36,7 @@ public interface GlobalConst
     // ---------------------------ARTOFCLICK------------------
 
     final int avazu_template = 1;
+    final int solo_template = 2;
 
     // ----------------subway(用于区分回调来着哪)----------------------------
 
