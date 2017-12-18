@@ -258,7 +258,7 @@ public class Postback extends TuringBaseServlet
                 {
                     postback = postback.replace("{sub2}", sub2);
                 }
-                // http://pspm.pingstart.com/api/v4/postback?from=1597&clickid={aff_sub}&payout={payout}
+                //http://pspm.pingstart.com/api/v4/postback?from=1597&clickid={aff_sub}&payout={payout}
                 postback = postback.replace("{payout}", ad.getPayout() + "");
             }
 

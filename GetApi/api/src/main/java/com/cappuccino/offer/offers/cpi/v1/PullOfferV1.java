@@ -54,15 +54,13 @@ public class PullOfferV1
             /**
              * SOLO模板
              */
-            if (entity.getTemplate() == GlobalConst.s)
+            if (entity.getTemplate() == GlobalConst.solo_template)
             {
-                AvazuTemplate AvazuTemplate = new AvazuTemplate(
+                SoloTemplate SoloTemplate = new SoloTemplate(
                         GlobalConst.CALL_WORK, entity);
-                tasks.add(jobExecutorService.submitTask(AvazuTemplate));
+                tasks.add(jobExecutorService.submitTask(SoloTemplate));
             }
-            
-            
-            
+
         }
 
         for (Future<Boolean> f : tasks)
@@ -77,8 +75,8 @@ public class PullOfferV1
             }
         }
 
-      //  Map<String, String> blackMap = BaseCpiOffer.getBlackItem();
-        Map<String, String> blackMap =new HashMap<String, String>();
+        // Map<String, String> blackMap = BaseCpiOffer.getBlackItem();
+        Map<String, String> blackMap = new HashMap<String, String>();
         logger.info("updateAndroidOfferToDb");
         BaseCpiOffer.updateCpiOfferToDb(blackMap);
         logger.info("update offer into tem  end.....");

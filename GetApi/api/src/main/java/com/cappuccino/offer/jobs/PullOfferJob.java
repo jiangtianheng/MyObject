@@ -11,9 +11,7 @@ public class PullOfferJob
 {
 
     private static Logger logger = Logger.getLogger(PullOfferJob.class);
-    private JobExecutorService jobExecutorService = JobExecutorService
-            .getInstance();
-    private int timeOut = 10;// 分钟
+   
 
     /**
      * 第几套回调

@@ -100,7 +100,7 @@ public class AdsTemDAO extends BaseDAO
             sb.append("INSERT INTO ");
             sb.append(table_tem());
             sb.append(" (`name`,`providerId`,`pkg`, `offerId`,`payout`, `payoutType`,`tracklink`,"
-                    + "`previewlink`, `countries`, `platform`, `icon`,`creativeFiles`, `incentive`, `osMinVersion`,`carriers`,`cap`,`status`,`description`,`createdate`,`updatedate`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)");
+                    + "`previewlink`, `countries`, `os`, `icon`,`creativeFiles`, `incentive`, `osMinVersion`,`carriers`,`cap`,`status`,`description`,`createdate`,`updatedate`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)");
             PreparedStatementSetter psc = new PreparedStatementSetter()
             {
                 public void setValues(PreparedStatement ps) throws SQLException
@@ -187,10 +187,10 @@ public class AdsTemDAO extends BaseDAO
                     {
                         ps.setObject(i++, null);
                     }
-                    // platform
-                    if (item.getPlatform() != null)
+                    // os
+                    if (item.getOs() != null)
                     {
-                        ps.setInt(i++, item.getPlatform());
+                        ps.setInt(i++, item.getOs());
                     }
                     else
                     {
@@ -273,6 +273,7 @@ public class AdsTemDAO extends BaseDAO
             super.getJdbcTemplate().update(sb.toString(), psc);
         }
     }
+
     /**
      * 获取临时表全部数据
      */

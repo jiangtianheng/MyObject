@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
 
-import com.cappuccino.offer.dao.AdDAO;
+import com.cappuccino.offer.dao.AdsDAO;
 import com.cappuccino.offer.dao.AdsTemDAO;
 import com.cappuccino.offer.dao.cache.CacheBlackAppDAO;
 import com.cappuccino.offer.dao.cache.CacheOfferBlackListDAO;
@@ -31,7 +31,7 @@ public abstract class BaseCpiOffer implements Callable<Boolean>
     protected static final int cdnNum = 3;
 
     protected int callType;
-    protected Provider entity;
+    public Provider entity;
 
     public abstract void work();
 
@@ -75,7 +75,7 @@ public abstract class BaseCpiOffer implements Callable<Boolean>
         Map<String, AdsTem> offerMap = new HashMap<String, AdsTem>();
         AdsTemDAO temDao = SpringHelper.getBean("adsTemDAO", AdsTemDAO.class);
         // 获取数据库中的数据
-        AdDAO adDao = SpringHelper.getBean("adDAO", AdDAO.class);
+        AdsDAO adDao = SpringHelper.getBean("adsDAO", AdsDAO.class);
         // offer list
         List<String> offerlist = new ArrayList<String>();// list : pkg+country
         // 获取临时表数据

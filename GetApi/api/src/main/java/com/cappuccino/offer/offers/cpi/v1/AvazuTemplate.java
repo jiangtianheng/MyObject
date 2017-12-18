@@ -43,7 +43,6 @@ public class AvazuTemplate extends BaseCpiOffer
 
     public List<AdsTem> getOfferList()
     {
-        System.out.println("come in");
         // 定义初始化变量
         JSONObject json1;
         JSONArray array = null;
@@ -63,6 +62,10 @@ public class AvazuTemplate extends BaseCpiOffer
                     if (item != null)
                     {
                         JSONArray lpsArray = item.getJSONArray("lps");
+                        if (lpsArray == null)
+                        {
+                            continue;
+                        }
                         JSONObject ad = lpsArray.getJSONObject(0);
                         String countries = ad.getString("country");
                         if (countries.length() == 0 || countries.length() > 10)
@@ -88,7 +91,7 @@ public class AvazuTemplate extends BaseCpiOffer
                         int incentive = GlobalConst.Incentive;
                         int osMinVersion = GlobalConst.MinVersion4;
                         String pkg = "";
-                        Integer platform = 0;
+                        Integer os = 0;
                         if (previewlink.indexOf("itunes.apple.com") > 0)
                         {
                             pkg = previewlink.substring(
@@ -104,14 +107,19 @@ public class AvazuTemplate extends BaseCpiOffer
                                 pkg = pkg.substring(pkg.indexOf("id"),
                                         pkg.length());
                             }
-                            platform = 2;
+                            os = GlobalConst.OFFER_OS_IOS;
                         }
                         else if (previewlink.indexOf("play.google.com") > 0)
                         {
                             pkg = previewlink.substring(
                                     previewlink.indexOf("?id") + 4,
                                     previewlink.length());
-                            platform = 1;
+                            // jp.twosix.skyover&hl=ja
+                            if (pkg.indexOf("&") > 0)
+                            {
+                                pkg = pkg.substring(0, pkg.indexOf("&"));
+                            }
+                            os = GlobalConst.OFFER_OS_ANDROID;
                         }
                         else
                         {
@@ -124,11 +132,10 @@ public class AvazuTemplate extends BaseCpiOffer
                         AditemJob AditemJob = new AditemJob();
                         AdsTem adsitem = AditemJob.InsertAdsTem(name,
                                 entity.getId(), pkg, offerid, countries,
-                                platform, payout, payoutType, tracklink,
+                                os, payout, payoutType, tracklink,
                                 previewlink, icon, creativeFiles, incentive,
                                 osMinVersion, carriers,
-                                CapService.work(payout),
-                                description);
+                                CapService.work(payout), description);
                         adsList.add(adsitem);
                     }
                 }
@@ -147,6 +154,13 @@ public class AvazuTemplate extends BaseCpiOffer
 
     public static void main(String[] args)
     {
+
+        String pkg = "jp.twosix.skyover&hl=ja";
+        if (pkg.indexOf("&") > 0)
+        {
+            pkg = pkg.substring(0, pkg.indexOf("&"));
+        }
+        System.out.println(pkg);
         JSONObject json1;
         try
         {
@@ -176,7 +190,7 @@ public class AvazuTemplate extends BaseCpiOffer
                         {
                             continue;
                         }
-                        String pkg = ad.getString("pkgname");
+                        pkg = ad.getString("pkgname");
                         // dv1={aff_sub}&sub_pub={channel}
                         String trackinglink = ad.getString("trackinglink");
                         trackinglink = trackinglink

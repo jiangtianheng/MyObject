@@ -52,8 +52,10 @@ public interface GlobalConst
     final int OFFER_VERSION_3 = 3;
 
     // ---------------offer的类型-------------------
-    final String OFFER_OS_IOS = "ios";
-    final String OFFER_OS_ANDROID = "android";
+    final int OFFER_OS_ANDROID = 1;
+    final int OFFER_OS_IOS = 2;
+    final String IOS = "IOS";
+    final String ANDROID = "ANDROID";
 
     /** 支付价格比率 */
     final float PAY_OUT_RATE = 0.8f;

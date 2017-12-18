@@ -14,7 +14,7 @@ public class AdsTem
     private String tracklink;
     private String previewlink;
     private String countries;
-    private Integer platform;
+    private Integer os;
     private String icon;
     private String creativeFiles;
     private Integer incentive;
@@ -126,14 +126,14 @@ public class AdsTem
         this.countries = countries == null ? null : countries.trim();
     }
 
-    public Integer getPlatform()
+    public Integer getOs()
     {
-        return platform;
+        return os;
     }
 
-    public void setPlatform(Integer platform)
+    public void setOs(Integer os)
     {
-        this.platform = platform;
+        this.os = os;
     }
 
     public String getIcon()
