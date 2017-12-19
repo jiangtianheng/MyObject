@@ -3,7 +3,7 @@
     "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cappuccino.dao.SysUserDao">
-  <!--    <cache type="org.mybatis.caches.redis.RedisCache"/>-->
+      <cache type="org.mybatis.caches.redis.RedisCache"/>
 
 	<select id="getUserInfo" resultType="int">
 		select count(id) from sys_users where username=#{user_name} and password=#{user_password}
