@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cappuccino.entity.SysUserEntity;
-import com.cappuccino.service.SysUserService;
+import com.cappuccino.entity.UserEntity;
+import com.cappuccino.service.UserService;
 import com.cappuccino.util.ResultMessageUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -20,7 +20,7 @@ import com.github.pagehelper.PageInfo;
 public class TestController {
 
 	@Resource
-	private SysUserService user_servcice;
+	private UserService user_servcice;
 
 	@ResponseBody
 	@RequestMapping(value = "/login")
@@ -50,8 +50,8 @@ public class TestController {
 
 		ResultMessageUtil result = new ResultMessageUtil();
 		PageHelper.startPage(page, page_number);
-		List<SysUserEntity> user_info = user_servcice.getAllUserInfo();
-		PageInfo<SysUserEntity> pageInfo = new PageInfo<SysUserEntity>(user_info);
+		List<UserEntity> user_info = user_servcice.getAllUserInfo();
+		PageInfo<UserEntity> pageInfo = new PageInfo<UserEntity>(user_info);
 		result.setData(user_info);
 		result.setStatus(1);
 		System.out.println(pageInfo.getTotal() + "::::" + pageInfo.getPages());
