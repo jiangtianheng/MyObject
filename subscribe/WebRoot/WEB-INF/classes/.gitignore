@@ -1,11 +1,1 @@
-/GeoLite2-Country1.mmdb
-/GeoLite2Country.mmdb
-/applicationContext.xml
 /com
-/conf
-/jmail.properties
-/log4j.properties
-/memcache.properties
-/mysql.properties
-/redis.properties
-/sms.properties
