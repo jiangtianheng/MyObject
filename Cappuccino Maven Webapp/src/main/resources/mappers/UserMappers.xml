@@ -2,15 +2,15 @@
 <!DOCTYPE mapper PUBLIC 
     "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cappuccino.dao.SysUserDao">
-      <cache type="org.mybatis.caches.redis.RedisCache"/>
+<mapper namespace="com.cappuccino.dao.UserDao">
+ <!--     <cache type="org.mybatis.caches.redis.RedisCache"/>-->
 
 	<select id="getUserInfo" resultType="int">
-		select count(id) from sys_users where username=#{user_name} and password=#{user_password}
+		select count(id) from o_user where username=#{user_name} and password=#{user_password}
 	</select>
 	
 	<select id="getAllUserInfo" resultType="com.cappuccino.entity.UserEntity">
-		select * from sys_users 
+		select * from o_user 
 	</select>
     
     <select id="getUserByApiky" resultType="com.cappuccino.entity.UserEntity">

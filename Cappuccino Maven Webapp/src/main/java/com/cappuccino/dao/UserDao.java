@@ -8,12 +8,12 @@ import org.apache.ibatis.annotations.Param;
 import com.cappuccino.entity.UserEntity;
 
 @Mapper
-public interface SysUserDao {
+public interface UserDao {
 
 	public int getUserInfo(@Param("user_name") String user_name, @Param("user_password") String user_password);
 
 	public List<UserEntity> getAllUserInfo();
 
-    public List<UserEntity> getUserByApiky(@Param("apikey") String apikey );
+    public UserEntity getUserByApiky(@Param("apikey") String apikey );
 
 }

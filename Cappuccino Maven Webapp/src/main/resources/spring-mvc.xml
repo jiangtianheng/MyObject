@@ -56,10 +56,6 @@
 	<bean id="redisClient" class="com.cappuccino.cache.redis.RedisFactory">
 		<property name="redisConfig" ref="redisConnectionFactory" />
 	</bean>
-	<!-- 使用中间类解决RedisCache.jedisConnectionFactory的静态注入，从而使MyBatis实现第三方缓存 -->
-	<bean id="redisCacheTransfer" class="com.cappuccino.cache.redis.RedisCacheTransfer">
-		<property name="jedisConnectionFactory" ref="jedisConnFactory" />
-	</bean>
 
 	<!-- redis配置 -->
 	<!-- 将数据源映射到sqlsessionfactory中 -->

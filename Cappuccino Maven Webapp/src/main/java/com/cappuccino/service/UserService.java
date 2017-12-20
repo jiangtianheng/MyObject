@@ -10,6 +10,6 @@ public interface UserService {
 
 	public List<UserEntity> getAllUserInfo();
 
-    public List<UserEntity> getUserByApiky(String apikey);
+    public UserEntity getUserByApiky(String apikey);
 
 }
