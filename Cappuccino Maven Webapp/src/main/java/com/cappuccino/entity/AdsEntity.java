@@ -3,7 +3,7 @@ package com.cappuccino.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Ads implements Serializable
+public class AdsEntity implements Serializable
 {
     private static final long serialVersionUID = 1L;
     private Long id;

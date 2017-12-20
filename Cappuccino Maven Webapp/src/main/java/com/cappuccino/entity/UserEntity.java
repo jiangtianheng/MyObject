@@ -30,15 +30,9 @@ public class UserEntity implements Serializable
 
     private String ext;
 
-    @Override
-    public String toString()
-    {
-        return "SysUserEntity [id=" + id + ", username=" + username
-                + ", password=" + password + ", reallyName=" + reallyName
-                + ", email=" + email + ", status=" + status + ", role=" + role
-                + ", apikey=" + apikey + ", createdate=" + createdate
-                + ", updatedate=" + updatedate + ", ext=" + ext + "]";
-    }
+   
+
+  
 
     public Long getId()
     {

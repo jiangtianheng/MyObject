@@ -5,10 +5,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.alibaba.fastjson.JSON;
+import org.mybatis.caches.redis.SerializeUtil;
 
 import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.JedisCluster;
+
+import com.alibaba.fastjson.JSON;
+import com.cappuccino.entity.UserEntity;
 
 public class RedisFactory
 {

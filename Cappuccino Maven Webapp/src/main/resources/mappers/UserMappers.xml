@@ -14,7 +14,7 @@
 	</select>
     
     <select id="getUserByApiky" resultType="com.cappuccino.entity.UserEntity">
-		select * from o_user where apikey= #{apikey}
+		select * from o_user where  status=0 and apikey= #{apikey}
 	</select>
 	
 </mapper>
