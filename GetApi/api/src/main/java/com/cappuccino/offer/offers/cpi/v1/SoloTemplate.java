@@ -94,13 +94,9 @@ public class SoloTemplate extends BaseCpiOffer
                     countries = countries.replace("]", "");
                     countries = countries.replace("\"", "");
                     countries = countries.replace(",", ":");
-                    if (countries.contains("KR") || countries.contains("JP")
-                            || countries.contains("US")
-                            || countries.contains("TW"))
-                    {
-
-                    }
-                    else
+                    if (!countries.contains("KR")&& !countries.contains("JP")
+                            && !countries.contains("US")
+                            && !countries.contains("TW"))
                     {
                         continue;
                     }
@@ -186,13 +182,9 @@ public class SoloTemplate extends BaseCpiOffer
                     countries = countries.replace("]", "");
                     countries = countries.replace("\"", "");
                     countries = countries.replace(",", ":");
-                    if (countries.contains("KR") || countries.contains("JP")
-                            || countries.contains("US")
-                            || countries.contains("TW"))
-                    {
-
-                    }
-                    else
+                    if (!countries.contains("KR")&& !countries.contains("JP")
+                            && !countries.contains("US")
+                            && !countries.contains("TW"))
                     {
                         continue;
                     }
@@ -200,6 +192,7 @@ public class SoloTemplate extends BaseCpiOffer
                     {
                         continue;
                     }
+                    System.out.println(countries);
                     String offerid = item.getString("_id");
                     String tracklink = item.getString("tracking_link");
                     String previewlink = item.getString("preview_link");
@@ -214,7 +207,6 @@ public class SoloTemplate extends BaseCpiOffer
                     Double payout = item.getDouble("payout");
                     String description = item.getString("restriction");
                     JSONObject capObject = item.getJSONObject("cap");
-                    System.out.println(capObject.getInteger("day_cap"));
                     description = description.replace("[\"", "");
                     description = description.replace("\"]", "");
                 }

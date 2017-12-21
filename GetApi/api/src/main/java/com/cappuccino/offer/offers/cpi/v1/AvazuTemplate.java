@@ -68,7 +68,7 @@ public class AvazuTemplate extends BaseCpiOffer
                         }
                         JSONObject ad = lpsArray.getJSONObject(0);
                         String countries = ad.getString("country");
-                        if (countries.length() == 0 || countries.length() > 10)
+                        if (countries.length() == 0)
                         {
                             continue;
                         }

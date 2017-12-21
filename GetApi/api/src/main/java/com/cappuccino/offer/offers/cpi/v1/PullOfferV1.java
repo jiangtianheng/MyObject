@@ -60,6 +60,15 @@ public class PullOfferV1
                         GlobalConst.CALL_WORK, entity);
                 tasks.add(jobExecutorService.submitTask(SoloTemplate));
             }
+            /**
+             * Roidynamic模板
+             */
+            if (entity.getTemplate() == GlobalConst.roidynamic_template)
+            {
+                Roidynamic_Template Roidynamic_Template = new Roidynamic_Template(
+                        GlobalConst.CALL_WORK, entity);
+                tasks.add(jobExecutorService.submitTask(Roidynamic_Template));
+            }
 
         }
 

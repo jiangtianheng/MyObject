@@ -37,7 +37,8 @@ public interface GlobalConst
 
     final int avazu_template = 1;
     final int solo_template = 2;
-
+    final int roidynamic_template = 3;
+    
     // ----------------subway(用于区分回调来着哪)----------------------------
 
     final int SUBWAY_DEFAULT = 0;
