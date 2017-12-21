@@ -258,7 +258,7 @@ public class Postback extends TuringBaseServlet
                 {
                     postback = postback.replace("{sub2}", sub2);
                 }
-                //http://pspm.pingstart.com/api/v4/postback?from=1597&clickid={aff_sub}&payout={payout}
+                // http://pspm.pingstart.com/api/v4/postback?from=1597&clickid={aff_sub}&payout={payout}
                 postback = postback.replace("{payout}", ad.getPayout() + "");
             }
 
@@ -296,7 +296,7 @@ public class Postback extends TuringBaseServlet
         conver.setSub2(sub2);
         conver.setUserid(Long.valueOf(userid));
         converDAO.addConver(conver);
-
+        System.out.println(postback);
         if (send)
         {
             postback(union.getApikey(), userid, offerid, status);
@@ -458,7 +458,7 @@ public class Postback extends TuringBaseServlet
     // http://cappuccinocreative.com/subscribe/callback?aff_sub=b2ZmZXJpZD0yMTUyNCZ1c2VyaWQ9NjY5OSZjbGlja3RpbWU9MjAxNzEwMjYyMzAyNTMmY2hhbm5lbD17Y2hhbm5lbH0mZ2FpZD17Z2FpZH0mYW5kaWQ9e2FuZGlkfSZpZGZhPXtpZGZhfSZhZmZfc3ViPXthZmZfc3VifSZzdWIxPXtzdWIxfSZzdWIyPXtzdWIyfSZnZW89RlI&channel=6699_{channel}&pid=1032
     public static void main(String[] args)
     {
-        String id = "b2ZmZXJpZD00NDM2MyZ1c2VyaWQ9MzMzNiZjbGlja3RpbWU9MjAxNzEyMTQwNjQxMTgmY2hhbm5lbD14QXA1enIzdDdBU0FXVFdGY2RFZCZnYWlkPXtnYWlkfSZhbmRpZD17YW5kaWR9JmlkZmE9RTk2RDBCMzQtNUVFRS00OEZCLUZEQUEtNUNCRUREMTQyQUY3JmFmZl9zdWI9NjgzNTIxNTEyNjMwODkxJnN1YjE9e3N1YjF9JnN1YjI9e3N1YjJ9Jmdlbz1KUA==";
+        String id = "b2ZmZXJpZD00NDk0MiZ1c2VyaWQ9ODEwMCZjbGlja3RpbWU9MjAxNzEyMjAxNTM0NTAmY2hhbm5lbD17YWZmX2lkfV97c291cmNlX2lkfSZnYWlkPXtnYWlkfSZhbmRpZD17YW5kaWR9JmlkZmE9e2lkZmF9JmFmZl9zdWI9e2NsaWNrX2lkJTIwfSZzdWIxPXtzdWIxfSZzdWIyPXtzdWIyfSZnZW89QUxM";
         try
         {
             id = new String(Base64Decoder.Decoder.GetDecoded(id), "utf-8");

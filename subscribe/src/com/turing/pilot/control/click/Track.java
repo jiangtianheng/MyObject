@@ -169,6 +169,7 @@ public class Track extends TuringBaseServlet {
 			unionPostback = userBackMap.get(ad.getId());
 		}
 		String caplimit = ad.getCap_limit();
+		System.out.println(caplimit+"==caplimit");
 		int cap = 0;
 		if (caplimit != null && caplimit.length() > 0) {
 			Map<String, Integer> caplistMap = new HashMap<String, Integer>();
@@ -180,6 +181,7 @@ public class Track extends TuringBaseServlet {
 
 				}
 			}
+			System.out.println(caplistMap+"==caplistMap");
 			if (caplistMap.get(union.getId() + "") != null) {
 				cap = Math.round(ad.getCap() * (Float.valueOf(caplistMap.get(union.getId() + "")) / Float.valueOf(100)));
 			} else {
@@ -188,10 +190,12 @@ public class Track extends TuringBaseServlet {
 					cap = cap + caplistMap.get(key);
 				}
 				cap = Math.round(ad.getCap() * ((100 - cap) / Float.valueOf(100)));
+				System.out.println(cap +"===这个是多少");
 			}
 		} else {
 			cap = ad.getCap();
 		}
+		System.out.println(adminPostback +"===adminPostback===unionPostback="+unionPostback);
 		Boolean checkCap = false;
 		if (adminPostback < ad.getCap() && unionPostback < cap) {
 			checkCap = true;
