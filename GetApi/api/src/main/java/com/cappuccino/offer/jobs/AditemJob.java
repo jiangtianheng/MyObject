@@ -5,7 +5,7 @@ import com.cappuccino.offer.domain.ad.AdsTem;
 public class AditemJob
 {
     public AdsTem InsertAdsTem(String name, Integer providerId, String pkg,
-            String offerid, String countries, Integer os, Double payout,
+            String offerid, String countries, Integer os, Double revenue,
             int payoutType, String tracklink, String previewlink, String icon,
             String creativeFiles, int incentive, int osMinVersion,
             String carriers, Integer cap, String description)
@@ -17,7 +17,7 @@ public class AditemJob
         aditem.setOfferId(offerid);
         aditem.setOs(os);
         aditem.setCountries(countries);
-        aditem.setPayout(payout);
+        aditem.setRevenue(revenue);
         aditem.setPayoutType(payoutType);
         aditem.setTracklink(tracklink);
         aditem.setPreviewlink(previewlink);

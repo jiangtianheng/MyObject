@@ -1,15 +1,17 @@
 package com.cappuccino.offer.domain.ad;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Ads
+public class Ads implements Serializable
 {
+    private static final long serialVersionUID = 1L;
     private Long id;
     private String name;
     private Integer providerId;
     private String pkg;
     private String offerId;
-    private Double payout;
+    private Double revenue;
     private Integer payoutType;
     private String tracklink;
     private String previewlink;
@@ -26,6 +28,30 @@ public class Ads
     private Date createdate;
     private Date updatedate;
     private Integer auto;
+    private Integer payout_rate;
+    private Integer back_rate;
+    private Double payout;
+    private Integer daily_cap;
+    private Integer click;
+    private Integer postback;
+
+    @Override
+    public String toString()
+    {
+        return "Ads [id=" + id + ", name=" + name + ", providerId="
+                + providerId + ", pkg=" + pkg + ", offerId=" + offerId
+                + ", revenue=" + revenue + ", payoutType=" + payoutType
+                + ", tracklink=" + tracklink + ", previewlink=" + previewlink
+                + ", countries=" + countries + ", os=" + os + ", icon=" + icon
+                + ", creativeFiles=" + creativeFiles + ", incentive="
+                + incentive + ", osMinVersion=" + osMinVersion + ", carriers="
+                + carriers + ", cap=" + cap + ", status=" + status
+                + ", description=" + description + ", createdate=" + createdate
+                + ", updatedate=" + updatedate + ", auto=" + auto
+                + ", payout_rate=" + payout_rate + ", back_rate=" + back_rate
+                + ", payout=" + payout + ", daily_cap=" + daily_cap
+                + ", click=" + click + ", postback=" + postback + "]";
+    }
 
     public Long getId()
     {
@@ -77,14 +103,14 @@ public class Ads
         this.offerId = offerId;
     }
 
-    public Double getPayout()
+    public Double getRevenue()
     {
-        return payout;
+        return revenue;
     }
 
-    public void setPayout(Double payout)
+    public void setRevenue(Double revenue)
     {
-        this.payout = payout;
+        this.revenue = revenue;
     }
 
     public Integer getPayoutType()
@@ -247,4 +273,68 @@ public class Ads
         this.auto = auto;
     }
 
+    public Integer getPayout_rate()
+    {
+        return payout_rate;
+    }
+
+    public void setPayout_rate(Integer payout_rate)
+    {
+        this.payout_rate = payout_rate;
+    }
+
+    public Integer getBack_rate()
+    {
+        return back_rate;
+    }
+
+    public void setBack_rate(Integer back_rate)
+    {
+        this.back_rate = back_rate;
+    }
+
+    public Double getPayout()
+    {
+        return payout;
+    }
+
+    public void setPayout(Double payout)
+    {
+        this.payout = payout;
+    }
+
+    public Integer getDaily_cap()
+    {
+        return daily_cap;
+    }
+
+    public void setDaily_cap(Integer daily_cap)
+    {
+        this.daily_cap = daily_cap;
+    }
+
+    public Integer getClick()
+    {
+        return click;
+    }
+
+    public void setClick(Integer click)
+    {
+        this.click = click;
+    }
+
+    public Integer getPostback()
+    {
+        return postback;
+    }
+
+    public void setPostback(Integer postback)
+    {
+        this.postback = postback;
+    }
+
+    public static long getSerialversionuid()
+    {
+        return serialVersionUID;
+    }
 }

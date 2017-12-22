@@ -82,7 +82,7 @@ public class AvazuTemplate extends BaseCpiOffer
                         }
                         String tracklink = ad.getString("trackinglink");
                         tracklink = tracklink + entity.getClickParams();
-                        Double payout = ad.getDouble("payout");
+                        Double revenue = ad.getDouble("payout");
                         String description = item.getString("description");
                         String creativeFiles = item.getString("banner");
                         String carriers = item.getString("carrier");
@@ -132,10 +132,10 @@ public class AvazuTemplate extends BaseCpiOffer
                         AditemJob AditemJob = new AditemJob();
                         AdsTem adsitem = AditemJob.InsertAdsTem(name,
                                 entity.getId(), pkg, offerid, countries,
-                                os, payout, payoutType, tracklink,
+                                os, revenue, payoutType, tracklink,
                                 previewlink, icon, creativeFiles, incentive,
                                 osMinVersion, carriers,
-                                CapService.work(payout), description);
+                                CapService.work(revenue), description);
                         adsList.add(adsitem);
                     }
                 }

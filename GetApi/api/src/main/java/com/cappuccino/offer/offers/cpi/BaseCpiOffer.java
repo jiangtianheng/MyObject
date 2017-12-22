@@ -13,16 +13,11 @@ import org.apache.log4j.Logger;
 
 import com.cappuccino.offer.dao.AdsDAO;
 import com.cappuccino.offer.dao.AdsTemDAO;
-import com.cappuccino.offer.dao.cache.CacheBlackAppDAO;
-import com.cappuccino.offer.dao.cache.CacheOfferBlackListDAO;
 import com.cappuccino.offer.domain.GlobalConst;
 import com.cappuccino.offer.domain.ad.Ads;
 import com.cappuccino.offer.domain.ad.AdsTem;
-import com.cappuccino.offer.domain.ad.BlackApp;
-import com.cappuccino.offer.domain.ad.OfferBlackList;
 import com.cappuccino.offer.domain.ad.Provider;
 import com.cappuccino.offer.util.SpringHelper;
-import com.cappuccino.offer.util.StringUtil;
 
 public abstract class BaseCpiOffer implements Callable<Boolean>
 {
@@ -61,8 +56,7 @@ public abstract class BaseCpiOffer implements Callable<Boolean>
     }
 
     @SuppressWarnings("unused")
-    public static List<Provider> updateCpiOfferToDb(
-            Map<String, String> blackMap)
+    public static List<Provider> updateCpiOfferToDb(Map<String, String> blackMap)
     {
         logger.info("updateGpOfferToDb  start.............");
         Map<String, String> pkgMap = new HashMap<String, String>();// key : pkg
@@ -82,7 +76,7 @@ public abstract class BaseCpiOffer implements Callable<Boolean>
         offer_Tem_List = temDao.listAll();
         logger.info("before black adsTem list size():" + offer_Tem_List.size());
         // 移除黑名单中的选项
-        //  offer_Tem_List = removeBlackItem(offer_Tem_List, blackMap);
+        // offer_Tem_List = removeBlackItem(offer_Tem_List, blackMap);
         logger.info("after blackOffer offer_tem  List size():"
                 + offer_Tem_List.size());
         if (offer_Tem_List != null && offer_Tem_List.size() != 0)
@@ -484,102 +478,6 @@ public abstract class BaseCpiOffer implements Callable<Boolean>
             e.printStackTrace();
         }
         return list;
-    }
-
-    /**
-     * 获取黑名单中的pkg项
-     * 
-     * @param list
-     * @return
-     */
-    public static Map<String, String> getBlackItem()
-    {
-        String str = "";
-        Map<String, String> blackMap = null;
-        CacheOfferBlackListDAO blackListDao = null;
-        try
-        {
-            blackListDao = SpringHelper.getBean("offerBlackListDAO",
-                    CacheOfferBlackListDAO.class);
-            List<OfferBlackList> allBlack = blackListDao.findAll();
-            blackMap = new HashMap<String, String>();
-            for (OfferBlackList black : allBlack)
-            {
-                str = black.getPkg() + ":" + black.getProvider() + ":"
-                        + black.getCountry();
-                blackMap.put(str, black.getPkg());
-            }
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-        return blackMap;
-    }
-
-    /**
-     * 获取APP黑名单中的pkg项
-     * 
-     * @param list
-     * @return
-     */
-    public Map<String, String> getAppBlackItem()
-    {
-        String str = "";
-        Map<String, String> blackMap = null;
-        CacheBlackAppDAO blackListDao = null;
-        try
-        {
-            blackListDao = SpringHelper.getBean("blackAppDAO",
-                    CacheBlackAppDAO.class);
-            List<BlackApp> allBlack = blackListDao.findAll();
-
-            blackMap = new HashMap<String, String>();
-            for (BlackApp black : allBlack)
-            {
-                str = black.getPkg();
-                blackMap.put(str, str);
-            }
-        }
-        catch (Exception e)
-        {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return blackMap;
-    }
-
-    /**
-     * 移除App黑名单
-     * 
-     * @param list
-     * @return
-     */
-    public List<AdsTem> removeAppBlack(List<AdsTem> list)
-    {
-        Map<String, String> appBlackItem = getAppBlackItem();
-        Iterator<AdsTem> iterator = list.iterator();
-        while (iterator.hasNext())
-        {
-            AdsTem item = (AdsTem) iterator.next();
-            String key = item.getPkg();
-            if (!StringUtil.isBlank(appBlackItem.get(key)))
-            {
-                iterator.remove();
-            }
-        }
-        return list;
-    }
-
-    public static void main(String[] args)
-    {
-
-        String key = "waf" + ":" + "as" + ":" + "adfa" + ":" + "";
-        String[] keys = key.split(":");
-        if ("".equals(keys[3]))
-            System.out.println("ddz");
-        System.out.println(keys[3]);
-
     }
 
 }

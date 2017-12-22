@@ -94,7 +94,7 @@ public class SoloTemplate extends BaseCpiOffer
                     countries = countries.replace("]", "");
                     countries = countries.replace("\"", "");
                     countries = countries.replace(",", ":");
-                    if (!countries.contains("KR")&& !countries.contains("JP")
+                    if (!countries.contains("KR") && !countries.contains("JP")
                             && !countries.contains("US")
                             && !countries.contains("TW"))
                     {
@@ -182,7 +182,7 @@ public class SoloTemplate extends BaseCpiOffer
                     countries = countries.replace("]", "");
                     countries = countries.replace("\"", "");
                     countries = countries.replace(",", ":");
-                    if (!countries.contains("KR")&& !countries.contains("JP")
+                    if (!countries.contains("KR") && !countries.contains("JP")
                             && !countries.contains("US")
                             && !countries.contains("TW"))
                     {

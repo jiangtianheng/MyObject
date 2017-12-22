@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import com.cappuccino.offer.domain.GlobalConst;
 import com.cappuccino.offer.domain.ad.Ads;
 import com.cappuccino.offer.domain.ad.AdsTem;
+import com.cappuccino.offer.domain.ad.UserEntity;
 
 @Component(value = "adsDAO")
 public class AdsDAO extends BaseDAO
@@ -69,7 +70,7 @@ public class AdsDAO extends BaseDAO
             sb.append("UPDATE ");
             sb.append(table());
             sb.append(" SET `cap`=?,`providerId`=?, `name`=?, `pkg`=?,`countries`=?, `tracklink`=?, `previewlink`=?, "
-                    + "`payout`=?,`updatedate`=CURRENT_TIMESTAMP WHERE `providerId`=? and `pkg`=? and `countries`=? and `offerid`=? ");
+                    + "`revenue`=?,`updatedate`=CURRENT_TIMESTAMP WHERE `providerId`=? and `pkg`=? and `countries`=? and `offerid`=? ");
             PreparedStatementSetter psc = new PreparedStatementSetter()
             {
                 public void setValues(PreparedStatement ps) throws SQLException
@@ -133,9 +134,9 @@ public class AdsDAO extends BaseDAO
                     {
                         ps.setNull(i++, Types.NULL);
                     }
-                    if (item.getPayout() != null)
+                    if (item.getRevenue() != null)
                     {
-                        ps.setDouble(i++, item.getPayout());
+                        ps.setDouble(i++, item.getRevenue());
                     }
                     else
                     {
@@ -222,7 +223,7 @@ public class AdsDAO extends BaseDAO
         StringBuffer sb = new StringBuffer();
         sb.append("UPDATE ");
         sb.append(table());
-        sb.append(" SET `providerId`=?, `name`=?, `pkg`=?, `countries`=?,  `tracklink`=?,`previewlink`=? `cap`=?,`payout`=?,`offerid`=?,`updatedate`=CURRENT_TIMESTAMP WHERE `id`=?");
+        sb.append(" SET `providerId`=?, `name`=?, `pkg`=?, `countries`=?,  `tracklink`=?,`previewlink`=? `cap`=?,`revenue`=?,`offerid`=?,`updatedate`=CURRENT_TIMESTAMP WHERE `id`=?");
         PreparedStatementSetter psc = new PreparedStatementSetter()
         {
             public void setValues(PreparedStatement ps) throws SQLException
@@ -287,9 +288,9 @@ public class AdsDAO extends BaseDAO
                     ps.setNull(i++, Types.NULL);
                 }
 
-                if (item.getPayout() != null)
+                if (item.getRevenue() != null)
                 {
-                    ps.setDouble(i++, item.getPayout());
+                    ps.setDouble(i++, item.getRevenue());
                 }
                 else
                 {
@@ -322,7 +323,7 @@ public class AdsDAO extends BaseDAO
         StringBuffer sb = new StringBuffer();
         sb.append("INSERT INTO ");
         sb.append(table());
-        sb.append(" (`name`,`providerId`,`pkg`, `offerId`,`payout`, `payoutType`,`tracklink`,"
+        sb.append(" (`name`,`providerId`,`pkg`, `offerId`,`revenue`, `payoutType`,`tracklink`,"
                 + "`previewlink`, `countries`, `os`, `icon`,`creativeFiles`, `incentive`, `osMinVersion`,`carriers`,`cap`,`status`,`description`,`createdate`,`updatedate`,`auto`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,?)");
         PreparedStatementSetter psc = new PreparedStatementSetter()
         {
@@ -365,10 +366,10 @@ public class AdsDAO extends BaseDAO
                 {
                     ps.setObject(i++, null);
                 }
-                // payout
-                if (item.getPayout() != null)
+                // revenue
+                if (item.getRevenue() != null)
                 {
-                    ps.setObject(i++, item.getPayout());
+                    ps.setObject(i++, item.getRevenue());
                 }
                 else
                 {
@@ -555,5 +556,42 @@ public class AdsDAO extends BaseDAO
             super.getJdbcTemplate().update(sb.toString(), psc);
         }
 
+    }
+
+    /**
+     * 
+     * @Title: getAll
+     * @Description: TODO(获取全部在线offer)
+     */
+    public List<Ads> getAll()
+    {
+        String sql = "select * from " + table() + " where status=0 ";
+        return queryForList(sql, null, Ads.class);
+    }
+
+    public List<Ads> getAllByApiKey(String apikey, Long id)
+    {
+        StringBuffer sb = new StringBuffer();
+        sb.append("SELECT a1.*, COALESCE (a2.click, 0) AS click, COALESCE (a2.postback, 0) AS postback");
+        sb.append(" FROM");
+        sb.append(" (SELECT * FROM ( SELECT a.*, r.payout_rate,r.back_rate,ROUND(((a.`revenue` * r.payout_rate) / 100),2) AS payout,ROUND(((a.`cap` * r.cap_rate) / 100)) AS daily_cap FROM o_ads AS a ");
+        sb.append(" INNER JOIN ");
+        sb.append("  ( SELECT providerId,payout_rate,back_rate,cap_rate FROM o_proider_rate WHERE userId = '"
+                + id
+                + "') AS r ON a.providerId = r.providerId WHERE a. STATUS = 0");
+        sb.append("   UNION ALL");
+        sb.append("  SELECT a.*, p.payout_rate,p.back_rate,ROUND(((a.`revenue` * p.payout_rate) / 100),2) AS payout,ROUND(((a.`cap` * p.cap_rate) / 100)) AS daily_cap FROM o_ads AS a");
+        sb.append("  INNER JOIN ");
+        sb.append("  (SELECT offerId, payout_rate, back_rate, cap_rate FROM o_ads_append WHERE userId = '"
+                + id
+                + "' ) AS p ON p.offerId = a.id WHERE a.`status` = 0 ) AS nima WHERE nima.id ");
+        sb.append("  NOT IN ");
+        sb.append("  (SELECT offerId FROM `o_ads_blacklist` WHERE userId = '"
+                + id + "' ) ) AS a1");
+        sb.append("   LEFT JOIN ");
+        sb.append("   (SELECT * FROM o_adsinfo WHERE userId ='" + id
+                + "' ) AS a2 ON a1.id  = a2.offerId");
+        System.out.println(sb.toString());
+        return queryForList(sb.toString(), null, Ads.class);
     }
 }

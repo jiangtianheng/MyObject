@@ -35,7 +35,7 @@ public class AdsTemDAO extends BaseDAO
         StringBuffer sb = new StringBuffer();
         sb.append("INSERT INTO ");
         sb.append(table_tem());
-        sb.append(" (`name`,`provider`,`country`, `payout`,`carrier`, `os`,`tracklink`,"
+        sb.append(" (`name`,`provider`,`country`, `revenue`,`carrier`, `os`,`tracklink`,"
                 + "`previewlink`, `offerid`, `pkg`, `type`,`network`, `icon`, `traffic`,`conversion_flow`,`status`,`cap`,`category`,`isIframe`,`auto`,`incentive`,`offer_type`,`createdate`,`updatedate`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)");
         List<Object> parameter = new ArrayList<Object>();
         parameter.add(item.getName());
@@ -99,7 +99,7 @@ public class AdsTemDAO extends BaseDAO
             StringBuffer sb = new StringBuffer();
             sb.append("INSERT INTO ");
             sb.append(table_tem());
-            sb.append(" (`name`,`providerId`,`pkg`, `offerId`,`payout`, `payoutType`,`tracklink`,"
+            sb.append(" (`name`,`providerId`,`pkg`, `offerId`,`revenue`, `payoutType`,`tracklink`,"
                     + "`previewlink`, `countries`, `os`, `icon`,`creativeFiles`, `incentive`, `osMinVersion`,`carriers`,`cap`,`status`,`description`,`createdate`,`updatedate`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)");
             PreparedStatementSetter psc = new PreparedStatementSetter()
             {
@@ -142,10 +142,10 @@ public class AdsTemDAO extends BaseDAO
                     {
                         ps.setObject(i++, null);
                     }
-                    // payout
-                    if (item.getPayout() != null)
+                    // revenue
+                    if (item.getRevenue() != null)
                     {
-                        ps.setObject(i++, item.getPayout());
+                        ps.setObject(i++, item.getRevenue());
                     }
                     else
                     {

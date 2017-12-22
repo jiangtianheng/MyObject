@@ -1,0 +1,5 @@
+2017-12-21 14:01:39,289 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:398] - new offer but db exit=0
+ 2017-12-21 14:01:39,293 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:399] - new offer insert=652
+ 2017-12-21 14:01:39,294 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:403] - comHas2 (-2)is:33
+ 2017-12-21 14:01:41,795 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:91] - update offer into tem  end.....
+ 

@@ -1,15 +1,17 @@
 package com.cappuccino.offer.domain.ad;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class AdsTem
+public class AdsTem implements Serializable
 {
+    private static final long serialVersionUID = 1L;
     private Long id;
     private String name;
     private Integer providerId;
     private String pkg;
     private String offerId;
-    private Double payout;
+    private Double revenue;
     private Integer payoutType;
     private String tracklink;
     private String previewlink;
@@ -25,6 +27,37 @@ public class AdsTem
     private String description;
     private Date createdate;
     private Date updatedate;
+
+    @Override
+    public String toString()
+    {
+        return "AdsTem [id=" + id + ", name=" + name + ", providerId="
+                + providerId + ", pkg=" + pkg + ", offerId=" + offerId
+                + ", revenue=" + revenue + ", payoutType=" + payoutType
+                + ", tracklink=" + tracklink + ", previewlink=" + previewlink
+                + ", countries=" + countries + ", os=" + os + ", icon=" + icon
+                + ", creativeFiles=" + creativeFiles + ", incentive="
+                + incentive + ", osMinVersion=" + osMinVersion + ", carriers="
+                + carriers + ", cap=" + cap + ", status=" + status
+                + ", description=" + description + ", createdate=" + createdate
+                + ", updatedate=" + updatedate + ", getId()=" + getId()
+                + ", getName()=" + getName() + ", getProviderId()="
+                + getProviderId() + ", getPkg()=" + getPkg()
+                + ", getOfferId()=" + getOfferId() + ", getRevenue()="
+                + getRevenue() + ", getPayoutType()=" + getPayoutType()
+                + ", getTracklink()=" + getTracklink() + ", getPreviewlink()="
+                + getPreviewlink() + ", getCountries()=" + getCountries()
+                + ", getOs()=" + getOs() + ", getIcon()=" + getIcon()
+                + ", getCreativeFiles()=" + getCreativeFiles()
+                + ", getIncentive()=" + getIncentive() + ", getOsMinVersion()="
+                + getOsMinVersion() + ", getCarriers()=" + getCarriers()
+                + ", getCap()=" + getCap() + ", getStatus()=" + getStatus()
+                + ", getDescription()=" + getDescription()
+                + ", getCreatedate()=" + getCreatedate() + ", getUpdatedate()="
+                + getUpdatedate() + ", getClass()=" + getClass()
+                + ", hashCode()=" + hashCode() + ", toString()="
+                + super.toString() + "]";
+    }
 
     public Long getId()
     {
@@ -43,7 +76,7 @@ public class AdsTem
 
     public void setName(String name)
     {
-        this.name = name == null ? null : name.trim();
+        this.name = name;
     }
 
     public Integer getProviderId()
@@ -63,7 +96,7 @@ public class AdsTem
 
     public void setPkg(String pkg)
     {
-        this.pkg = pkg == null ? null : pkg.trim();
+        this.pkg = pkg;
     }
 
     public String getOfferId()
@@ -76,14 +109,14 @@ public class AdsTem
         this.offerId = offerId;
     }
 
-    public Double getPayout()
+    public Double getRevenue()
     {
-        return payout;
+        return revenue;
     }
 
-    public void setPayout(Double payout)
+    public void setRevenue(Double revenue)
     {
-        this.payout = payout;
+        this.revenue = revenue;
     }
 
     public Integer getPayoutType()
@@ -103,7 +136,7 @@ public class AdsTem
 
     public void setTracklink(String tracklink)
     {
-        this.tracklink = tracklink == null ? null : tracklink.trim();
+        this.tracklink = tracklink;
     }
 
     public String getPreviewlink()
@@ -113,7 +146,7 @@ public class AdsTem
 
     public void setPreviewlink(String previewlink)
     {
-        this.previewlink = previewlink == null ? null : previewlink.trim();
+        this.previewlink = previewlink;
     }
 
     public String getCountries()
@@ -123,7 +156,7 @@ public class AdsTem
 
     public void setCountries(String countries)
     {
-        this.countries = countries == null ? null : countries.trim();
+        this.countries = countries;
     }
 
     public Integer getOs()
@@ -143,7 +176,7 @@ public class AdsTem
 
     public void setIcon(String icon)
     {
-        this.icon = icon == null ? null : icon.trim();
+        this.icon = icon;
     }
 
     public String getCreativeFiles()
@@ -153,8 +186,7 @@ public class AdsTem
 
     public void setCreativeFiles(String creativeFiles)
     {
-        this.creativeFiles = creativeFiles == null ? null : creativeFiles
-                .trim();
+        this.creativeFiles = creativeFiles;
     }
 
     public Integer getIncentive()
@@ -184,7 +216,7 @@ public class AdsTem
 
     public void setCarriers(String carriers)
     {
-        this.carriers = carriers == null ? null : carriers.trim();
+        this.carriers = carriers;
     }
 
     public Integer getCap()

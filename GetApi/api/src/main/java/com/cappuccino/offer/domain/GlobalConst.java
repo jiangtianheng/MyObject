@@ -21,7 +21,7 @@ public interface GlobalConst
     /**
      * 0:默认 1:激励、2:非激励 "incentive": "Non Incentive",
      */
-    final int Incentive = 0;
+    final int Incentive = 1;
     final int Non_Incentive = 2;
     // ---------------osMinVersion----------------------------
     /**
@@ -60,5 +60,10 @@ public interface GlobalConst
 
     /** 支付价格比率 */
     final float PAY_OUT_RATE = 0.8f;
-
+    /** 缓存中offer全部数据 */
+    final String REDIS_KEYS_ALLOFFERS = "REDIS_KEYS_ALLOFFERS";
+    
+    final String REDIS_KEYS_USERS = "REDIS_KEYS_USERS";
+    final String REDIS_KEYS_ADSUSERSKEY = "REDIS_KEYS_ADSUSERSKEY_";
+    
 }

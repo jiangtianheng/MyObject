@@ -1,0 +1,108 @@
+2017-12-21 13:56:30,710 - [main][INFO] [AbstractApplicationContext.java:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@4a8270d7: startup date [Thu Dec 21 13:56:30 CST 2017]; root of context hierarchy
+ 2017-12-21 13:56:30,785 - [main][INFO] [XmlBeanDefinitionReader.java:315] - Loading XML bean definitions from URL [file:D:/git/MyObject/GetApi/api/conf/applicationContext.xml]
+ 2017-12-21 13:56:31,675 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/git/MyObject/GetApi/api/conf/log4j.properties]
+ 2017-12-21 13:56:31,675 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/git/MyObject/GetApi/api/conf/mysql.properties]
+ 2017-12-21 13:56:31,676 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/git/MyObject/GetApi/api/conf/memcache.properties]
+ 2017-12-21 13:56:31,676 - [main][INFO] [PropertiesLoaderSupport.java:172] - Loading properties file from URL [file:D:/git/MyObject/GetApi/api/conf/redis.properties]
+ 2017-12-21 13:56:31,735 - [main][INFO] [DefaultListableBeanFactory.java:596] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@4d7d26eb: defining beans [propertyConfigurer,adsDAO,adsTemDAO,apkDAO,blackAppDAO,classApkDAO,countryDAO,offerBlackListDAO,OfferDAO,SupervisorsDAO,providerDAO,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,db,memcachedClientBuilder,memcachedClient,redisPoolConfig,redisConnectionFactory,redisClient,pullOfferJob,updateOffers,pullOffer,startQuertz,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+ 2017-12-21 13:56:31,989 - [main][WARN] [XMemcachedClient.java:727] - XMemcachedClient use Binary protocol
+ 2017-12-21 13:56:32,031 - [main][INFO] [SelectorManager.java:37] - Creating 8 reactors...
+ 2017-12-21 13:56:32,054 - [main][WARN] [AbstractController.java:372] - The Controller started at localhost/127.0.0.1:0 ...
+ 2017-12-21 13:56:32,139 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 54.254.227.241:11211
+ 2017-12-21 13:56:32,260 - [main][INFO] [StdSchedulerFactory.java:1184] - Using default implementation for ThreadExecutor
+ 2017-12-21 13:56:32,293 - [main][INFO] [SchedulerSignalerImpl.java:61] - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2017-12-21 13:56:32,294 - [main][INFO] [QuartzScheduler.java:240] - Quartz Scheduler v.2.2.1 created.
+ 2017-12-21 13:56:32,295 - [main][INFO] [RAMJobStore.java:155] - RAMJobStore initialized.
+ 2017-12-21 13:56:32,295 - [main][INFO] [QuartzScheduler.java:305] - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'startQuertz' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2017-12-21 13:56:32,296 - [main][INFO] [StdSchedulerFactory.java:1339] - Quartz scheduler 'startQuertz' initialized from an externally provided properties instance.
+ 2017-12-21 13:56:32,297 - [main][INFO] [StdSchedulerFactory.java:1343] - Quartz scheduler version: 2.2.1
+ 2017-12-21 13:56:32,298 - [main][INFO] [QuartzScheduler.java:2311] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@49017ca
+ 2017-12-21 13:56:32,315 - [main][INFO] [DefaultLifecycleProcessor.java:334] - Starting beans in phase 2147483647
+ 2017-12-21 13:56:32,315 - [main][INFO] [SchedulerFactoryBean.java:648] - Starting Quartz Scheduler now
+ 2017-12-21 13:56:32,315 - [main][INFO] [QuartzScheduler.java:575] - Scheduler startQuertz_$_NON_CLUSTERED started.
+ 2017-12-21 13:56:32,319 - [main][INFO] [PullOfferLauncher.java:22] - server start success.
+ 2017-12-21 13:58:00,009 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:29] - update offer start.....
+ 2017-12-21 13:58:04,041 - [JobExecutorService-1][INFO] [AvazuTemplate.java:55] - get AvazuOffer_01  size=141 offer start
+ 2017-12-21 13:58:06,308 - [JobExecutorService-3][INFO] [Roidynamic_Template.java:75] - get Roidynamic_01  size=383 offer start
+ 2017-12-21 13:58:09,648 - [JobExecutorService-3][INFO] [Roidynamic_Template.java:75] - get Roidynamic_01  size=383 offer start
+ 2017-12-21 13:58:18,453 - [JobExecutorService-2][INFO] [SoloTemplate.java:64] - get Soloaware_01  size=709 offer start
+ 2017-12-21 13:58:24,815 - [JobExecutorService-4][INFO] [SoloTemplate.java:64] - get Soloaware_02  size=1984 offer start
+ 2017-12-21 13:59:16,831 - [startQuertz_Worker-1][INFO] [PullOfferV1.java:89] - updateAndroidOfferToDb
+ 2017-12-21 13:59:16,831 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:67] - updateGpOfferToDb  start.............
+ 2017-12-21 13:59:21,607 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:83] - before black adsTem list size():1096
+ 2017-12-21 13:59:21,608 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:86] - after blackOffer offer_tem  List size():1096
+ 2017-12-21 13:59:21,609 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:122] - AdsTem pkglist size:1096
+ 2017-12-21 13:59:21,610 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:123] - AdsTem offerlist size:1096
+ 2017-12-21 13:59:21,610 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:124] - 
+ 2017-12-21 13:59:24,298 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:139] - adAll list:394
+ 2017-12-21 13:59:24,299 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:185] - ad dbList list:394
+ 2017-12-21 13:59:24,377 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:5230692
+ 2017-12-21 13:59:24,451 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:5305282
+ 2017-12-21 13:59:24,527 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:5317426
+ 2017-12-21 13:59:24,606 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:5289453
+ 2017-12-21 13:59:24,680 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9759024
+ 2017-12-21 13:59:24,755 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:8632535
+ 2017-12-21 13:59:24,834 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9882012
+ 2017-12-21 13:59:24,908 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:8441851
+ 2017-12-21 13:59:24,983 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9769625
+ 2017-12-21 13:59:25,062 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9815420
+ 2017-12-21 13:59:25,136 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:7897072
+ 2017-12-21 13:59:25,211 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:8846608
+ 2017-12-21 13:59:25,291 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9734971
+ 2017-12-21 13:59:25,365 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:8460803
+ 2017-12-21 13:59:25,440 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9148262
+ 2017-12-21 13:59:25,521 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:8881257
+ 2017-12-21 13:59:25,595 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:8994225
+ 2017-12-21 13:59:25,670 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9804497
+ 2017-12-21 13:59:25,748 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9899478
+ 2017-12-21 13:59:25,822 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9779481
+ 2017-12-21 13:59:25,896 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9025691
+ 2017-12-21 13:59:25,976 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9951362
+ 2017-12-21 13:59:26,050 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9074705
+ 2017-12-21 13:59:26,127 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9329160
+ 2017-12-21 13:59:26,205 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9795312
+ 2017-12-21 13:59:26,282 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9413769
+ 2017-12-21 13:59:26,356 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9984347
+ 2017-12-21 13:59:26,435 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9920113
+ 2017-12-21 13:59:26,510 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:8870138
+ 2017-12-21 13:59:26,585 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9992545
+ 2017-12-21 13:59:26,664 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9684331
+ 2017-12-21 13:59:26,739 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9960015
+ 2017-12-21 13:59:26,814 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9609092
+ 2017-12-21 13:59:26,893 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9902158
+ 2017-12-21 13:59:26,967 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9214562
+ 2017-12-21 13:59:27,041 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:8963271
+ 2017-12-21 13:59:27,121 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9722860
+ 2017-12-21 13:59:27,194 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9708647
+ 2017-12-21 13:59:27,269 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9744748
+ 2017-12-21 13:59:27,347 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9039041
+ 2017-12-21 13:59:27,421 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:10016982
+ 2017-12-21 13:59:27,496 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:8998625
+ 2017-12-21 13:59:27,575 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9970941
+ 2017-12-21 13:59:27,650 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9945887
+ 2017-12-21 13:59:27,725 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:10012190
+ 2017-12-21 13:59:27,804 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:8828813
+ 2017-12-21 13:59:27,879 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9789384
+ 2017-12-21 13:59:27,953 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:6482572
+ 2017-12-21 13:59:28,032 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9602866
+ 2017-12-21 13:59:28,106 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:221028
+ 2017-12-21 13:59:28,181 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:9933495
+ 2017-12-21 13:59:28,260 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:246] - only ad dbhas:220948
+ 2017-12-21 13:59:28,261 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:250] - comHas:342
+ 2017-12-21 13:59:28,261 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:253] - update comHas:342
+ 2017-12-21 13:59:28,263 - [startQuertz_Worker-1][INFO] [AdsDAO.java:180] - updateCom 100 per t=0
+ 2017-12-21 13:59:35,868 - [startQuertz_Worker-1][INFO] [AdsDAO.java:180] - updateCom 100 per t=100
+ 2017-12-21 13:59:43,465 - [startQuertz_Worker-1][INFO] [AdsDAO.java:180] - updateCom 100 per t=200
+ 2017-12-21 13:59:51,063 - [startQuertz_Worker-1][INFO] [AdsDAO.java:180] - updateCom 100 per t=300
+ 2017-12-21 13:59:54,275 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:259] - offerHas is :685
+ 2017-12-21 13:59:55,443 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:265] - ad offer is -2 :364
+ 2017-12-21 13:59:55,444 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:317] - come here
+ 2017-12-21 13:59:55,444 - [startQuertz_Worker-1][INFO] [BaseCpiOffer.java:366] - ads offerHas2 (-2) is :652
+ 

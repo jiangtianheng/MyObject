@@ -211,6 +211,14 @@ public class Postback extends TuringBaseServlet
             rate = union.getPostbackrate();
         }
         send = isSend(rate);
+        StringBuffer sb3 = new StringBuffer();
+        sb3.append("PostRate:").append("\t").append(send).append("\t")
+                .append(rate).append("\t").append(status)
+                .append(ad.getOfferid()).append("\t").append(userid)
+                .append("\t").append(provider).append("\t")
+                .append(ad.getProvider());
+        TuringLog.adsLog(sb3.toString());
+
         if (union.getPostback() != null && union.getPostback().length() > 0)
         {
             postback = union.getPostback();
@@ -296,7 +304,6 @@ public class Postback extends TuringBaseServlet
         conver.setSub2(sub2);
         conver.setUserid(Long.valueOf(userid));
         converDAO.addConver(conver);
-        System.out.println(postback);
         if (send)
         {
             postback(union.getApikey(), userid, offerid, status);
@@ -467,7 +474,7 @@ public class Postback extends TuringBaseServlet
         {
             e.printStackTrace();
         }
-        System.out.println(id);
+        System.out.println(isSend(80));
     }
 
 }
