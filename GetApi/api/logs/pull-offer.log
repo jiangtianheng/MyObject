@@ -973,4 +973,12 @@
  2017-12-22 17:30:00,066 - [XMemcached-HeartBeatPool[MemcachedClient-0]-0][WARN] [MemcachedConnector.java:365] - Remove a session: 54.254.227.241:11211
  2017-12-22 17:30:02,068 - [Heal-Session-Thread][WARN] [MemcachedConnector.java:125] - Trying to connect to 54.254.227.241:11211 for 1 times
  2017-12-22 17:30:05,146 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 54.254.227.241:11211
+ 2017-12-22 17:34:41,626 - [XMemcached-HeartBeatPool[MemcachedClient-0]-0][WARN] [MemcachedHandler.java:246] - Session(54.254.227.241:11211) heartbeat fail 4 times,close session and try to heal it
+ 2017-12-22 17:34:42,226 - [XMemcached-HeartBeatPool[MemcachedClient-0]-0][WARN] [MemcachedConnector.java:365] - Remove a session: 54.254.227.241:11211
+ 2017-12-22 17:34:44,253 - [Heal-Session-Thread][WARN] [MemcachedConnector.java:125] - Trying to connect to 54.254.227.241:11211 for 1 times
+ 2017-12-22 17:34:44,356 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 54.254.227.241:11211
+ 2017-12-22 18:32:39,909 - [XMemcached-HeartBeatPool[MemcachedClient-0]-0][WARN] [MemcachedHandler.java:246] - Session(139.162.63.212:11211) heartbeat fail 4 times,close session and try to heal it
+ 2017-12-22 18:32:39,912 - [XMemcached-HeartBeatPool[MemcachedClient-0]-0][WARN] [MemcachedConnector.java:365] - Remove a session: 139.162.63.212:11211
+ 2017-12-22 18:32:41,913 - [Heal-Session-Thread][WARN] [MemcachedConnector.java:125] - Trying to connect to 139.162.63.212:11211 for 1 times
+ 2017-12-22 18:32:41,988 - [Xmemcached-Reactor-0][WARN] [MemcachedConnector.java:251] - Add a session: 139.162.63.212:11211
  
