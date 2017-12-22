@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cappuccino.dao.OffersDao">
+	
+	<!-- api 获取offers信息 -->
+	<select id="getAllOffersInfo" resultType="com.cappuccino.entity.OfferInfoEntity">
+		SELECT 
+			  a1.*,
+			  COALESCE (a2.click, 0) AS click,
+			  COALESCE (a2.postback, 0) AS postback 
+		FROM
+		  (SELECT 
+		    * 
+		  FROM
+		    (SELECT 
+		      a.*,
+		      r.payout_rate,
+		      r.back_rate,
+		      ROUND(
+		        ((a.`revenue` * r.payout_rate) / 100),
+		        2
+		      ) AS payout,
+		      ROUND(((a.`cap` * r.cap_rate) / 100)) AS out_cap 
+		    FROM
+		      o_ads AS a 
+		      INNER JOIN 
+		        (SELECT 
+		          providerId,
+		          payout_rate,
+		          back_rate,
+		          cap_rate 
+		        FROM
+		          o_proider_rate 
+		        WHERE userId = 
+		          (SELECT 
+		            id 
+		          FROM
+		            o_user 
+		          WHERE apikey = #{apikey})) AS r 
+		        ON a.providerId = r.providerId 
+		    WHERE a.STATUS = 0 
+		    UNION
+		    ALL 
+		    SELECT 
+		      a.*,
+		      p.payout_rate,
+		      p.back_rate,
+		      ROUND(
+		        ((a.`revenue` * p.payout_rate) / 100),
+		        2
+		      ) AS payout,
+		      ROUND(((a.`cap` * p.cap_rate) / 100)) AS out_cap 
+		    FROM
+		      o_ads AS a 
+		      INNER JOIN 
+		        (SELECT 
+		          offerId,
+		          payout_rate,
+		          back_rate,
+		          cap_rate 
+		        FROM
+		          o_ads_append 
+		        WHERE userId = 
+		          (SELECT 
+		            id 
+		          FROM
+		            o_user 
+		          WHERE apikey =#{apikey})) AS p 
+		        ON p.offerId = a.id 
+		    WHERE a.`status` = 0) AS nima 
+		  WHERE nima.id NOT IN 
+		    (SELECT 
+		      offerId 
+		    FROM
+		      `o_ads_blacklist` 
+		    WHERE userId = 
+		      (SELECT 
+		        id 
+		      FROM
+		        o_user 
+		      WHERE apikey = #{apikey}))) AS a1 
+		  LEFT JOIN 
+		    (SELECT 
+		      * 
+		    FROM
+		      o_adsinfo 
+		    WHERE userId = 
+		      (SELECT 
+		        id 
+		      FROM
+		        o_user 
+		      WHERE apikey = #{apikey})) AS a2 
+		    ON a1.id = a2.offerId 
+		<if test="countries!=null or os!=null or (min!=null and max!=null)">
+			WHERE 
+			   <!-- 国家 -->
+			   <if test="countries!=null ">
+			   		a1.countries = #{countries}
+			   </if>
+			   <!--操作系统-->
+			   <if test="os!=null ">
+			   		<if test="countries!=null ">
+			   			AND a1.os = #{os}
+			   		</if>
+			   		<if test="countries==null ">
+			   			 a1.os = #{os}
+			   		</if>
+			   </if>
+			   <!--单价-->
+			   <if test="min!=null and max!=null">
+			   		<if test="countries!=null or countries!=null ">
+			    		AND a1.payout BETWEEN #{min} AND #{max}
+			    	</if>
+			    	<if test="countries==null and countries==null ">
+			    		 a1.payout BETWEEN #{min} AND #{max}
+			    	</if>
+			   </if>
+		</if>
+		GROUP BY a1.id 
+		ORDER BY payout DESC 
+	</select>
+
+</mapper>

@@ -99,6 +99,8 @@
 			</props>
 		</property>
 	</bean>
+	
+	<bean class="com.cappuccino.exception.CustomExceptionResolver" />
 
 	<!-- 验证码 -->
 	<bean id="captchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">

@@ -59,7 +59,11 @@ public interface GlobalConst
 
     /** 支付价格比率 */
     final float PAY_OUT_RATE = 0.8f;
-    
+
     final String USER_KEY = "user_key_";
     final String REDIS_KEYS_ADSUSERSKEY = "REDIS_KEYS_ADSUSERSKEY_";
+
+    /** api offers key */
+    final String OFFER_KEY = "api_offers_";
+
 }
