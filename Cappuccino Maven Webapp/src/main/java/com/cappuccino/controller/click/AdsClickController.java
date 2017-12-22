@@ -1,6 +1,7 @@
 package com.cappuccino.controller.click;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -11,8 +12,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSON;
+import com.cappuccino.cache.redis.RedisFactory;
+import com.cappuccino.entity.AdsEntity;
 import com.cappuccino.entity.UserEntity;
 import com.cappuccino.service.UserService;
+import com.cappuccino.util.GlobalConst;
 
 @RestController
 @RequestMapping("ads")
@@ -59,17 +63,19 @@ public class AdsClickController
         if (user != null && user.getId() > 0)
         {
             // offer是否可用
-
             // 可用跳转
+            List<String> adsList=RedisFactory.get(GlobalConst.REDIS_KEYS_ADSUSERSKEY + apikey,"999999999");
+            System.out.println(adsList);
+            System.out.println(adsList.get(0));
         }
         else
         {
             Map<String, Object> res = new HashMap<String, Object>();
-            // {"code":1, "msg":"input param: sourceid is invalid "}
             res.put("code", "-2");
             res.put("msg", "input param error");
             json = JSON.toJSONString(res);
         }
+
         return json;
     }
 

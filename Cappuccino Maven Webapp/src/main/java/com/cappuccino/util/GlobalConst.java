@@ -61,5 +61,5 @@ public interface GlobalConst
     final float PAY_OUT_RATE = 0.8f;
     
     final String USER_KEY = "user_key_";
-
+    final String REDIS_KEYS_ADSUSERSKEY = "REDIS_KEYS_ADSUSERSKEY_";
 }
