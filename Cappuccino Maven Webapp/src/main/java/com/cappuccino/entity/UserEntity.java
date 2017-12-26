@@ -30,10 +30,6 @@ public class UserEntity implements Serializable
 
     private String ext;
 
-   
-
-  
-
     public Long getId()
     {
         return id;

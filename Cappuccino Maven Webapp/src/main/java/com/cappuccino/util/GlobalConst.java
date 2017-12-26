@@ -65,5 +65,10 @@ public interface GlobalConst
 
     /** api offers key */
     final String OFFER_KEY = "api_offers_";
+    
+    /** click offers key for publisher */
+    final String CLICK_REDISKEY_PUBLISHER = "CLICK_REDISKEY_PUBLISHER_";
+    /** click offers key for admin */
+    final String CLICK_REDISKEY_ADMIN = "CLICK_REDISKEY_ADMIN_";
 
 }

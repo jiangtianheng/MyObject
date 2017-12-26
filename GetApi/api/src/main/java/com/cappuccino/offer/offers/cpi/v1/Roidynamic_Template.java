@@ -115,7 +115,7 @@ public class Roidynamic_Template extends BaseCpiOffer
                     }
                     pkg = pkg.replace("app/", "");
                     pkg = pkg.replace("/", "");
-                    os = 1;
+                    os = 2;
                 }
                 else if (previewlink.indexOf("play.google.com") > 0)
                 {
@@ -125,7 +125,7 @@ public class Roidynamic_Template extends BaseCpiOffer
                     {
                         pkg = pkg.substring(0, pkg.indexOf("&"));
                     }
-                    os = 0;
+                    os = 1;
                 }
                 else
                 {

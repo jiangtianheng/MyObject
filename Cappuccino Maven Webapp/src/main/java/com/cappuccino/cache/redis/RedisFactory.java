@@ -55,7 +55,7 @@ public class RedisFactory
     /**
      * 防止高并发时创建多个pool
      * 
-     * @author demingchen
+     * @author 
      * 
      */
     private static class RedisFactoryHolder

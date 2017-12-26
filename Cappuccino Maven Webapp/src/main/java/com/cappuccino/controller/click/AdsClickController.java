@@ -1,15 +1,15 @@
 package com.cappuccino.controller.click;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import nl.bitwalker.useragentutils.OperatingSystem;
+import nl.bitwalker.useragentutils.UserAgent;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,13 +18,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSON;
 import com.cappuccino.cache.redis.RedisFactory;
+import com.cappuccino.cache.redis.RedisUtil;
+import com.cappuccino.entity.AdsEntity;
 import com.cappuccino.entity.UserEntity;
+import com.cappuccino.exception.Constants;
+import com.cappuccino.exception.CustomException;
 import com.cappuccino.service.UserService;
+import com.cappuccino.util.DateUtil;
+import com.cappuccino.util.GeoLite2Country;
 import com.cappuccino.util.GlobalConst;
-import com.maxmind.geoip2.DatabaseReader;
-import com.maxmind.geoip2.exception.GeoIp2Exception;
-import com.maxmind.geoip2.model.CityResponse;
-import com.maxmind.geoip2.record.Country;
 
 @RestController
 @RequestMapping("ads")
@@ -50,53 +52,45 @@ public class AdsClickController
      * @throws
      */
     @RequestMapping(value = "/redirect", produces = "application/json")
-    public String redirect(@RequestParam(value = "apikey", required = false)
+    public void redirect(@RequestParam(value = "apikey", required = false)
     String apikey, @RequestParam(value = "id", required = false)
     String id, @RequestParam(value = "sub", required = false)
     String sub, @RequestParam(value = "idfa", required = false)
     String idfa, @RequestParam(value = "gaid", required = false)
     String gaid, @RequestParam(value = "devid", required = false)
-    String devid, HttpServletRequest request)
+    String devid, @RequestParam(value = "pub", required = false)
+    String pub, HttpServletRequest request, HttpServletResponse resp)
+            throws IOException
 
     {
-        System.out.println(apikey);
-        System.out.println(id);
-        System.out.println(sub);
-        System.out.println(idfa);
-        System.out.println(gaid);
-        System.out.println(devid);
-        System.out.println(request.getRemoteAddr());
-
-        try
+        String ip = request.getRemoteAddr();
+        String country = GeoLite2Country.getCountryByIp(ip);
+        UserAgent userAgent = UserAgent.parseUserAgentString(request
+                .getHeader("User-Agent"));
+        OperatingSystem os = userAgent.getOperatingSystem();
+        String clicktime = DateUtil.getNowDataStr("yyyyMMddHHmmss");
+        String aff_sub = apikey + "_" + id + "_" + ip + "_" + clicktime;
+        if (idfa != null)
         {
-            // GeoIP2-City 数据库文件
-            File database = new File("");
-
-            // 创建 DatabaseReader对象
-            DatabaseReader reader = new DatabaseReader.Builder(database)
-                    .build();
-
-            InetAddress ipAddress = InetAddress.getByName("128.101.101.101");
-
-            CityResponse response = reader.city(ipAddress);
-
-            Country country = response.getCountry();
-            System.out.println(country);
+            aff_sub = aff_sub + "_sub=" + sub;
         }
-        catch (UnknownHostException e)
+        if (idfa != null)
         {
-            e.printStackTrace();
+            aff_sub = aff_sub + "_idfa=" + idfa;
         }
-        catch (IOException e)
+        if (gaid != null)
         {
-            e.printStackTrace();
+            aff_sub = aff_sub + "_gaid=" + gaid;
         }
-        catch (GeoIp2Exception e)
+        if (devid != null)
         {
-            e.printStackTrace();
+            aff_sub = aff_sub + "_devid=" + devid;
         }
-
-        String json = null;
+        String publisher = apikey;
+        if (publisher != null)
+        {
+            publisher = publisher + "_" + pub;
+        }
         // 判断用户是否存在
         UserEntity user = user_servcice.getUserByApiky(apikey);
         if (user != null && user.getId() > 0)
@@ -105,18 +99,55 @@ public class AdsClickController
             // 可用跳转
             List<String> adsList = RedisFactory.get(
                     GlobalConst.REDIS_KEYS_ADSUSERSKEY + apikey, id);
-            System.out.println(adsList);
-            System.out.println(adsList.get(0));
+            if (adsList != null && adsList.size() > 0)
+            {
+                AdsEntity item = JSON.parseObject(adsList.get(0),
+                        AdsEntity.class);
+                // 判断cap
+                String tracklink = item.getTracklink();
+                tracklink = tracklink.replace("{sub}", aff_sub);
+                tracklink = tracklink.replace("{pub}", publisher);
+
+                if (os.toString().equals("WINDOWS_7"))
+                {
+                    resp.sendRedirect(item.getPreviewlink());
+                }
+                else
+                {
+                    resp.sendRedirect(tracklink);
+                }
+                // 记录点击数
+                incrClick(apikey, item);
+            }
+            else
+            {
+                throw new CustomException(Constants.ex_code_2,
+                        Constants.EXCEPTION_MAP.get(Constants.ex_code_2
+                                .toString()));
+            }
         }
         else
         {
-            Map<String, Object> res = new HashMap<String, Object>();
-            res.put("code", "-2");
-            res.put("msg", "input param error");
-            json = JSON.toJSONString(res);
+            throw new CustomException(Constants.ex_code_2,
+                    Constants.EXCEPTION_MAP.get(Constants.ex_code_2.toString()));
         }
 
-        return json;
     }
 
+    private void incrClick(String apikey, AdsEntity item)
+    {
+        String date = DateUtil.getNowDataStr("yyyyMMdd");
+        List<Long> adsId = new ArrayList<Long>();
+        adsId.add(item.getId());
+        // 下游点击
+        String key_publisher = GlobalConst.CLICK_REDISKEY_PUBLISHER + apikey
+                + "_" + date;
+        RedisUtil.incr(key_publisher, adsId, RedisFactory.ONE_DAY * 2);
+        // 总点击
+        List<Long> AlladsId = new ArrayList<Long>();
+        AlladsId.add(item.getId());
+        String key_admin = GlobalConst.CLICK_REDISKEY_ADMIN
+                + "1a608fc009c037f5" + "_" + date;
+        RedisUtil.incr(key_admin, AlladsId, RedisFactory.ONE_DAY * 2);
+    }
 }
