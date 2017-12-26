@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import nl.bitwalker.useragentutils.OperatingSystem;
 import nl.bitwalker.useragentutils.UserAgent;
 
+import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -32,6 +33,7 @@ import com.cappuccino.util.GlobalConst;
 @RequestMapping("ads")
 public class AdsClickController
 {
+    protected static final Logger logger = Logger.getLogger(AdsClickController.class);
     @Resource
     private UserService user_servcice;
 
@@ -59,55 +61,39 @@ public class AdsClickController
     String idfa, @RequestParam(value = "gaid", required = false)
     String gaid, @RequestParam(value = "devid", required = false)
     String devid, @RequestParam(value = "pub", required = false)
-    String pub, HttpServletRequest request, HttpServletResponse resp)
-            throws IOException
+    String pub, HttpServletRequest request, HttpServletResponse resp) throws IOException
 
     {
         String ip = request.getRemoteAddr();
+        ip = "121.148.188.136";
         String country = GeoLite2Country.getCountryByIp(ip);
-        UserAgent userAgent = UserAgent.parseUserAgentString(request
-                .getHeader("User-Agent"));
+        UserAgent userAgent = UserAgent.parseUserAgentString(request.getHeader("User-Agent"));
         OperatingSystem os = userAgent.getOperatingSystem();
         String clicktime = DateUtil.getNowDataStr("yyyyMMddHHmmss");
         String aff_sub = apikey + "_" + id + "_" + ip + "_" + clicktime;
-        if (idfa != null)
-        {
-            aff_sub = aff_sub + "_sub=" + sub;
-        }
-        if (idfa != null)
-        {
-            aff_sub = aff_sub + "_idfa=" + idfa;
-        }
-        if (gaid != null)
-        {
-            aff_sub = aff_sub + "_gaid=" + gaid;
-        }
-        if (devid != null)
-        {
-            aff_sub = aff_sub + "_devid=" + devid;
-        }
-        String publisher = apikey;
-        if (publisher != null)
-        {
-            publisher = publisher + "_" + pub;
-        }
+        sub = (null == sub) ? "" : sub;
+        idfa = (null == idfa) ? "" : idfa;
+        devid = (null == devid) ? "" : devid;
+        pub = (null == pub) ? "" : pub;
+        aff_sub = aff_sub + "_sub=" + sub;
+        aff_sub = aff_sub + "_idfa=" + idfa;
+        aff_sub = aff_sub + "_gaid=" + gaid;
+        aff_sub = aff_sub + "_devid=" + devid;
         // 判断用户是否存在
         UserEntity user = user_servcice.getUserByApiky(apikey);
         if (user != null && user.getId() > 0)
         {
             // offer是否可用
             // 可用跳转
-            List<String> adsList = RedisFactory.get(
-                    GlobalConst.REDIS_KEYS_ADSUSERSKEY + apikey, id);
+            List<String> adsList = RedisFactory.get(GlobalConst.REDIS_KEYS_ADSUSERSKEY + apikey, id);
             if (adsList != null && adsList.size() > 0)
             {
-                AdsEntity item = JSON.parseObject(adsList.get(0),
-                        AdsEntity.class);
+                AdsEntity item = JSON.parseObject(adsList.get(0), AdsEntity.class);
                 // 判断cap
                 String tracklink = item.getTracklink();
                 tracklink = tracklink.replace("{sub}", aff_sub);
-                tracklink = tracklink.replace("{pub}", publisher);
-
+                tracklink = tracklink.replace("{pub}", apikey + "_" + pub);
+                System.out.println(tracklink);
                 if (os.toString().equals("WINDOWS_7"))
                 {
                     resp.sendRedirect(item.getPreviewlink());
@@ -118,18 +104,19 @@ public class AdsClickController
                 }
                 // 记录点击数
                 incrClick(apikey, item);
+                StringBuffer sb = new StringBuffer();
+                sb.append("AdsClick:").append("\t").append(apikey).append("\t").append(item.getId()).append("\t").append(item.getPkg()).append("\t")
+                        .append(item.getPkg()).append("\t").append(country).append("\t").append(ip).append("\t");
+                logger.info(sb.toString());
             }
             else
             {
-                throw new CustomException(Constants.ex_code_2,
-                        Constants.EXCEPTION_MAP.get(Constants.ex_code_2
-                                .toString()));
+                throw new CustomException(Constants.ex_code_2, Constants.EXCEPTION_MAP.get(Constants.ex_code_2.toString()));
             }
         }
         else
         {
-            throw new CustomException(Constants.ex_code_2,
-                    Constants.EXCEPTION_MAP.get(Constants.ex_code_2.toString()));
+            throw new CustomException(Constants.ex_code_2, Constants.EXCEPTION_MAP.get(Constants.ex_code_2.toString()));
         }
 
     }
@@ -140,14 +127,12 @@ public class AdsClickController
         List<Long> adsId = new ArrayList<Long>();
         adsId.add(item.getId());
         // 下游点击
-        String key_publisher = GlobalConst.CLICK_REDISKEY_PUBLISHER + apikey
-                + "_" + date;
+        String key_publisher = GlobalConst.CLICK_REDISKEY_PUBLISHER + apikey + "_" + date;
         RedisUtil.incr(key_publisher, adsId, RedisFactory.ONE_DAY * 2);
         // 总点击
         List<Long> AlladsId = new ArrayList<Long>();
         AlladsId.add(item.getId());
-        String key_admin = GlobalConst.CLICK_REDISKEY_ADMIN
-                + "1a608fc009c037f5" + "_" + date;
+        String key_admin = GlobalConst.CLICK_REDISKEY_ADMIN + "1a608fc009c037f5" + "_" + date;
         RedisUtil.incr(key_admin, AlladsId, RedisFactory.ONE_DAY * 2);
     }
 }

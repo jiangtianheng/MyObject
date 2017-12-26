@@ -8,11 +8,11 @@ import java.net.UnknownHostException;
 import com.maxmind.geoip2.DatabaseReader;
 import com.maxmind.geoip2.exception.GeoIp2Exception;
 import com.maxmind.geoip2.model.CountryResponse;
-import com.maxmind.geoip2.record.Country;
 
 public class GeoLite2Country
 {
     private static DatabaseReader dbReader = null;
+    private static String country = null;
 
     public static String getCountryByIp(String ip)
     {
@@ -32,8 +32,7 @@ public class GeoLite2Country
 
             CountryResponse response = dbReader.country(ipAddress);
 
-            Country country = response.getCountry();
-            System.out.println(country.getIsoCode());
+            country = response.getCountry().getIsoCode();
         }
         catch (UnknownHostException e)
         {
@@ -48,7 +47,7 @@ public class GeoLite2Country
             e.printStackTrace();
         }
 
-        return ip;
+        return country;
 
     }
 }
