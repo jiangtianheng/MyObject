@@ -92,7 +92,7 @@ public class AdsClickController
                 // 判断cap
                 String tracklink = item.getTracklink();
                 tracklink = tracklink.replace("{sub}", aff_sub);
-                tracklink = tracklink.replace("{pub}", apikey + "_" + pub);
+                tracklink = tracklink.replace("{pub}", pub);
                 System.out.println(tracklink);
                 if (os.toString().equals("WINDOWS_7"))
                 {
