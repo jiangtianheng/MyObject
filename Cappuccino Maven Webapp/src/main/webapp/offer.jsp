@@ -128,7 +128,8 @@
 									-155.97</span>
 							</div>
 
-						</div></li>
+						</div>
+					</li>
 				</ul>
 			</div>
 		</nav>
@@ -147,14 +148,17 @@
 							href="javascript:;"> <i class="fa fa-bars"></i> </a>
 						<li><img
 							src="http://publishers.turbob.mobi/_assets/img/no_userpic.png"
-							alt="manager avatar" style="width: 50px" /></li>
+							alt="manager avatar" style="width: 50px" />
+						</li>
 						<li><a style="font-weight: normal" class="hidden-xs">nikichen@freeplayweb.com</a>
 						</li>
 						<li><a class="dropdown-toggle count-info"
 							href="http://publishers.turbob.mobi/support"><i
-								class="fa fa-envelope"></i> </a></li>
+								class="fa fa-envelope"></i> </a>
+						</li>
 						<li><a href="http://turbob.mobi/logout"> <i
-								class="fa fa-sign-out"></i> Log out </a></li>
+								class="fa fa-sign-out"></i> Log out </a>
+						</li>
 					</ul>
 				</nav>
 			</div>
@@ -209,19 +213,23 @@
 															aria-labelledby="dLabel">
 															<li><a
 																onclick="$('input#sort').val('id'); $(this).parents('form').submit()">Offer
-																	ID</a></li>
+																	ID</a>
+															</li>
 															<li><a
 																onclick="$('input#sort').val('name'); $(this).parents('form').submit()">Offer
-																	name</a></li>
+																	name</a>
+															</li>
 															<li><a
 																onclick="$('input#sort').val('payout'); $(this).parents('form').submit()">Payout</a>
 															</li>
 															<li><a
 																onclick="$('input#sort').val('ratio'); $(this).parents('form').submit()">Global
-																	conversion ratio</a></li>
+																	conversion ratio</a>
+															</li>
 															<li><a
 																onclick="$('input#sort').val('date'); $(this).parents('form').submit()">Date
-																	created</a></li>
+																	created</a>
+															</li>
 															<li><a
 																onclick="$('input#sort').val('geo'); $(this).parents('form').submit()">Geography</a>
 															</li>
@@ -547,12 +555,9 @@
 									<ul class="pagination auto-pagination pull-right m-t-lg"
 										data-count="4" data-size="15" data-current="1"
 										data-url="?page={page}">
-										<li class="prev-page"><a href="#">‹</a>
-										</li>
-										<li class="page-button"><a href="#">1</a>
-										</li>
-										<li class="next-page"><a href="#">›</a>
-										</li>
+										<li class="prev-page"><a href="#">‹</a></li>
+										<li class="page-button"><a href="#">1</a></li>
+										<li class="next-page"><a href="#">›</a></li>
 									</ul>
 									<input type="hidden" name="page" value="1">
 									<div class="clearfix"></div>
