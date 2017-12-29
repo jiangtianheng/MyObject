@@ -134,7 +134,6 @@
 	<!-- <mvc:resources mapping="/**/*.css" location="/css/*" /> <mvc:resources 
 		mapping="/**/*.img" location="/img/*" /> -->
 
-
 	<!-- 返回的视图 -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

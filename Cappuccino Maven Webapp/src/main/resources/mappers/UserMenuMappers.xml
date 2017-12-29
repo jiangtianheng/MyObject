@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cappuccino.dao.UserMenuDao">
+	
+	<!-- 获取菜单信息 -->
+	<select id="getMenusInfo" resultType="com.cappuccino.entity.MenuEntity">
+		SELECT o_menu.* FROM `o_menu`,`role_menu` WHERE o_menu.`id`=role_menu.`menuid` AND role_menu.`roleid`=#{role_id}
+	</select>
+</mapper>

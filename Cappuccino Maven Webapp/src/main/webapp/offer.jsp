@@ -1,3 +1,4 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,21 +26,6 @@
 	href="css/plugins/spectrum/spectrum.css" />
 <link rel="stylesheet" type="text/css" href="css/animate.css" />
 <link rel="stylesheet" type="text/css" href="css/common.css" />
-<!-- Mainly scripts -->
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript"
-	src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript"
-	src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
-<!-- Peity -->
-<script type="text/javascript"
-	src="js/plugins/peity/jquery.peity.min.js"></script>
-<!-- Custom and plugin javascript -->
-<script type="text/javascript" src="js/inspinia.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<!-- Custom and plugin javascript -->
-<script type="text/javascript" src="js/Chart.min.js"></script>
 
 <style>
 .all-offers>div:hover {
@@ -49,7 +35,103 @@
 </head>
 <body>
 	<div id="wrapper">
-		<%@include file="index/left.jsp" %>
+		<nav class="navbar-default navbar-static-side" role="navigation">
+			<div class="sidebar-collapse">
+				<ul class="nav" id="side-menu">
+					<li class="nav-header" id="test"
+						style="background-size: 100% 100%; padding-top: 14px">
+						<div>
+							<img src="images/logo.jpg" class="hidden-xs" alt="Logo"
+								style="width: 180px;" />
+						</div>
+						<div class="dropdown profile-element">
+							<div class="m-t">
+								<div>
+									<span class="text-muted font-thin">Server time</span> <span
+										id="server-time" class="text-success font-thin pull-right"
+										style="font-size: 20px; margin-top: -2px;"> 10:34:23 </span>
+									<div class="text-left"
+										style="font-size: 18px; margin-top: -2px; color: #B2E1CA">GMT+3</div>
+								</div>
+							</div>
+							<div class="m-t">
+								<div>
+									<span class="text-muted font-thin">Today</span> <span
+										class="text-warning font-thin pull-right stat-refresh autoload"
+										data-period="today" style="font-size: 20px; margin-top: -2px;">
+									</span>
+								</div>
+							</div>
+
+							<div class="m-t">
+								<div>
+									<span class="text-muted font-thin">Approved offers</span> <span
+										class="text-warning font-thin pull-right"
+										style="font-size: 20px; margin-top: -2px;"> 2 </span>
+								</div>
+							</div>
+
+							<div class="m-t">
+								<div>
+									<span class="text-muted font-thin">Clicks</span> <span
+										class="text-warning font-thin pull-right"
+										style="font-size: 20px;">5656464 <span
+										class="minibar-traffic-publisher" title="14 days traffic"></span>
+									</span>
+								</div>
+							</div>
+
+							<div class="m-t">
+								<div>
+									<span class="text-muted font-thin">Conversions</span> <span
+										class="text-warning font-thin pull-right"
+										style="font-size: 20px;">12454 <span
+										class="minibar-conversions-publisher" title="14 days revenue"></span>
+									</span>
+								</div>
+							</div>
+
+							<div class="m-t">
+								<div>
+									<span class="text-muted font-thin">Payout</span> <span
+										class="text-warning font-thin pull-right"
+										style="font-size: 20px;">$45457 <span
+										class="minibar-revenue-publisher" title="14 days revenue"></span>
+									</span>
+								</div>
+							</div>
+
+							<form method="get" action="">
+								<div style="margin-top: 32px;" class="input-group">
+									<input class="form-control text-navy"
+										placeholder="Search offers" name="search"
+										title="Type keyword or offer ID"
+										style="background: transparent; border: 1px solid #1ab394; padding: 7px; font-size: 13px"
+										type="text"> <span class="input-group-btn">
+										<button class="btn btn-primary" type="submit">
+											<i class="fa fa-search"></i>
+										</button> </span>
+
+								</div>
+							</form>
+
+							<div style="margin-top: 10px;"
+								class="font-bold text-muted hidden">
+								<small>Server time</small> <span class="pull-right">Dec
+									27, 10:23</span>
+								<div class="text-left"
+									style="font-size: 12px; margin-top: -2px; color: #B2E1CA">Etc/GMT-3</div>
+							</div>
+							<div style="margin-top: 10px;"
+								class="font-bold text-muted hidden">
+								<small>Today</small> <span class="label label-danger pull-right">$
+									-155.97</span>
+							</div>
+
+						</div></li>
+				</ul>
+			</div>
+		</nav>
 		<div id="page-wrapper" class="gray-bg dashbard-1">
 			<div class="row border-bottom">
 				<nav class="navbar navbar-static-top" role="navigation"
@@ -65,17 +147,14 @@
 							href="javascript:;"> <i class="fa fa-bars"></i> </a>
 						<li><img
 							src="http://publishers.turbob.mobi/_assets/img/no_userpic.png"
-							alt="manager avatar" style="width: 50px" />
-						</li>
+							alt="manager avatar" style="width: 50px" /></li>
 						<li><a style="font-weight: normal" class="hidden-xs">nikichen@freeplayweb.com</a>
 						</li>
 						<li><a class="dropdown-toggle count-info"
 							href="http://publishers.turbob.mobi/support"><i
-								class="fa fa-envelope"></i> </a>
-						</li>
+								class="fa fa-envelope"></i> </a></li>
 						<li><a href="http://turbob.mobi/logout"> <i
-								class="fa fa-sign-out"></i> Log out </a>
-						</li>
+								class="fa fa-sign-out"></i> Log out </a></li>
 					</ul>
 				</nav>
 			</div>
@@ -130,23 +209,19 @@
 															aria-labelledby="dLabel">
 															<li><a
 																onclick="$('input#sort').val('id'); $(this).parents('form').submit()">Offer
-																	ID</a>
-															</li>
+																	ID</a></li>
 															<li><a
 																onclick="$('input#sort').val('name'); $(this).parents('form').submit()">Offer
-																	name</a>
-															</li>
+																	name</a></li>
 															<li><a
 																onclick="$('input#sort').val('payout'); $(this).parents('form').submit()">Payout</a>
 															</li>
 															<li><a
 																onclick="$('input#sort').val('ratio'); $(this).parents('form').submit()">Global
-																	conversion ratio</a>
-															</li>
+																	conversion ratio</a></li>
 															<li><a
 																onclick="$('input#sort').val('date'); $(this).parents('form').submit()">Date
-																	created</a>
-															</li>
+																	created</a></li>
 															<li><a
 																onclick="$('input#sort').val('geo'); $(this).parents('form').submit()">Geography</a>
 															</li>
@@ -475,9 +550,12 @@
 									<ul class="pagination auto-pagination pull-right m-t-lg"
 										data-count="4" data-size="15" data-current="1"
 										data-url="?page={page}">
-										<li class="prev-page"><a href="#">‹</a></li>
-										<li class="page-button"><a href="#">1</a></li>
-										<li class="next-page"><a href="#">›</a></li>
+										<li class="prev-page"><a href="#">‹</a>
+										</li>
+										<li class="page-button"><a href="#">1</a>
+										</li>
+										<li class="next-page"><a href="#">›</a>
+										</li>
 									</ul>
 									<input type="hidden" name="page" value="1">
 									<div class="clearfix"></div>
@@ -1258,4 +1336,3 @@
 
 </body>
 </html>
-
