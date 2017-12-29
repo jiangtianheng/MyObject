@@ -25,7 +25,6 @@ public class UserMenuController {
 	@ResponseBody
 	@RequestMapping(value = "getMenuInfos", produces = "application/json")
 	public List<MenuEntity> getMenuInfos(@RequestParam("role") Integer role) {
-
 		return menu_service.getMenusInfo(role);
 
 	}

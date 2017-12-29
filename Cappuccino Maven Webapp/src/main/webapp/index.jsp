@@ -1,32 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cappuccino Media</title>
-<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-<link rel="icon" href="images/favicon.ico" type="image/x-icon">
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
-<link rel="stylesheet" type="text/css" href="css/style.min.css?v=1.2" />
-<link rel="stylesheet" type="text/css"
-	href="css/plugins/iCheck/custom.css" />
-<link rel="stylesheet" type="text/css"
-	href="css/plugins/chosen/chosen.css" />
-<link rel="stylesheet" type="text/css"
-	href="css/plugins/jasny/jasny-bootstrap.min.css" />
-<link rel="stylesheet" type="text/css"
-	href="css/plugins/daterangepicker/daterangepicker-bs3.css" />
-<link rel="stylesheet" type="text/css"
-	href="css/plugins/flags/flags.css" />
-<link rel="stylesheet" type="text/css"
-	href="css/plugins/jvectormap/jquery-jvectormap.css" />
-<link rel="stylesheet" type="text/css"
-	href="css/plugins/spectrum/spectrum.css" />
-<link rel="stylesheet" type="text/css" href="css/animate.css" />
-<link rel="stylesheet" type="text/css" href="css/common.css" />
-</head>
+<%@include file="../base/head.jsp"%>
+<script type="text/javascript" src="js/payout.js"></script>
+<script type="text/javascript" src="js/echarts.js"></script>
 <body>
 	<div id="wrapper">
 		<nav class="navbar-default navbar-static-side" role="navigation">
@@ -122,8 +99,7 @@
 									-155.97</span>
 							</div>
 
-						</div>
-					</li>
+						</div></li>
 				</ul>
 			</div>
 		</nav>
@@ -142,13 +118,11 @@
 							class="navbar-minimalize btn btn-primary m-t-sm m-r-sm hidden-lg hidden-md hidden-sm pull-right"
 							href="javascript:;"> <i class="fa fa-bars"></i> </a>
 						<li><img src="images/no_userpic.png" alt="manager avatar"
-							style="width: 50px" />
-						</li>
+							style="width: 50px" /></li>
 						<li><a style="font-weight: normal" class="hidden-xs">nikichen@freeplayweb.com</a>
 						</li>
 						<li><a class="dropdown-toggle count-info" href="#"><i
-								class="fa fa-envelope"></i> </a>
-						</li>
+								class="fa fa-envelope"></i> </a></li>
 						<li><a href="#"> <i class="fa fa-sign-out"></i> Log out </a>
 						</li>
 					</ul>
@@ -409,19 +383,23 @@
 													<tbody>
 														<tr class="geo-row-tpl hidden">
 															<td><i class="flag-{geo}"></i> <span
-																class="geo-country-name"></span></td>
+																class="geo-country-name"></span>
+															</td>
 															<td class="geo-clicks text-right"></td>
 															<td class="geo-conversions text-right"></td>
 															<td class="text-right"><span
-																class="geo-payout label label-success"></span></td>
+																class="geo-payout label label-success"></span>
+															</td>
 														</tr>
 														<tr class="">
 															<td><i class="flag-{geo} flag-JP"></i> <span
-																class="geo-country-name">JP</span></td>
+																class="geo-country-name">JP</span>
+															</td>
 															<td class="geo-clicks text-right">399</td>
 															<td class="geo-conversions text-right">0</td>
 															<td class="text-right"><span
-																class="geo-payout label label-success">$ 0.00</span></td>
+																class="geo-payout label label-success">$ 0.00</span>
+															</td>
 														</tr>
 													</tbody>
 												</table>
@@ -639,8 +617,7 @@
 							<thead>
 								<tr>
 									<td>Payout</td>
-									<td><span style="font-size: 16px">$0.09</span>
-									</td>
+									<td><span style="font-size: 16px">$0.09</span></td>
 								</tr>
 							</thead>
 							<tbody>
@@ -651,13 +628,11 @@
 								<tr>
 									<td>Geography</td>
 									<td style="line-height: 24px;"><label class="label"
-										title="India">IN</label>
-									</td>
+										title="India">IN</label></td>
 								</tr>
 								<tr>
 									<td>Categories</td>
-									<td><label class="label label-info">Lifestyle</label>
-									</td>
+									<td><label class="label label-info">Lifestyle</label></td>
 								</tr>
 								<tr>
 									<td>Approval</td>
@@ -673,8 +648,7 @@
 									<td><a
 										href="https://play.google.com/store/apps/details?id=free.mobile.internet.data.recharge"
 										target="_blank">Preview <i
-											class="fa fa-external-link-square"></i> </a>
-									</td>
+											class="fa fa-external-link-square"></i> </a></td>
 								</tr>
 							</tbody>
 						</table>
@@ -690,14 +664,12 @@
 									<tr>
 										<td style="width: 35%">Payout</td>
 										<td><span class="m-r-sm" title="Payout"
-											style="font-size: 16px"> $0.09</span>
-										</td>
+											style="font-size: 16px"> $0.09</span></td>
 									</tr>
 									<tr>
 										<td style="width: 35%">Geography</td>
 										<td style="line-height: 24px;"><label class="label"
-											title="India">IN</label>
-										</td>
+											title="India">IN</label></td>
 									</tr>
 									<tr>
 										<td style="width: 35%">Platforms</td>
@@ -716,8 +688,7 @@
 										<h4>Allowed traffic</h4>
 										<ul class="allowed-traffic">
 											<li><i class="fa fa-check"></i> Incentivized traffic</li>
-										</ul>
-									</td>
+										</ul></td>
 
 									<td style="vertical-align: top">
 										<h4>Restricted traffic</h4>
@@ -725,51 +696,24 @@
 											<li><i class="fa fa-close"></i> Adult traffic</li>
 											<li><i class="fa fa-close"></i> Bot traffic</li>
 											<li><i class="fa fa-close"></i> Fraudulent traffic</li>
-										</ul>
-									</td>
+										</ul></td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 
 				</div>
-
-
 				<div class="clearfix"></div>
-
 				<div class="modal-footer">
 					<a href="#" class="btn btn-white" data-dismiss="modal"><i
 						class="fa fa-remove m-r-xs" style="opacity:0.5"></i> Close</a> <a
 						href="http://publishers.turbob.mobi/offers/details/42767"
 						class="btn btn-primary"><i class="fa fa-reorder m-r-xs"
 						style="opacity:0.5"></i> Offer details</a>
-
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- Mainly scripts -->
-	<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
-	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="js/js.cookie.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/jquery.metisMenu.js"></script>
-	<script type="text/javascript" src="js/jquery.slimscroll.min.js"></script>
-	<script type="text/javascript" src="js/payout.js"></script>
-	<script type="text/javascript" src="js/echarts.js"></script>
-	<script type="text/javascript" src="js/menu.js"></script>
-	<!-- Custom and plugin javascript -->
-	<script type="text/javascript" src="js/inspinia.js"></script>
-	<script type="text/javascript" src="js/common_validation_script.js"></script>
-	<script type="text/javascript"
-		src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
-	<!-- Peity -->
-	<script type="text/javascript"
-		src="js/plugins/peity/jquery.peity.min.js"></script>
-	<!-- Custom and plugin javascript -->
-	<script type="text/javascript" src="js/common.js"></script>
-	<!-- Custom and plugin javascript -->
-	<script type="text/javascript" src="js/Chart.min.js"></script>
 </body>
 </html>
 
