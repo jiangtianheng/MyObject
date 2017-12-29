@@ -365,10 +365,7 @@
 																title="Android" style="margin-top: -4px"> <a
 																href="http://publishers.turbob.mobi/offers/details/20169">
 																File Manager (Android 4.0.3+) US DE JP - Non incent </a>
-
-
 														</h4>
-
 														<div style="line-height: 24px">
 															<span class="label" title="Offer ID"
 																data-placement="bottom" style="vertical-align: middle">
